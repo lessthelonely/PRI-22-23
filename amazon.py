@@ -3,14 +3,15 @@ from urllib.request import urlopen
 import requests
 import re #to work with regular expressions
 
+#url formula: 
 url = "https://www.bookdepository.com/Verity-Colleen-Hoover/9781408726600?ref=grid-view"
 response = requests.get(url)
 soup = BeautifulSoup(response.content, 'html5lib')
 divs = soup.find_all('div')
 
-ratings = soup.find_all('div', class_='price')     
-for rating in ratings:
-    print(rating.get())
+ratings = soup.find_all('span',{'class':'list-price'})  
+  
+print(ratings[0].get_text())
 '''page = urlopen(url) #opens the url
 html = page.read().decode("utf-8") #reads html
 soup = BeautifulSoup(html, "html.parser") #Creates a BeautifulSoup object and assigns it to the soup variable
