@@ -10,7 +10,7 @@ I think the actual book title is just Verity but who knows what the title of thi
 When we use the search bar, there's an intermediate link...We can search only using the ISBN so perhaps there's an url with only the ISBN which we have and it's unique'''
 
 #intermediate url formula (searchTerm= to the ISBN13):
-url ="https://www.bookdepository.com/search?searchTerm=9780029141809 &search=Find+book"
+url ="https://www.bookdepository.com/search?searchTerm=9780593358573&search=Find+book"
 
 #url formula: 
 #url = "https://www.bookdepository.com/Verity-Colleen-Hoover/9781408726600?ref=grid-view"
@@ -23,7 +23,13 @@ ratings = soup.find_all('span',{'class':'sale-price'})
 if(len(ratings)):
     print(ratings[0].get_text())
 else:
-    print("NA")    
+    ratings = soup.find_all('p',{'class':'list-price'})  
+    if(len(ratings)):
+        list_price=ratings[0].get_text()
+        price=list_price[65]+list_price[66]+list_price[67]+list_price[68]+list_price[69]+' '+list_price[71]
+        print(price)
+    else:
+        print("NA")    
     
 '''page = urlopen(url) #opens the url
 html = page.read().decode("utf-8") #reads html
