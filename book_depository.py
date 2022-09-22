@@ -9,8 +9,9 @@ For example Verity has a way longer title than just Verity, the actual title in 
 I think the actual book title is just Verity but who knows what the title of this book would be in the dataset
 When we use the search bar, there's an intermediate link...We can search only using the ISBN so perhaps there's an url with only the ISBN which we have and it's unique'''
 
+ibsn="9780593358573"
 #intermediate url formula (searchTerm= to the ISBN13):
-url ="https://www.bookdepository.com/search?searchTerm=9780593358573&search=Find+book"
+url ="https://www.bookdepository.com/search?searchTerm=" + ibsn +"&search=Find+book"
 
 #url formula: 
 #url = "https://www.bookdepository.com/Verity-Colleen-Hoover/9781408726600?ref=grid-view"
