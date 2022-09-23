@@ -2,16 +2,31 @@ from bs4 import BeautifulSoup
 from urllib.request import urlopen
 import requests
 import re #to work with regular expressions
+import pandas
 
-#we got the url from the csv
-url="https://www.goodreads.com/book/show/1001053.Between_Two_Fire"
+database = pandas.read_csv('data/GoodReads_100k_books.csv').dropna()
+books_zero_pages = database.loc[database['pages'] == 0] #get the books with zero pages
+books_zero_pages = books_zero_pages[['link']]
+print(len(books_zero_pages))
 
-response = requests.get(url)
-soup = BeautifulSoup(response.content, 'html5lib')
+def getPages(url):
+    try:
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, 'html5lib')
 
-#Number of pages
-num_pages= soup.find_all('meta',{'property':'books:page_count'}) #We get <meta content="304" property="books:page_count"/>
-num_pages=num_pages[0]["content"] if num_pages else None
-print(num_pages)
+        #Number of pages
+        num_pages= soup.find_all('meta',{'property':'books:page_count'}) #We get <meta content="304" property="books:page_count"/>
+        num_pages=num_pages[0]["content"] if num_pages else 0
+        if num_pages !=0:
+            database.loc[database.link == url, 'pages'] = num_pages
+        print(num_pages)
+    except:
+        return False
+    return True        
 
-#Reviews?
+books_zero_pages[books_zero_pages['link'].apply(getPages)]
+database.to_csv('data/goodreads_with_pages.csv',encoding='utf-8')
+
+
+
+
