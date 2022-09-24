@@ -31,7 +31,7 @@ def getPrices(isbn):
             prices = soup.find_all('p',{'class':'list-price'})  
             if(len(prices)):
                 list_price=prices[0].get_text()
-                price=list_price[65]+list_price[66]+list_price[67]+list_price[68]+list_price[69]+' '+list_price[71]
+                price=re.findall("(?:[,\d]+.?\d*[\€])",list_price)
                 database.loc[database.isbn==isbn, 'price'] = price
                 print(price)
             else:
@@ -42,7 +42,7 @@ def getPrices(isbn):
 
 database[database['isbn'].apply(getPrices)]
 database.to_csv('data/goodreads_with_prices.csv',encoding='utf-8')            
-    
+
 '''page = urlopen(url) #opens the url
 html = page.read().decode("utf-8") #reads html
 soup = BeautifulSoup(html, "html.parser") #Creates a BeautifulSoup object and assigns it to the soup variable
