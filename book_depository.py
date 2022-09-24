@@ -17,8 +17,6 @@ def getPrices(isbn):
         #intermediate url formula (searchTerm= to the ISBN13):
         url ="https://www.bookdepository.com/search?searchTerm=" + isbn +"&search=Find+book"
 
-        #url formula: 
-        #url = "https://www.bookdepository.com/Verity-Colleen-Hoover/9781408726600?ref=grid-view"
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html5lib')
 
@@ -31,7 +29,7 @@ def getPrices(isbn):
             prices = soup.find_all('p',{'class':'list-price'})  
             if(len(prices)):
                 list_price=prices[0].get_text()
-                price=re.findall("(?:[,\d]+.?\d*[\€])",list_price)
+                price=re.findall("(?:[,\d]+.?\d*[\€])",list_price)[0]
                 database.loc[database.isbn==isbn, 'price'] = price
                 print(price)
             else:
