@@ -22,13 +22,16 @@ HEADERS = ({'User-Agent':
 def getTitles(asin):
     try:
         URL = "https://www.amazon.com/dp/"+asin
+        print(URL)
         webpage = requests.get(URL, headers=HEADERS)
         soup = BeautifulSoup(webpage.content, "lxml")
 
         # Outer Tag Object
         title = soup.find("span", attrs={"id":'productTitle'})
-        database.loc[database.asin==asin,'title'] =title
-        print(title.string)
+        if(title!=None):
+            print(title.string)
+            database['title'] =title.string
+        
 
     except:
         return False
