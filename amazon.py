@@ -14,6 +14,7 @@ import pandas
 #print(page.text)
 
 database=pandas.read_csv('data/kindle_reviews.csv').dropna()
+counter = 0
 
 HEADERS = ({'User-Agent':
             'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',
@@ -22,14 +23,14 @@ HEADERS = ({'User-Agent':
 def getTitles(asin):
     try:
         URL = "https://www.amazon.com/dp/"+asin
-        print(URL)
+        counter+=1
+        print(counter)
         webpage = requests.get(URL, headers=HEADERS)
         soup = BeautifulSoup(webpage.content, "lxml")
 
         # Outer Tag Object
         title = soup.find("span", attrs={"id":'productTitle'})
         if(title!=None):
-            print(title.string)
             database['title'] =title.string
         
 
