@@ -23,8 +23,6 @@ HEADERS = ({'User-Agent':
 def getTitles(asin):
     try:
         URL = "https://www.amazon.com/dp/"+asin
-        counter+=1
-        print(counter)
         webpage = requests.get(URL, headers=HEADERS)
         soup = BeautifulSoup(webpage.content, "lxml")
 
@@ -32,6 +30,7 @@ def getTitles(asin):
         title = soup.find("span", attrs={"id":'productTitle'})
         if(title!=None):
             database['title'] =title.string
+        print(URL)    
         
 
     except:
