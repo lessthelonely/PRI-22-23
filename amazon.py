@@ -14,7 +14,7 @@ import pandas
 #print(page.text)
 
 database=pandas.read_csv('data/kindle_reviews.csv').dropna()
-counter = 0
+print(database.asin.nunique())
 
 HEADERS = ({'User-Agent':
             'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.157 Safari/537.36',
@@ -29,7 +29,7 @@ def getTitles(asin):
         # Outer Tag Object
         title = soup.find("span", attrs={"id":'productTitle'})
         if(title!=None):
-            database['title'] =title.string
+            database.loc[database.asin == asin, 'title'] = title.string 
         print(URL)    
         
 
@@ -37,6 +37,6 @@ def getTitles(asin):
         return False
     return True     
     
-database[database['asin'].apply(getTitles)]
+database[database['asin'].drop_duplicates().apply(getTitles)]
 database.to_csv('data/kindle_reviews_with_titles.csv',encoding='utf-8')
 
