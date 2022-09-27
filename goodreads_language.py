@@ -18,6 +18,6 @@ def getLanguage(url):
     return True        
 
 database[database['link'].apply(getLanguage)]
-database.to_csv('data/goodreads_with_language.csv',encoding='iso 8859-8')
+database.to_csv('data/goodreads_with_language.csv',encoding='utf-8')
 
 
