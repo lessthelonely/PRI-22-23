@@ -6,7 +6,7 @@ import pandas
 
 database = pandas.read_csv('data/goodreads_with_prices.csv').dropna()
 
-def getPages(url):
+def getLanguage(url):
     try:
         response = urllib.request.urlopen(url)
         soup = BeautifulSoup(response, 'html.parser')
@@ -17,6 +17,7 @@ def getPages(url):
         return False
     return True        
 
+database[database['link'].apply(getLanguage)]
 database.to_csv('data/goodreads_with_language.csv',encoding='iso 8859-8')
 
 
