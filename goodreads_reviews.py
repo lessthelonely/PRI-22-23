@@ -17,7 +17,7 @@ def getReviews(url):
             reviews=[]
             reviews+=[url]
             reviews+=[review]
-            print(reviews)
+            print(review)
             data.append(reviews)    
     except:
         return False
