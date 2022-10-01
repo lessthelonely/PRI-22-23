@@ -1,11 +1,12 @@
 from deep_translator import GoogleTranslator
 from langdetect import detect
 import pandas as pd
+import re
 
 df = pd.read_csv('data/goodreads_with_review.csv')
 
 for index in df.index:
-    if(not df.loc[index,'review'].isdigit()):
+    if(not re.match('[+-]?([0-9]*[.])?[0-9]+',df.loc[index,'review'])):
         lang = detect(df.loc[index,'review'])
         if (lang != "en"):
         # check if it really isn't english
