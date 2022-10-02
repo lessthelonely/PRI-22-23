@@ -47,4 +47,5 @@ def map_bookformat(bookformat):
         return bookformat
 
 clean_book['bookformat'] = clean_book['bookformat'].apply(map_bookformat)
+clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 clean_book.to_csv('data/after_encoding/clean_book_data.csv', encoding='utf-8')
