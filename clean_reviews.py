@@ -1,4 +1,5 @@
 import pandas as pd
+from langdetect import detect
 
 df=pd.read_csv('data/goodreads_with_reviews_translated.csv')
 
@@ -8,13 +9,13 @@ df = df.loc[:, ~df.columns.str.contains('^Unnamed')] #delete Unnamed columns pan
 data=[]
 for index in df.index:
     print(len(df.loc[index,'review']))
-    if(len(df.loc[index,'review'])>5000):
+    if(len(df.loc[index,'review'])>5000 and detect(df.loc[index,'review']) != 'en'):
         data.append(index)
 
 print("Above 5000")
 for i in data:
     print(i)
-    
+
 df.drop(data, axis=0, inplace=True)
 
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
