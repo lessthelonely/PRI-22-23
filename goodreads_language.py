@@ -3,8 +3,10 @@ from urllib.request import urlopen
 import urllib.request
 import re #to work with regular expressions
 import pandas
+from concurrent.futures import ThreadPoolExecutor
 
 database = pandas.read_csv('data/goodreads_with_prices.csv').dropna()
+
 
 def getLanguage(url):
     try:
@@ -12,7 +14,7 @@ def getLanguage(url):
         soup = BeautifulSoup(response, 'html.parser')
         language=soup.find_all('div',{'itemprop':'inLanguage'})
         database.loc[database.link==url,'language']=language[0].text
-        print(language)
+        print(language[0].text)
     except:
         return False
     return True        
