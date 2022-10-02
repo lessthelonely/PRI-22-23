@@ -11,8 +11,11 @@ for index in df.index:
     if(len(df.loc[index,'review'])>5000):
         data.append(index)
 
+print("Above 5000")
 for i in data:
-    df.drop(i)
+    print(i)
+    
+df.drop(data, axis=0, inplace=True)
 
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 df.to_csv('./data/cleaned_reviews.csv',encoding='utf-8')
