@@ -1,15 +1,15 @@
 
 import pandas as pd
-clean_book = pd.read_csv('data/after_encoding/clean_book_data.csv')
+clean_book = pd.read_csv('data/current_data.csv')
 
 def map_bookformat(bookformat):
     if bookformat=='Hardback' or bookformat=='Pasta Dura' or bookformat=='Capa Dura' or bookformat=='Relié' or bookformat=='Hardcover In Dust Jacket' or bookformat=='Hardcover in dust jacket' or bookformat=='Cloth Hardcover' or bookformat=='Cloth' or bookformat=='cloth' or bookformat=='Hardcover, Slipcased' or bookformat=='Over-Sized 12"W X 16"H Hardcover' or bookformat=='Gebunden' or bookformat== 'Hardcover ' or bookformat=='Gebundene Ausgabe' or bookformat=='単行本' or bookformat=='Inbunden' or bookformat=='Casebound' or bookformat=='Slipcased Hardcover' or bookformat=='Pasta dura' or bookformat=='hardcover' or bookformat=='Capa dura' or bookformat=='Over-Sized 12"W x 16"H Hardcover' or bookformat=='hardback':
         return 'Hardcover'
-    elif bookformat=='Broschiert' or  bookformat== 'Broché' or bookformat=='Perfect Paperback' or bookformat=='perfect' or bookformat=='文庫' or bookformat=='Capa Comum' or bookformat=='Perfect' or bookformat == 'Sewn Paperback With Dust Jacket' or bookformat == 'Pasta Blanda' or bookformat == 'Saddle-Stitched Paperback == 120 X 190 Mm' or bookformat=='paperback' or bookformat=='Capa comum' or bookformat=='Sewn paperback with dust jacket' or bookformat=='Pasta blanda' or bookformat=='Saddle-stitched paperback' or bookformat=='120 x 190 mm':
+    elif bookformat=='Broschiert' or  bookformat== 'Broché' or bookformat=='文庫' or bookformat=='Capa Comum' or bookformat == 'Sewn Paperback With Dust Jacket' or bookformat == 'Pasta Blanda' or bookformat == 'Saddle-Stitched Paperback == 120 X 190 Mm' or bookformat=='paperback' or bookformat=='Capa comum' or bookformat=='Sewn paperback with dust jacket' or bookformat=='Pasta blanda' or bookformat=='Saddle-stitched paperback' or bookformat=='120 x 190 mm':
         return 'Paperback'
     elif bookformat=='Hardcover, Paperback':
         return 'Paperback And Deluxe Hardcover'
-    elif bookformat=='Mass_Market' or bookformat=='Mass Market' or bookformat=='mass_market':
+    elif bookformat=='Mass_Market' or bookformat=='Mass Market' or bookformat=='mass_market' or bookformat=='Perfect Paperback' or bookformat=='perfect' or bookformat=='Perfect' or bookformat=='Taschenbuch' or bookformat == 'Poche' or bookformat == 'Softcover' or bookformat== 'Soft Cover' or bookformat=='pocket' or bookformat=='soft cover' or bookformat=='softcover' or bookformat=='Pocket':
         return 'Mass Market Paperback'
     elif bookformat=='Textbook Binding':
         return 'Textbook'
@@ -33,8 +33,6 @@ def map_bookformat(bookformat):
         return 'Deck of 78 Tarot Cards'
     elif bookformat=='Paperback W/Cd' or bookformat=='Paperback with Cd Rom' or bookformat=='Paperback w/ CD' or bookformat=='Paperback with CD Rom':
         return 'Paperback with CD'
-    elif bookformat=='Taschenbuch' or bookformat == 'Poche' or bookformat == 'Softcover' or bookformat== 'Soft Cover' or bookformat=='pocket' or bookformat=='soft cover' or bookformat=='softcover':
-        return 'Pocket'
     elif bookformat=='Loose Leaf' or bookformat=='Looseleaf' or bookformat=='paper':
         return 'Paper'
     elif bookformat=='3-Ring Binder' or bookformat=='3-ring Binder':
@@ -48,4 +46,4 @@ def map_bookformat(bookformat):
 
 clean_book['bookformat'] = clean_book['bookformat'].apply(map_bookformat)
 clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
-clean_book.to_csv('data/after_encoding/clean_book_data.csv', encoding='utf-8')
+clean_book.to_csv('data/current_data_after.csv')
