@@ -12,36 +12,38 @@ r_list=list(reviews['url'].unique())
 
 links=[]
 for i in clean_book.index:
-    if (clean_book.loc[i,'link'] not in r_list):
-        links.append(i)
+    if(clean_book.loc[i,'link'] not in r_list):
+        print(i)
+        links.append(clean_book.loc[i,'link'])
         
         
 data=[]
 
 def getReviews(url):
     reviews=[]
+    print(url)
+    response = urllib.request.urlopen(url)
+    print(response)
     try:
-        response = urllib.request.urlopen(url)
-        soup = BeautifulSoup(response, 'html.parser')
-        for i in soup.find_all('span',{'class':'readable'}):
-            spans=i.find_all('span')
-            r=[]
-            review=spans[-1].get_text(separator="\n")
-            r+=[url]
-            r+=[review]
-            print(review)
-            data.append(r)    
+     soup = BeautifulSoup(response, 'html.parser')
+     for i in soup.find_all('span',{'class':'readable'}):
+        spans=i.find_all('span')
+        r=[]
+        review=spans[-1].get_text(separator="\n")
+        r+=[url]
+        r+=[review]
+        print(review)
+        data.append(r)  
     except:
-        return False
+     print("EXCEPTION")  
     return reviews      
+    
 
 def main():
     with ThreadPoolExecutor(max_workers=65) as p:
         p.map(getReviews,links)
 
 main()
-if(False in data):
-    data.remove(False)
 
 df=pd.DataFrame(data,columns=['url','review'])
 df.to_csv('data/more_reviews.csv')
