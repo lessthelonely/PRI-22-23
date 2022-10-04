@@ -47,7 +47,7 @@ data/goodreads_with_language.csv: data/goodreads_with_prices.csv
 data/goodreads_titles_translated.csv: data/goodreads_with_language.csv
 	python translator.py
 
-data/clean_titles.csv: data/goodreads_titles_translated.csv data/goodreads_with_prices.csv
+data/clean_titles.csv: data/goodreads_titles_translated.csv 
 	python cleaning_titles.py
 
 data/translate_description.csv: data/clean_titles.csv
