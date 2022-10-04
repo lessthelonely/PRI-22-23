@@ -15,4 +15,4 @@ def map_pages(isbn):
 df[df['isbn'].apply(map_pages)]
 df = df.drop('isbn13', axis=1)
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
-df.to_csv('data/clean_book_data.csv',encoding='utf-8')   
+df.to_csv('data/joined_book_data.csv',encoding='utf-8')   

@@ -27,6 +27,6 @@ for index in df.index:
            continue
 
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
-df.to_csv('data/translate.csv')
+df.to_csv('data/translate_review.csv')
 
 
