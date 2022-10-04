@@ -21,6 +21,7 @@ setup:
 	pip install googletrans
 	pip install html5lib
 	pip install future
+	pip install numpy
 
 data/goodreads_with_prices.csv: og_data
 	python book_depository.py
