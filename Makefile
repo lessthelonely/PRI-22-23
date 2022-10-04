@@ -9,7 +9,18 @@ og_data := path/GoodReads_100k_books.csv
 
 # Starting target rule 'all'
 # Processes all programmes defined
-all: data/cleaned_reviews.csv data/clean_book_data.csv
+all: setup data/cleaned_reviews.csv data/clean_book_data.csv
+
+setup:
+	pip install requests
+	pip install pandas
+	pip install langdetect
+	pip install regex
+	pip install beautifulsoup4
+	pip install urllib3
+	pip install googletrans
+	pip install html5lib
+	pip install future
 
 data/goodreads_with_prices.csv: og_data
 	python book_depository.py
