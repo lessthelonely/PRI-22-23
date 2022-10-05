@@ -5,8 +5,9 @@ for i in clean_book.index:
     clean_book.loc[i,'price']=str(clean_book.loc[i,'price']).replace('�','€')
 
 for i in clean_book.index:
-    if(str(clean_book.loc[i,'price'])[:3]=='US$'):
-        clean_book.loc[i,'price']=str(clean_book.loc[i,'price'])[3:] + ' €'
+    if('$' in str(clean_book.loc[i,'price'])):
+        ind = str(clean_book.loc[i,'price']).index('$')
+        clean_book.loc[i,'price']=str(clean_book.loc[i,'price'])[ind+1:] + ' €'
 
 clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 
