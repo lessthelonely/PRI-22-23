@@ -99,5 +99,10 @@ def map_bookformat(bookformat):
         return bookformat
 
 clean_book['bookformat'] = clean_book['bookformat'].apply(map_bookformat)
+
+for i in clean_book.index:
+    if('�' in clean_book.loc[i,'description']):
+        clean_book=clean_book.drop(i)
+
 clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 clean_book.to_csv('data/after_encoding/clean_book_data.csv')
