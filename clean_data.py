@@ -26,14 +26,6 @@ def remove_extra_space(url):
 clean_book['link'].apply(remove_extra_space)
 clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 
-def delete_duplicates(genre):
-    genre_list = genre.split(',')
-    genre_list = list(dict.fromkeys(genre_list))
-    return ','.join(genre_list)
-
-clean_book['genre'] = clean_book['genre'].apply(delete_duplicates)
-clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
-
 def map_genre(genre):
     genre_list = genre.split(',')
     print(genre_list)
@@ -59,9 +51,44 @@ def map_genre(genre):
     elif 'Complementary Med...' in genre_list:
         genre_list.remove('Complementary Med...')
         genre_list.append('Complementary Medicine')
+    elif '漫画' in genre_list:
+        genre_list.remove('漫画')
+        genre_list.append('Manga')
+    elif 'Bande Dessinée' in genre_list:
+        genre_list.remove('Bande Dessinée')
+        genre_list.append('Comics')
+    elif 'Komik' in genre_list:
+        genre_list.remove('Komik')
+        genre_list.append('Comics')
+    elif 'Comics Manga' in genre_list:
+        genre_list.remove('Comics Manga')
+        genre_list.append('Manga')
+    elif 'Comic Book' in genre_list:
+        genre_list.remove('Comic Book')
+        genre_list.append('Comics')
+    elif 'Comics Bd' in genre_list:
+        genre_list.remove('Comics Bd')
+        genre_list.append('Comics')
+    elif 'Comic Book' in genre_list:
+        genre_list.remove('Comic Book')
+        genre_list.append('Comics')
+    elif 'Spider Man' in genre_list:
+        genre_list.remove('Spider Man')
+        genre_list.append('Spider-Man')
+    elif 'X Men' in genre_list:
+        genre_list.remove('X Men')
+        genre_list.append('X-Men')
     return ','.join(genre_list)
 
 clean_book['genre'] = clean_book['genre'].apply(map_genre)
+clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
+
+def delete_duplicates(genre):
+    genre_list = genre.split(',')
+    genre_list = list(dict.fromkeys(genre_list))
+    return ','.join(genre_list)
+
+clean_book['genre'] = clean_book['genre'].apply(delete_duplicates)
 clean_book = clean_book.loc[:, ~clean_book.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 
 def map_bookformat(bookformat):
