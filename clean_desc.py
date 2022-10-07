@@ -16,6 +16,10 @@ for index in df.index:
 print("Above 5000")
 df.drop(data, axis=0, inplace=True)
 
+for i in df.index:
+    if('�' in df.loc[i,'description']):
+        df=df.drop(i)
+
 df = df.loc[:, ~df.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 df.to_csv('./data/cleaned_desc.csv',encoding='utf-8')
 
