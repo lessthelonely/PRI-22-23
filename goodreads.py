@@ -25,7 +25,8 @@ def getPages(url):
     return True        
 
 books_zero_pages[books_zero_pages['link'].apply(getPages)]
-database.to_csv('data/goodreads_with_pages.csv',encoding='utf-8')
+database = database.loc[:, ~database.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
+database.to_csv('dataset/goodreads_with_pages.csv')
 
 
 

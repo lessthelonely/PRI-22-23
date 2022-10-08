@@ -5,7 +5,7 @@ import re #to work with regular expressions
 import pandas
 from concurrent.futures import ThreadPoolExecutor
 
-database = pandas.read_csv('data/goodreads_with_prices.csv').dropna()
+database = pandas.read_csv('dataset/goodreads_with_prices.csv').dropna()
 database = database.iloc[: , 1:]
 links=database['link'].to_list()
 
@@ -26,6 +26,7 @@ def main():
 
 main()
 
-database.to_csv('data/goodreads_with_language.csv',encoding='utf-8')
+database = database.loc[:, ~database.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
+database.to_csv('dataset/goodreads_with_language.csv')
 
 

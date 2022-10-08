@@ -39,7 +39,8 @@ def getPrices(isbn):
     return True 
 
 database[database['isbn'].apply(getPrices)]
-database.to_csv('data/goodreads_with_prices.csv',encoding='utf-8')            
+database = database.loc[:, ~database.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
+database.to_csv('dataset/goodreads_with_prices.csv')            
 
 '''page = urlopen(url) #opens the url
 html = page.read().decode("utf-8") #reads html

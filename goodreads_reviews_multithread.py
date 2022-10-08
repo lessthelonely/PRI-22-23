@@ -5,7 +5,7 @@ import re #to work with regular expressions
 import pandas
 from concurrent.futures import ThreadPoolExecutor
 
-database = pandas.read_csv('data/goodreads_with_prices.csv').dropna()
+database = pandas.read_csv('dataset/goodreads_with_prices.csv').dropna()
 database = database.iloc[: , 1:]
 links=database['link'].to_list()
 data=[]
@@ -36,6 +36,7 @@ if(False in data):
     data.remove(False)
 
 df=pandas.DataFrame(data,columns=['url','review'])
-df.to_csv('data/goodreads_with_review.csv',encoding='utf-8')
+df = df.loc[:, ~df.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
+df.to_csv('dataset/goodreads_with_review.csv')
 
 
