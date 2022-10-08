@@ -5,7 +5,7 @@
 
 # Clean all, remove all folders.
 clean:
-	rm -rf data processed analysis #eliminate the folders created
+	rm -rf dataset processed analysis #eliminate the folders created
 
 all: clean setup collect process analyze
 
@@ -24,7 +24,7 @@ setup:
 
 collect:
     # Data Collection using web scraping
-	mkdir data
+	mkdir dataset
 	python3 book_depository.py #get prices from book depository
 	python3 goodreads.py #get missing pages from goodreads
 	python3 book_depository_pages.py #further complete missing pages with book depository scraping
@@ -43,14 +43,14 @@ process:
 	python3 translator_description.py #translates descriptions
 	python3 clean_desc.py #deletes book entries of books with descriptions that were unable to be translated due to them being over 5k characters
 	python3 join_tables.py #adds table with the extra column "price" to the table were we have been cleaning data
-	python3 clean_bookformat.py #cleans column "bookformat"
+	sh clean_bookformat.sh #cleans column "bookformat"
 	python3 clean_prices.py #cleans column "price"
 	python3 clean_genres.py #cleans column "genre"
 	python3 remove_old_reviews.py #removes reviews from books that were removed during the cleaning process
 
 analyze:   
 	mkdir analysis
-	move "notebook.ipynb" "analysis"
+	mv "notebook.ipynb" "analysis"
 	jupyter nbconvert --to python analysis/notebook.ipynb
 	
 
