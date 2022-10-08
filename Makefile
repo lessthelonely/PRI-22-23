@@ -26,11 +26,11 @@ setup:
 collect:
     # Data Collection using web scraping
 	mkdir dataset
-	python3 book_depository.py #get prices from book depository
-	python3 goodreads.py #get missing pages from goodreads
-	python3 book_depository_pages.py #further complete missing pages with book depository scraping
-	python3 goodreads_reviews_multithread.py #get reviews from goodreads
-	python3 goodreads_language_multithread.py #get books' languages from goodreads
+	python3 collect_scripts/book_depository.py #get prices from book depository
+	python3 collect_scripts/goodreads.py #get missing pages from goodreads
+	python3 collect_scripts/book_depository_pages.py #further complete missing pages with book depository scraping
+	python3 collect_scripts/goodreads_reviews_multithread.py #get reviews from goodreads
+	python3 collect_scripts/goodreads_language_multithread.py #get books' languages from goodreads
 
 process:
 	#Translate titles, descriptions and reviews
@@ -53,5 +53,4 @@ analyze:
 	mkdir analysis
 	mv "notebook.ipynb" "analysis"
 	jupyter nbconvert --to python analysis/notebook.ipynb
-	
 
