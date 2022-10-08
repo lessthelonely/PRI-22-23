@@ -9,7 +9,7 @@ clean:
 
 all: clean setup collect process analyze
 
-# Install all dependencies
+# Install all dependencies in order to run the scripts
 setup:
 	pip install requests
 	pip install pandas
@@ -21,6 +21,7 @@ setup:
 	pip install html5lib
 	pip install future
 	pip install numpy
+	pip install jupyter
 
 collect:
     # Data Collection using web scraping
@@ -32,7 +33,7 @@ collect:
 	python3 goodreads_language_multithread.py #get books' languages from goodreads
 
 process:
-	# Translate titles, descriptions and reviews
+	#Translate titles, descriptions and reviews
     #Clean descriptions, titles, reviews, genres and book formats
 	mkdir processed
 	python3 translator_review.py #translates reviews
