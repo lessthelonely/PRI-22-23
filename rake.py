@@ -8,7 +8,7 @@ nlp = en_core_web_sm.load()
 # To build a list of stop words for filtering
 stopwords = list(STOP_WORDS)
 rake_nltk_var = Rake()
-example = "I absolutely loved the issue where Superman comes to Bludhaven. The book does dovetail with what was happening in No Man's Land over in the Batman books. Dick joining the police force was really inspired. Overall, these are just fun stories. I love how acrobatic Scott McDaniel draws Nightwing and his rogues. They're always flying across rooftops and up the sides of buildings."
+example = " I loved this book! I found it hard to tear myself away at times but I would force myself in the name of sleep. While I enjoyed the writing and the story itself, I did get annoyed at times during some of Lucy's internal dialogue. I mean, I get it, she was conflicted but it seemed like she took WAY too long to realize what was going on. Even still, that's how we all can be in life sometimes so I get the reasoning for it and didn't feel it took away from the reading experience. Ultimately, this was one of those books that I wished wouldn't end. Maybe I am more of a romance reader than I thought! "
 
 #pat = r'\b(?:{})\b'.format('|'.join(stopwords))
 #example_no_stopwords = example.replace(pat, '')
