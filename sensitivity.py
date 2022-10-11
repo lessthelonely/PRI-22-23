@@ -33,11 +33,32 @@ trigger_warnings=['Abandonment',
 'Satan/The Devil', 'School shooting', 'Self-harm', 'Sexual abuse', 'Skeletons', 'Slut shaming',
 'Snakes', 'Spiders', 'Starvation', 'Terrorism', 'Transmisia', 'Trauma']
 
+trigger_low=[x.lower() for x in trigger_warnings]
+
+
+reviews = reviews.loc[:, ~reviews.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
+
+
+
+def map_triggers(i):
+    r=[reviews.loc[reviews.isbn==i, 'review'].values[0]]
+    new_str = re.sub(r'[^a-zA-Z]', ' ', r[0])
+    #print(new_str.split())
+    re_low=[x.lower() for x in new_str.split()]
+    #print(list(set(re_low).intersection(trigger_low)))
+    #print('THIS IS I',i)
+    triggers=', '.join(list(set(re_low).intersection(trigger_low)))
+    reviews.loc[reviews.isbn==i, 'sensitivity']=triggers
+    
+
+list(map(map_triggers,reviews.isbn.unique()))
+reviews.to_csv('data/trigger_test.csv')
 #example="This took me approximately a million years to listen to the audiobook, but that's not the book's fault that's just me being not lazy.Despite taking me a long time to read, I think that the pacing did seem consistent as there was pretty much constant action, even in moments of inaction.It dealt with grief and trauma very well, in a way I'd never seen before.The start of a super cool series I think!"
 #new_str = re.sub(r'[^a-zA-Z]', ' ', example)
 #review_str=[]
 #new_str=new_str.split()
 
+'''
 review_str=[]
 for i in reviews['review']:
     new_str = re.sub(r'[^a-zA-Z]', ' ', i)
@@ -50,3 +71,4 @@ trigger_low=[x.lower() for x in trigger_warnings]
 
 print(list(set(re_low).intersection(trigger_low)))
 print(', '.join(list(set(re_low).intersection(trigger_low))))
+'''
