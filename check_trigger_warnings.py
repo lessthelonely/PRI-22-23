@@ -208,7 +208,7 @@ for i in trigger_words:
     if i not in storygraph:
         storygraph.append(i)
 
-trigger_warnings=[['Abandonment', 
+trigger_warnings=['Abandonment', 
 'Ableism', 'Abortion', 'Acephobia', 
 'Arophobia', 'Addiction', 'Adult/minor relationship', 
 'Alcohol', 'Alcoholism', 'Animal cruelty', 'Animal death',
@@ -235,4 +235,4 @@ trigger_warnings=[['Abandonment',
 'Hostages', 'Harry Potter References', 'Lesbiphobia', 'Misgendering', 'Micro-Aggressions', 'Needles', 
 'Occult', 'Plague', 'Poisoning', 'Profanity', 'Prostitution', 'PTSD', 'Queerphobia', 'Religion', 
 'Satan/The Devil', 'School shooting', 'Self-harm', 'Sexual abuse', 'Skeletons', 'Slut shaming',
-'Snakes', 'Spiders', 'Starvation', 'Terrorism', 'Transmisia', 'Trauma']]
+'Snakes', 'Spiders', 'Starvation', 'Terrorism', 'Transmisia', 'Trauma']
