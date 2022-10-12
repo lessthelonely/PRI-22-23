@@ -1,12 +1,14 @@
 Abandonment
 Ableism
 Abortion
-Acephobia/Arophobia
-Addiction>
+Acephobia
+Arophobia
+Addiction
 Adult/minor relationship
 Alcohol
 Alcoholism
-Animal crueltyAnimal death
+Animal cruelty
+Animal death
 Antisemitism
 Biphobia
 Blood
@@ -37,7 +39,8 @@ Eating disorder
 Emotional abuse
 Excrement
 Fatphobia
-Fire/Fire injury
+Fire
+Fire injury
 Forced institutionalization
 Gaslighting
 Genocide
@@ -49,11 +52,12 @@ Homophobia
 Incest
 Infertility
 Infidelity
-Injury/injury detail
+Injury
+injury detail
 Islamophobia
 Kidnapping
 Lesbophobia
-Mass/school shootings
+Mass school shootings
 Medical content
 Medical trauma
 Mental illness
@@ -61,7 +65,8 @@ Miscarriage
 Misogyny
 Murder
 Outing
-Panic attacks/disorders
+Panic attacks
+Panic disorders
 Pedophilia
 Physical abuse
 Police brutality
@@ -70,49 +75,26 @@ Racial slurs
 Racism
 Rape
 Religious bigotry
-Schizophrenia/Psychosis
-
-
-
+Schizophrenia
+Psychosis
 Self harm
-
 Sexism
-
 Sexual assault
-
 Sexual content
-
 Sexual harassment
-
 Sexual violence
-
 Slavery
-
 Stalking
-
 Suicidal thoughts
-
 Suicide
-
 Suicide attempt
-
 Terminal illness
-
 Torture
-
 Toxic friendship
-
 Toxic relationship
-
 Trafficking
-
 Transphobia
-
 Violence
-
 Vomit
-
 War
-
 Xenophobia
-
