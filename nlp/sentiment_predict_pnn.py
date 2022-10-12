@@ -26,5 +26,5 @@ for index in df.index:
         print("negative" + str(index))
         df.loc[index, 'review_sentiment'] = "negative"
         
-df.to_csv('../data/cleaned_reviews_sentiment_2.csv',encoding='utf-8')
+df.to_csv('./data/cleaned_reviews_sentiment_2.csv',encoding='utf-8')
 
