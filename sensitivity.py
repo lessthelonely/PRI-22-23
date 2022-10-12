@@ -48,7 +48,7 @@ def map_triggers(i):
     re_low=[x.lower() for x in new_str.split()]
     triggers=', '.join(list(set(re_low).intersection(trigger_low)))
     print(triggers)
-    book_profiles.loc[book_profiles.url==i, 'sensitivity']=triggers
+    book_profiles.loc[book_profiles.link==i, 'sensitivity']=triggers
     return triggers 
    
 list(map(map_triggers,links))
