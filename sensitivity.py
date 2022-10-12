@@ -1,8 +1,9 @@
 import re
 import pandas as pd
 
-reviews= pd.read_csv('data/reviews_test.csv')
-#reviews=pd.read_csv('data/reviews_merged.csv')
+#reviews= pd.read_csv('data/reviews_test.csv')
+reviews=pd.read_csv('data/reviews_merged.csv')
+book_profiles=pd.read_csv('data/book_profiles.csv')
 
 trigger_warnings=['Abandonment', 
 'Ableism', 'Abortion', 'Acephobia', 
@@ -37,22 +38,21 @@ trigger_low=[x.lower() for x in trigger_warnings]
 
 
 reviews = reviews.loc[:, ~reviews.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
+book_profiles = book_profiles.loc[:, ~book_profiles.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
 
-
+links=reviews.url.unique()
 
 def map_triggers(i):
-    r=[reviews.loc[reviews.isbn==i, 'review'].values[0]]
+    r=[reviews.loc[reviews.url==i, 'review'].values[0]]
     new_str = re.sub(r'[^a-zA-Z]', ' ', r[0])
-    #print(new_str.split())
     re_low=[x.lower() for x in new_str.split()]
-    #print(list(set(re_low).intersection(trigger_low)))
-    #print('THIS IS I',i)
     triggers=', '.join(list(set(re_low).intersection(trigger_low)))
-    reviews.loc[reviews.isbn==i, 'sensitivity']=triggers
-    
-
-list(map(map_triggers,reviews.isbn.unique()))
-reviews.to_csv('data/trigger_test.csv')
+    print(triggers)
+    book_profiles.loc[book_profiles.url==i, 'sensitivity']=triggers
+    return triggers 
+   
+list(map(map_triggers,links))
+reviews.to_csv('data/trigger.csv')
 #example="This took me approximately a million years to listen to the audiobook, but that's not the book's fault that's just me being not lazy.Despite taking me a long time to read, I think that the pacing did seem consistent as there was pretty much constant action, even in moments of inaction.It dealt with grief and trauma very well, in a way I'd never seen before.The start of a super cool series I think!"
 #new_str = re.sub(r'[^a-zA-Z]', ' ', example)
 #review_str=[]
