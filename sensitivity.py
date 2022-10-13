@@ -2,7 +2,7 @@ import re
 import pandas as pd
 
 #reviews= pd.read_csv('data/reviews_test.csv')
-reviews=pd.read_csv('data/reviews_merged.csv')
+reviews=pd.read_csv('data/reviews_merged_no_nulls.csv')
 book_profiles=pd.read_csv('data/book_profiles.csv')
 
 trigger_warnings=['Abandonment', 

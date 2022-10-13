@@ -2,7 +2,7 @@ import re
 import pandas as pd
 
 #reviews= pd.read_csv('data/reviews_test.csv')
-reviews=pd.read_csv('data/reviews_merged.csv')
+reviews=pd.read_csv('data/reviews_merged_no_nulls.csv')
 book_profiles=pd.read_csv('data/book_profiles.csv')
 
 pacings=['fast','slow']
@@ -13,6 +13,7 @@ book_profiles = book_profiles.loc[:, ~book_profiles.columns.str.contains('^Unnam
 links=reviews.url.unique()
 
 def map_pacing(i):
+    print(i)
     if(not (re.match('^[0-9*#+.,> -/]+$',reviews.loc[reviews.url==i, 'review'].values[0]))):
         try:
             r=[reviews.loc[reviews.url==i, 'review'].values[0]]
