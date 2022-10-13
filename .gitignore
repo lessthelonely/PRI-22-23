@@ -1,2 +1,6 @@
 data/GoodReads_100k_books.csv
 data/kindle_reviews.csv
+solr/current_data_13_10.json
+data/more_reviews.csv
+data/reviews_merged.csv
+data/translated_more_reviews.csv
