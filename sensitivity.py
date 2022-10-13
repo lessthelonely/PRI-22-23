@@ -43,13 +43,17 @@ book_profiles = book_profiles.loc[:, ~book_profiles.columns.str.contains('^Unnam
 links=reviews.url.unique()
 
 def map_triggers(i):
-    r=[reviews.loc[reviews.url==i, 'review'].values[0]]
-    new_str = re.sub(r'[^a-zA-Z]', ' ', r[0])
-    re_low=[x.lower() for x in new_str.split()]
-    triggers=', '.join(list(set(re_low).intersection(trigger_low)))
-    print(triggers)
-    book_profiles.loc[book_profiles.link==i, 'sensitivity']=triggers
-    return triggers 
+    if(not (re.match('^[0-9*#+.,> -/]+$',reviews.loc[reviews.url==i, 'review'].values[0]))):
+        try:
+            r=[reviews.loc[reviews.url==i, 'review'].values[0]]
+            new_str = re.sub(r'[^a-zA-Z]', ' ', r[0])
+            re_low=[x.lower() for x in new_str.split()]
+            triggers=', '.join(list(set(re_low).intersection(trigger_low)))
+            print(triggers)
+            book_profiles.loc[book_profiles.link==i, 'sensitivity']=triggers
+            return triggers 
+        except:
+            print("EXCEPTION") 
    
 list(map(map_triggers,links))
 reviews.to_csv('data/trigger.csv')

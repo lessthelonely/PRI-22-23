@@ -13,16 +13,20 @@ book_profiles = book_profiles.loc[:, ~book_profiles.columns.str.contains('^Unnam
 links=reviews.url.unique()
 
 def map_pacing(i):
-    r=[reviews.loc[reviews.url==i, 'review'].values[0]]
-    new_str = re.sub(r'[^a-zA-Z]', ' ', r[0])
-    re_low=[x.lower() for x in new_str.split()]
-    pacing=', '.join(list(set(re_low).intersection(pacings)))
-    print(len(pacing))
-    if(len(pacing)==0 or len(pacing)>4):
-        pacing='medium'
-    print(pacing)
-    book_profiles.loc[book_profiles.link==i, 'pacing']=pacing
-    return pacing 
+    if(not (re.match('^[0-9*#+.,> -/]+$',reviews.loc[reviews.url==i, 'review'].values[0]))):
+        try:
+            r=[reviews.loc[reviews.url==i, 'review'].values[0]]
+            new_str = re.sub(r'[^a-zA-Z]', ' ', r[0])
+            re_low=[x.lower() for x in new_str.split()]
+            pacing=', '.join(list(set(re_low).intersection(pacings)))
+            print(len(pacing))
+            if(len(pacing)==0 or len(pacing)>4):
+                pacing='medium'
+            print(pacing)
+            book_profiles.loc[book_profiles.link==i, 'pacing']=pacing
+            return pacing 
+        except:
+            print("EXCEPTION")    
    
 pacing_list=list(map(map_pacing,links))
 reviews.to_csv('data/pacing.csv')
