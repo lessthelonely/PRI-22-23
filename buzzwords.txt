@@ -284,3 +284,6 @@
 'useless',
 'cozy',
 'downhill',
+'fuzzy',
+'charismatic',
+'charisma',
