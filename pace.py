@@ -3,7 +3,7 @@ import pandas as pd
 
 #reviews= pd.read_csv('data/reviews_test.csv')
 reviews=pd.read_csv('data/reviews_merged_no_nulls.csv')
-book_profiles=pd.read_csv('data/book_profiles.csv')
+book_profiles=pd.read_csv('data/trigger.csv')
 
 pacings=['fast','slow']
 
