@@ -288,3 +288,4 @@
 'charismatic',
 'charisma',
 'obsessed',
+'tired',
