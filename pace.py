@@ -29,4 +29,4 @@ def map_pacing(i):
  
    
 pacing_list=list(map(map_pacing,links))
-reviews.to_csv('data/pacing.csv')
+book_profiles.to_csv('data/pacing.csv')

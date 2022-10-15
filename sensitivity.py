@@ -55,7 +55,7 @@ def map_triggers(i):
     return triggers 
    
 list(map(map_triggers,links))
-reviews.to_csv('data/trigger.csv')
+book_profiles.to_csv('data/trigger.csv')
 #example="This took me approximately a million years to listen to the audiobook, but that's not the book's fault that's just me being not lazy.Despite taking me a long time to read, I think that the pacing did seem consistent as there was pretty much constant action, even in moments of inaction.It dealt with grief and trauma very well, in a way I'd never seen before.The start of a super cool series I think!"
 #new_str = re.sub(r'[^a-zA-Z]', ' ', example)
 #review_str=[]
