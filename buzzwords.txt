@@ -289,3 +289,5 @@
 'charisma',
 'obsessed',
 'tired',
+'loathe',
+'loathed',
