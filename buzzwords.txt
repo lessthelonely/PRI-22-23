@@ -287,3 +287,4 @@
 'fuzzy',
 'charismatic',
 'charisma',
+'obsessed',
