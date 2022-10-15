@@ -60,3 +60,6 @@
 'morally gray villain',
 'right person wrong time',
 'i hate everyone but you',
+'banter',
+'unrequited love',
+'miscommunication',
