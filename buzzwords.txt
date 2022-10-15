@@ -279,3 +279,6 @@
 'vibe check',
 'immersive',
 'immaculate',
+'worst',
+'worse',
+'useless'
