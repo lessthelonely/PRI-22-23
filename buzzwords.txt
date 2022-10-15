@@ -281,4 +281,6 @@
 'immaculate',
 'worst',
 'worse',
-'useless'
+'useless',
+'cozy',
+'downhill',
