@@ -3,7 +3,7 @@ from transformers import pipeline
 
 #reviews= pd.read_csv('data/reviews_test.csv')
 reviews=pd.read_csv('data/reviews_merged_no_nulls.csv')
-book_profiles=pd.read_csv('data/pacing.csv')
+book_profiles=pd.read_csv('data/buzzwords.csv')
 #book_profiles = pd.read_csv('data/book_profiles_test.csv')
 
 reviews = reviews.loc[:, ~reviews.columns.str.contains('^Unnamed')] #delete Unnamed columns pandas
