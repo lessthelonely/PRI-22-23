@@ -49,87 +49,11 @@
             "type": "pint",
             "indexed": true,
             "stored": true,
-            "docValues": true,
-            "multiValued": false
-        },
-        {
-            "name": "author",
-            "type": "commaText",
-            "indexed": true,
-            "stored": true,
-            "multiValued": true
-        },
-        {
-            "name": "book_format",
-            "type": "string",
-            "indexed": true,
-            "stored": true,
             "multiValued": false,
             "docValues": true
-        },
-        {
-            "name": "description",
-            "type": "text_general",
-            "indexed": true,
-            "stored": true,
-            "multiValued": false
-        },
-        {
-            "name": "genre",
-            "type": "string",
-            "indexed": true,
-            "stored": true,
-            "multiValued": true,
-            "docValues": true
-        },
-        {
-            "name": "cover_img",
-            "type": "string",
-            "indexed": true,
-            "stored": true,
-            "multiValued": false
         },
         {
             "name": "isbn",
-            "type": "string",
-            "indexed": true,
-            "stored": true,
-            "multiValued": false,
-            "docValues": true
-        },
-        {
-            "name": "link",
-            "type": "string",
-            "indexed": true,
-            "stored": true,
-            "multiValued": false
-        },
-        {
-            "name": "page_count",
-            "type": "string",
-            "indexed": true,
-            "stored": true,
-            "multiValued": false,
-            "docValues": true
-        },
-        {
-            "name": "rating",
-            "type": "pfloat",
-            "indexed": true,
-            "stored": true,
-            "multiValued": false,
-            "docValues": true
-        },
-        {
-            "name": "review_count",
-            "type": "pint",
-            "indexed": true,
-            "stored": true,
-            "multiValued": false,
-            "docValues": true
-        },
-        {
-            "name": "title",
             "type": "string",
             "indexed": true,
             "stored": true,
@@ -141,28 +65,62 @@
             "type": "pint",
             "indexed": true,
             "stored": true,
-            "multiValued": false
+            "multiValued": false,
+            "docValues": true
         },
         {
-            "name": "price",
-            "type": "pfloat",
+            "name": "link",
+            "type": "string",
             "indexed": true,
             "stored": true,
             "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "sensitivity",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true
+        },
+        {
+            "name": "pacing",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
+            "name": "buzzwords",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true
+        },
+        {
+            "name": "mood",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true,
             "docValues": true
         }
     ],
     "add-copy-field": [
         {
-            "source": "review",
-            "dest": "review_suggest"
+            "source": "mood",
+            "dest": "mood_suggest"
         }, 
         {
-            "source": "title",
-            "dest": "title_suggest"
+            "source": "buzzwords",
+            "dest": "buzzwords_suggest"
         },
         {
-            "source": "description",
-            "dest": "dest_suggest"
+            "source": "sensitivity",
+            "dest": "sensitivity_suggest"
+        },
+        {
+            "source": "pacing",
+            "dest": "pacing_suggest"
         }
 }

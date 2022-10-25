@@ -1,44 +1,24 @@
 {
     "add-field-type": [
         {
-            "name": "commaText",
-            "class": "solr.TextField",
-            "indexAnalyzer": {
-                "tokenizer": {
-                    "class": "solr.PatternTokenizerFactory",
-                    "pattern": ","
+            "name":"Standard",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
                 },
-                "filters": [
-                    {
-                        "class": "solr.ASCIIFoldingFilterFactory",
-                        "preserveOriginal": true
-                    },
-                    {
-                        "class": "solr.LowerCaseFilterFactory"
-                    }
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
                 ]
-            }
-        },
-        {
-            "name": "gramText",
-            "class": "solr.TextField",
-            "indexAnalyzer": {
-                "tokenizer": {
-                    "class": "solr.StandardTokenizerFactory"
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
                 },
-                "filters": [
-                    {
-                        "class": "solr.ASCIIFoldingFilterFactory",
-                        "preserveOriginal": true
-                    },
-                    {
-                        "class": "solr.LowerCaseFilterFactory"
-                    },
-                    {
-                        "class": "solr.EdgeNGramFilterFactory",
-                        "minGramSize": "2",
-                        "maxGramSize": "10"
-                    }
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
                 ]
             }
         }
@@ -48,20 +28,24 @@
             "name": "id",
             "type": "int",
             "indexed": true,
-            "stored": true
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
         },
         {
             "name": "url",
             "type": "string",
             "indexed": true,
-            "stored": true
+            "stored": true,
+            "multiValued": false
         },
         {
             "name": "review",
             "type": "text_general",
             "indexed": true,
             "stored": true,
-            "multiValued": false
+            "multiValued": false,
+            "docValues": true
         }
     ]
 }
