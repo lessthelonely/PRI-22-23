@@ -1,0 +1,155 @@
+{
+    "add-field-type": [
+        {
+            "name": "commaText",
+            "class": "solr.TextField",
+            "indexAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.PatternTokenizerFactory",
+                    "pattern": ","
+                },
+                "filters": [
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "gramText",
+            "class": "solr.TextField",
+            "indexAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.EdgeNGramFilterFactory",
+                        "minGramSize": "2",
+                        "maxGramSize": "10"
+                    }
+                ]
+            }
+        }
+    ],
+    "add-field": [
+        {
+            "name": "id",
+            "type": "int",
+            "indexed": true,
+            "stored": true,
+            "docValues": true,
+            "multiValued": false
+        },
+        {
+            "name": "author",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true
+        },
+        {
+            "name": "book_format",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "description",
+            "type": "text_general",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
+            "name": "genre",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true,
+            "docValues": true
+        },
+        {
+            "name": "cover_img",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
+            "name": "isbn",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "link",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
+            "name": "page_count",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "rating",
+            "type": "float",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "review_count",
+            "type": "int",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "title",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "rating_count",
+            "type": "int",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
+            "name": "price",
+            "type": "float",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        }
+    ]
+}
