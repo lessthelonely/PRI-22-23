@@ -1,0 +1,41 @@
+**M2**
+
+- Atrasos: -10%;
+- *Apresentação*
+    - Qualidade slides + imgs;
+    - 1/2 slides resumo M1;
+    - 1/2 slides documentos;
+    - 1/2 slides indexação;
+    - 2+ slides demo;
+    - 1 slide future work;
+    - Q&As (2 perguntas cada aluno);
+    - Tempo + clareza (8 + 4 minutos);
+- *Relatório*
+    - Título + autores;
+    - Abstract atualizado;
+    - Imgs + tab + #páginas;
+    - Estrutura;
+    - Erros;
+    - Citações (imgs, tabs., bibliografia);
+    - Melhorias face à M1;
+    - Intro + conclusão;
+    - *Indexação*
+        - Docs + o porquê de terem definido aqueles docs (Sub. Sec);
+        - Processo de indexação (Sub. Sec);
+        - Fields indexados / processados (Subsub sec);
+        - Schema (Sub. Sec);
+    - Retrieval (Secção):
+        - processo (sub. sec);
+        - boosts -> field, term, independent (sub. sec);
+        - Ex:
+            - Phrase Match
+            - Wildcards / Fuzziness;
+            - Proximity;
+        - Demo (sub. sec);
+    - Avaliação (secção):
+        - avaliação das info. needs (sub. sec);
+        - comparação de setups (sub. sec);
+        - Exemplo:
+            - avaliação manual;
+            - P_Reirve;
+            - Discussão de resultados;

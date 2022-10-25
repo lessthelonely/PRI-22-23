@@ -1,0 +1,51 @@
+{
+    "add-field-type": [
+        {
+            "name":"Standard",
+            "class":"solr.TextField",
+            "indexAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            },
+            "queryAnalyzer":{
+                "tokenizer":{
+                    "class":"solr.StandardTokenizerFactory"
+                },
+                "filters":[
+                    {"class":"solr.ASCIIFoldingFilterFactory", "preserveOriginal":true},
+                    {"class":"solr.LowerCaseFilterFactory"}
+                ]
+            }
+        }
+    ],
+    "add-field": [
+        {
+            "name": "id",
+            "type": "int",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        },
+        {
+            "name": "url",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
+            "name": "review",
+            "type": "text_general",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
+        }
+    ]
+}
