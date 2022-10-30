@@ -7,17 +7,13 @@ by suggested buzzwords that occur in reviews
 which are then associated with the corresponding
 books;
    - I want to see books that were written by or for women:
-	     Core: books; q:":", fq: {!join from=id to=id fromIndex=reviews}review:"written women"~1 ---> Proximity search
+	     Core: books; q:*:*, fq: {!join from=id to=id fromIndex=reviews}review:"written women"~1 ---> Proximity search
 
    - Show me 5 books that have been labeled disgusting;
 		q-> *
 		fq-> {!join from=id to=id fromIndex=book_profiles}mood:disgust
 		starts, rows: 0 to 5
 
-   - Show me 5 books that have been labeled surprising;
-		q-> *
-		fq->  {!join from=id to=id fromIndex=book_profiles}mood:surprise 
-		starts, rows: 0 to 5
 
 1.2 Search by Book Profile: through our Book Profiles,
 we intend to let users search by pre-made, easily
