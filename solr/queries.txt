@@ -24,13 +24,13 @@ we intend to let users search by pre-made, easily
 understandable terms that characterize books in a
 corroborated manner;
    - I would like a fast paced book with a surprising twist! - fast pacing, surprising buzzword
-	Core: books, q:":", q.op: AND, fq: {!join from=id to=id fromIndex=book_profiles}pacing:fast buzzwords:surpri*
+	Core: books, q:*:*, q.op: AND, fq: {!join from=id to=id fromIndex=book_profiles}pacing:fast buzzwords:surpri*
 
    - I would like a surprising thriller/mystery book that isn't gorey or includes sexual assault. - surprising buzzword, join with books (for genre) and cannot include gore or rape/sexual assault;--> Fuzy
 	Core: books, q: genre:mystery genre:thriller; q.op: OR; fq: {!join from=id to=id fromIndex=book_profiles}buzzwords:surpri* AND -sensitivity:rape AND -sensitivity:gore AND -sensitivity:sexual~1 
 
    - I'm feeling bored: I want my next reading obsession - fast pacing, captivating buzzword and obsession buzzword (obs*) -> Wild card and Term boost
-	Core: books, q:":", q.op: AND, fq: {!join from=id to=id fromIndex=book_profiles}pacing:fast buzzwords:capti*^4 buzzwords:obs*
+	Core: books, q:*:*, q.op: AND, fq: {!join from=id to=id fromIndex=book_profiles}pacing:fast buzzwords:capti*^4 buzzwords:obs*
 
 1.3 Traditional Filterable Search: we intend to let
 our users search by a book’s associated attributes
