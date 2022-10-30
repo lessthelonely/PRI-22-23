@@ -12,10 +12,12 @@ books;
    - Show me 5 books that have been labeled disgusting;
 		q-> *
 		fq-> {!join from=id to=id fromIndex=book_profiles}mood:disgust
+		starts, rows: 0 to 5
 
    - Show me 5 books that have been labeled surprising;
 		q-> *
 		fq->  {!join from=id to=id fromIndex=book_profiles}mood:surprise 
+		starts, rows: 0 to 5
 
 1.2 Search by Book Profile: through our Book Profiles,
 we intend to let users search by pre-made, easily
@@ -38,12 +40,12 @@ range, book format, et cetera;
    - Thriller books with a rating higher than 4;
 		q: rating:[4 TO 5] genre:"Thriller"  q.op: AND
     
-   - Books with Batman
-		"q":"batman", -->Field boost
-      	"defType":"dismax",
+   - Books with Nightwing but giving more importance to the ones related directly to Batman
+		"q":"nightwing", -->Field boost
+      	"defType":"edismax",
       	"indent":"true",
       	"qf":"title^5 description^10",
-      	"pf":"title^50 description^20"
+		"bq": title: Batman --> Independent boost
 
    - Authors with the name starting with Mar (like Marc, Mark, Martin, Mary...) --> Wild card
 		q: author:Mar*
