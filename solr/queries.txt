@@ -1,0 +1,52 @@
+1. Main Question: How to give a transparent and cor-
+roborated sense of a book’s content and alignment with
+personalized interests to a user looking for their next
+book to read?
+1.1 Search by Buzzwords: we intend to let users search
+by suggested buzzwords that occur in reviews
+which are then associated with the corresponding
+books;
+   - I want to see books that were written by or for women:
+	     Core: books; q:":", fq: {!join from=id to=id fromIndex=reviews}review:"written women"~1 ---> Proximity search
+
+   - Show me 5 books that have been labeled disgusting;
+		q-> *
+		fq-> {!join from=id to=id fromIndex=book_profiles}mood:disgust
+
+   - Show me 5 books that have been labeled surprising;
+		q-> *
+		fq->  {!join from=id to=id fromIndex=book_profiles}mood:surprise 
+
+1.2 Search by Book Profile: through our Book Profiles,
+we intend to let users search by pre-made, easily
+understandable terms that characterize books in a
+corroborated manner;
+   - I would like a fast paced book with a surprising twist! - fast pacing, surprising buzzword
+	Core: books, q:":", q.op: AND, fq: {!join from=id to=id fromIndex=book_profiles}pacing:fast buzzwords:surpri*
+
+   - I would like a surprising thriller/mystery book that isn't gorey or includes sexual assault. - surprising buzzword, join with books (for genre) and cannot include gore or rape/sexual assault;--> Fuzy
+	Core: books, q: genre:mystery genre:thriller; q.op: OR; fq: {!join from=id to=id fromIndex=book_profiles}buzzwords:surpri* AND -sensitivity:rape AND -sensitivity:gore AND -sensitivity:sexual~1 
+
+   - I'm feeling bored: I want my next reading obsession - fast pacing, captivating buzzword and obsession buzzword (obs*) -> Wild card and Term boost
+	Core: books, q:":", q.op: AND, fq: {!join from=id to=id fromIndex=book_profiles}pacing:fast buzzwords:capti*^4 buzzwords:obs*
+
+1.3 Traditional Filterable Search: we intend to let
+our users search by a book’s associated attributes
+through filters included on our search engine -
+for example: search by author name, ISBN, rating
+range, book format, et cetera;
+   - Thriller books with a rating higher than 4;
+		q: rating:[4 TO 5] genre:"Thriller"  q.op: AND
+    
+   - Books with Batman
+		"q":"batman", -->Field boost
+      	"defType":"dismax",
+      	"indent":"true",
+      	"qf":"title^5 description^10",
+      	"pf":"title^50 description^20"
+
+   - Authors with the name starting with Mar (like Marc, Mark, Martin, Mary...) --> Wild card
+		q: author:Mar*
+
+
+
