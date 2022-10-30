@@ -44,7 +44,7 @@ range, book format, et cetera;
 		"q":"nightwing", -->Field boost
       	"defType":"edismax",
       	"indent":"true",
-      	"qf":"title^5 description^10",
+      	"qf":"title^10 description^5",
 		"bq": title: Batman --> Independent boost
 
    - Authors with the name starting with Mar (like Marc, Mark, Martin, Mary...) --> Wild card
