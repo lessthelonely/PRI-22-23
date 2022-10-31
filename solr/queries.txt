@@ -7,7 +7,7 @@ by suggested buzzwords that occur in reviews
 which are then associated with the corresponding
 books;
    - I want to see books that were written by or for women:
-	     Core: books; q:*:*, fq: {!join from=id to=id fromIndex=reviews}review:"written women"~1 ---> Proximity search
+	     Core: books; q:*:*, fq: {!join from=link fromIndex=reviews to=url}review:"written women"~1 ---> Proximity search
 
    - Show me 5 books that have been labeled disgusting;
 		q-> *
