@@ -14,7 +14,6 @@ books;
 		fq-> {!join from=id to=id fromIndex=book_profiles}mood:disgust
 		starts, rows: 0 to 5
 
-
 1.2 Search by Book Profile: through our Book Profiles,
 we intend to let users search by pre-made, easily
 understandable terms that characterize books in a
@@ -33,6 +32,7 @@ our users search by a book’s associated attributes
 through filters included on our search engine -
 for example: search by author name, ISBN, rating
 range, book format, et cetera;
+
    - Thriller books with a rating higher than 4;
 		q: rating:[4 TO 5] genre:"Thriller"  q.op: AND
     
@@ -43,7 +43,7 @@ range, book format, et cetera;
       	"qf":"title^10 description^5",
 		"bq": title: Batman --> Independent boost
 
-   - Authors with the name starting with Mar (like Marc, Mark, Martin, Mary...) --> Wild card
+   - Authors with the name starting with Mar (like Marc, Mark, Martin, Mary...) and something else (price)--> Wild card
 		q: author:Mar*
 
 
