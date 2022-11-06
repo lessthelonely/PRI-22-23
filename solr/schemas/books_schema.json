@@ -150,6 +150,43 @@
             "stored": true,
             "multiValued": false,
             "docValues": true
+        },
+        {
+            "name": "sensitivity",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true
+        },
+        {
+            "name": "pacing",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
+            "name": "buzzwords",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true
+        },
+        {
+            "name": "mood",
+            "type": "string",
+            "indexed": true,
+            "stored": true,
+            "multiValued": true,
+            "docValues": true
+        },
+        {
+            "name": "review",
+            "type": "text_general",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false,
+            "docValues": true
         }
     ],
     "add-copy-field": [
@@ -164,5 +201,21 @@
         {
             "source": "description",
             "dest": "dest_suggest"
+        },
+        {
+            "source": "mood",
+            "dest": "mood_suggest"
+        }, 
+        {
+            "source": "buzzwords",
+            "dest": "buzzwords_suggest"
+        },
+        {
+            "source": "sensitivity",
+            "dest": "sensitivity_suggest"
+        },
+        {
+            "source": "pacing",
+            "dest": "pacing_suggest"
         }
 }
