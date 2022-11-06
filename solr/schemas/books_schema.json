@@ -45,14 +45,6 @@
     ],
     "add-field": [
         {
-            "name": "id",
-            "type": "pint",
-            "indexed": true,
-            "stored": true,
-            "docValues": true,
-            "multiValued": false
-        },
-        {
             "name": "author",
             "type": "commaText",
             "indexed": true,
@@ -185,37 +177,8 @@
             "type": "text_general",
             "indexed": true,
             "stored": true,
-            "multiValued": false,
-            "docValues": true
+            "multiValued": true
         }
-    ],
-    "add-copy-field": [
-        {
-            "source": "review",
-            "dest": "review_suggest"
-        }, 
-        {
-            "source": "title",
-            "dest": "title_suggest"
-        },
-        {
-            "source": "description",
-            "dest": "dest_suggest"
-        },
-        {
-            "source": "mood",
-            "dest": "mood_suggest"
-        }, 
-        {
-            "source": "buzzwords",
-            "dest": "buzzwords_suggest"
-        },
-        {
-            "source": "sensitivity",
-            "dest": "sensitivity_suggest"
-        },
-        {
-            "source": "pacing",
-            "dest": "pacing_suggest"
-        }
-}
+    ]
+   
+    }
