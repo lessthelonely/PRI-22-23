@@ -1,7 +1,7 @@
 {
     "add-field-type": [
         {
-            "name": "commaText",
+            "name": "indexing",
             "class": "solr.TextField",
             "indexAnalyzer": {
                 "tokenizer": {
@@ -46,135 +46,135 @@
     "add-field": [
         {
             "name": "author",
-            "type": "commaText",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": true
         },
         {
             "name": "book_format",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "description",
-            "type": "text_general",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false
         },
         {
             "name": "genre",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": true,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "cover_img",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false
         },
         {
             "name": "isbn",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "link",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false
         },
         {
             "name": "page_count",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "rating",
-            "type": "pfloat",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "review_count",
-            "type": "pint",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "title",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "rating_count",
-            "type": "pint",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false
         },
         {
             "name": "price",
-            "type": "pfloat",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "sensitivity",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": true
         },
         {
             "name": "pacing",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": false
         },
         {
             "name": "buzzwords",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": true
         },
         {
             "name": "mood",
-            "type": "string",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": true,
-            "docValues": true
+            "docValues": false
         },
         {
             "name": "review",
-            "type": "text_general",
+            "type": "indexing",
             "indexed": true,
             "stored": true,
             "multiValued": true
