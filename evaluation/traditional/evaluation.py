@@ -7,11 +7,11 @@ import pandas as pd
 import requests
 from sklearn.metrics import PrecisionRecallDisplay
 
-QRELS_FILE = 'q5_rels.txt' # 7 --> 5
-QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=written%20women~1&q.op=OR&defType=edismax&indent=true&qf=description%20review&wt=json' #written by or for women
-QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=written%20women~1&q.op=OR&defType=edismax&indent=true&qf=description%5E10%20review&wt=json'
-QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=written%20women~1&q.op=OR&defType=edismax&indent=true&qf=description%20review&wt=json' #written by or for women
-QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=written%20women~1&q.op=OR&defType=edismax&indent=true&qf=description%5E10%20review&wt=json'
+QRELS_FILE = 'q4_rels.txt' # 7 --> 5
+QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&wt=json' #nightwing
+QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&bq=title:batman*&wt=json'
+QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&wt=json' #nightwing
+QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&bq=title:batman*&wt=json'
 # Read qrels to extract relevant documents
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
 
@@ -21,7 +21,7 @@ boostedResults = requests.get(QUERY_URL_BOOST_NO_SCHEMA).json()['response']['doc
 normalResultsSchema = requests.get(QUERY_URL_SCHEMA).json()['response']['docs']
 boostedResultsSchema = requests.get(QUERY_URL_BOOST_SCHEMA).json()['response']['docs']
 
-results = [normalResults,boostedResults, normalResultsSchema, boostedResultsSchema]
+results = [normalResults,boostedResultsSchema, normalResultsSchema, boostedResults]
 
 _, ax = plt.subplots(figsize=(7, 8))
 
@@ -91,13 +91,13 @@ for results, color in zip(results, colors):
     )
 
     if i == 0:
-        filename = 'results_normal_no_schema_q2.tex'
+        filename = 'results_normal_no_schema_q4.tex'
     elif i == 1:
-        filename = 'results_boosted_no_schema_q2.tex'
+        filename = 'results_boosted_no_schema_q4.tex'
     elif i==2:
-        filename = 'results_normal_schema_q2.tex'
+        filename = 'results_normal_schema_q4.tex'
     else:
-        filename = 'results_boosted_schema_q2.tex'
+        filename = 'results_boosted_schema_q4.tex'
 
     with open(filename, 'w') as tf:
         tf.write(df.to_latex())
@@ -158,6 +158,6 @@ handles, labels = disp.ax_.get_legend_handles_labels()
 
 # set the legend and the axes
 ax.legend(handles=handles, labels=labels, loc="best")
-ax.set_title("Precision-Recall query 5")
+ax.set_title("Precision-Recall query 4")
 
-plt.savefig('precision_recall_query_5.png')
+plt.savefig('precision_recall_query_4.png')

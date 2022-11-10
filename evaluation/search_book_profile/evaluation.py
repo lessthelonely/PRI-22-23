@@ -8,10 +8,10 @@ import requests
 from sklearn.metrics import PrecisionRecallDisplay
 
 QRELS_FILE = 'q1_rels.txt' # 1
-QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(mystery%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual~1)&q.op=OR&defType=edismax&indent=true&qf=genre%20mood%20sensitivity%20buzzwords&wt=json' 
-QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(mystery%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual~1)&q.op=OR&defType=edismax&indent=true&qf=genre%5E10%20mood%20sensitivity%5E20%20buzzwords&wt=json' 
-QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(mystery%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual~1)&q.op=OR&defType=edismax&indent=true&qf=genre%20mood%20sensitivity%20buzzwords&wt=json' 
-QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(mystery%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual~1)&q.op=OR&defType=edismax&indent=true&qf=genre%5E10%20mood%20sensitivity%5E20%20buzzwords&wt=json' 
+QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(mystery%5E10%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual*)&q.op=OR&defType=edismax&indent=true&qf=genre%20mood%20sensitivity%20buzzwords&wt=json' 
+QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(mystery%5E10%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual*)&q.op=OR&defType=edismax&indent=true&qf=genre%5E10%20mood%20sensitivity%5E20%20buzzwords&wt=json' 
+QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(mystery%5E10%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual*)&q.op=OR&defType=edismax&indent=true&qf=genre%20mood%20sensitivity%20buzzwords&wt=json' 
+QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(mystery%5E10%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual*)&q.op=OR&defType=edismax&indent=true&qf=genre%5E10%20mood%20sensitivity%5E20%20buzzwords&wt=json' 
 
 # Read qrels to extract relevant documents
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
