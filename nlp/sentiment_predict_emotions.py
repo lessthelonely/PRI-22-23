@@ -19,7 +19,12 @@ print(to_analyse)
 
 try:
     predict = classifier(to_analyse, )
-    print(predict[0])
+    # print(predict[0])
+    dataList = predict[0]
+    for dic in dataList:
+        print()
+        for key, value in dic.items():
+            print(key, ':', value)
 except:
     print("failed")
 
