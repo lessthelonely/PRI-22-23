@@ -7,7 +7,7 @@ import pandas as pd
 import requests
 from sklearn.metrics import PrecisionRecallDisplay
 
-QRELS_FILE = 'q1_rels.txt' # 1
+QRELS_FILE = 'q1_rels_10.txt' # 1
 QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(mystery%5E10%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual*)&q.op=OR&defType=edismax&indent=true&qf=genre%20mood%20sensitivity%20buzzwords&wt=json' 
 QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(mystery%5E10%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual*)&q.op=OR&defType=edismax&indent=true&qf=genre%5E10%20mood%20sensitivity%5E20%20buzzwords&wt=json' 
 QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(mystery%5E10%20OR%20thriller)%20AND%20(surpri*)%20AND%20(-rape%20AND%20-gore%20AND%20-sexual*)&q.op=OR&defType=edismax&indent=true&qf=genre%20mood%20sensitivity%20buzzwords&wt=json' 
@@ -22,11 +22,11 @@ boostedResults = requests.get(QUERY_URL_BOOST_NO_SCHEMA).json()['response']['doc
 normalResultsSchema = requests.get(QUERY_URL_SCHEMA).json()['response']['docs']
 boostedResultsSchema = requests.get(QUERY_URL_BOOST_SCHEMA).json()['response']['docs']
 
-results = [normalResults, boostedResults, normalResultsSchema, boostedResultsSchema]
+results = [normalResultsSchema, boostedResultsSchema, normalResults, boostedResults]
 
 _, ax = plt.subplots(figsize=(7, 8))
 
-colors = cycle(["purple", "red", "green",  "blue"])
+colors = cycle(["#8C47D7", "#E70E02", "#11E454",  "#FEEA00"])
 
 i = 0
 for results, color in zip(results, colors):
@@ -145,13 +145,13 @@ for results, color in zip(results, colors):
                   color=color, linewidth=1)
     elif(i == 1):
         disp.plot(ax=ax, name=f"Precision-recall boosted without schema",
-                  color=color, linewidth=1)
+                  color=color, linewidth=2,dashes=(5,10), linestyle='--')
     elif(i == 2):
         disp.plot(ax=ax, name=f"Precision-recall with schema",
-                  color=color, linewidth=1.5)
+                  color=color, linewidth=2,dashes=(5,10), linestyle='--')
     else:
         disp.plot(ax=ax, name=f"Precision-recall boosted with schema",
-                  color=color, linewidth=1.5)
+                  color=color, linewidth=1)
     i += 1
 
 # add the legend for the iso-f1 curves
@@ -161,4 +161,4 @@ handles, labels = disp.ax_.get_legend_handles_labels()
 ax.legend(handles=handles, labels=labels, loc="best")
 ax.set_title("Precision-Recall query 1")
 
-plt.savefig('precision_recall.png')
+plt.savefig('precision_recall_1.png')

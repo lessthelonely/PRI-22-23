@@ -7,11 +7,11 @@ import pandas as pd
 import requests
 from sklearn.metrics import PrecisionRecallDisplay
 
-QRELS_FILE = 'q4_rels.txt' # 7 --> 5
+QRELS_FILE = 'nightwing_qrels.txt' # 7 --> 5
 QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&wt=json' #nightwing
-QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&bq=title:batman*&wt=json'
+QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&bq=title:batman&wt=json'
 QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&wt=json' #nightwing
-QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&bq=title:batman*&wt=json'
+QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=nightwing%20OR%20batman&q.op=OR&defType=edismax&indent=true&qf=title%20description&bq=title:batman&wt=json'
 # Read qrels to extract relevant documents
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
 
@@ -25,7 +25,7 @@ results = [normalResults,boostedResultsSchema, normalResultsSchema, boostedResul
 
 _, ax = plt.subplots(figsize=(7, 8))
 
-colors = cycle(["purple", "red", "green",  "blue"])
+colors = cycle(["#8C47D7", "#E70E02", "#11E454",  "#FEEA00"])
 
 i = 0
 for results, color in zip(results, colors):
@@ -37,7 +37,6 @@ for results, color in zip(results, colors):
 
     @metric
     def ap(results, relevant):
-        """Average Precision"""
 
         relevant_index = []
         index = 0
@@ -66,7 +65,6 @@ for results, color in zip(results, colors):
 
     @metric
     def p10(results, relevant, n=10):
-        """Precision at N"""
         return len([
             doc
             for doc in results[:n]
@@ -91,13 +89,13 @@ for results, color in zip(results, colors):
     )
 
     if i == 0:
-        filename = 'results_normal_no_schema_q4.tex'
+        filename = 'results_normal_no_schema_q5.tex'
     elif i == 1:
-        filename = 'results_boosted_no_schema_q4.tex'
+        filename = 'results_boosted_no_schema_q5.tex'
     elif i==2:
-        filename = 'results_normal_schema_q4.tex'
+        filename = 'results_normal_schema_q5.tex'
     else:
-        filename = 'results_boosted_schema_q4.tex'
+        filename = 'results_boosted_schema_q5.tex'
 
     with open(filename, 'w') as tf:
         tf.write(df.to_latex())
@@ -147,10 +145,10 @@ for results, color in zip(results, colors):
                   color=color, linewidth=1)
     elif(i == 2):
         disp.plot(ax=ax, name=f"Precision-recall with schema",
-                  color=color, linewidth=1.5)
+                  color=color, linewidth=1)
     else:
         disp.plot(ax=ax, name=f"Precision-recall boosted with schema",
-                  color=color, linewidth=1.5)
+                  color=color, linewidth=1)
     i += 1
 
 # add the legend for the iso-f1 curves

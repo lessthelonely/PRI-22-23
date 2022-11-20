@@ -7,11 +7,11 @@ import pandas as pd
 import requests
 from sklearn.metrics import PrecisionRecallDisplay
 
-QRELS_FILE = 'q7_rels.txt' #9----> q7
-QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(LGBT%20AND%20Fiction%20ANd%20Contemporary)%20OR%20(unique%20AND%20deep%20AND%20compelling)%20OR%20(anxiety%20AND%20abuse%20AND%20bullying)%20AND%20-id:4007&q.op=OR&defType=edismax&indent=true&qf=genre%20buzzwords%20sensitivity&qt=mlt&wt=json' 
-QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(LGBT%20AND%20Fiction%20ANd%20Contemporary)%20OR%20(unique%20AND%20deep%20AND%20compelling)%20OR%20(anxiety%20AND%20abuse%20AND%20bullying)%20AND%20-id:4007&q.op=OR&defType=edismax&indent=true&qf=genre%5E10%20buzzwords%20sensitivity&qt=mlt&wt=json' 
+QRELS_FILE = 'q6_rels_10.txt' #9----> q7
+QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(Young%20Adult%20AND%20Fantasy%20AND%20Romance%20AND%20Fae)%20OR%20(unique%20AND%20incredible%20AND%20twist)%20OR%20(rape%20AND%20murder%20AND%20survival%20AND%20torture)&q.op=OR&defType=edismax&indent=true&qf=genre%20buzzwords%20sensitivity&qt=mlt&wt=json' 
+QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=(Young%20Adult%20AND%20Fantasy%20AND%20Romance%20AND%20Fae)%20OR%20(unique%20AND%20incredible%20AND%20twist)%20OR%20(rape%20AND%20murder%20AND%20survival%20AND%20torture)&q.op=OR&defType=edismax&indent=true&qf=genre^10%20buzzwords%20sensitivity&qt=mlt&wt=json' 
 QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(LGBT%20AND%20Fiction%20ANd%20Contemporary)%20OR%20(unique%20AND%20deep%20AND%20compelling)%20OR%20(anxiety%20AND%20abuse%20AND%20bullying)%20AND%20-id:4007&q.op=OR&defType=edismax&indent=true&qf=genre%20buzzwords%20sensitivity&qt=mlt&wt=json' 
-QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(LGBT%20AND%20Fiction%20ANd%20Contemporary)%20OR%20(unique%20AND%20deep%20AND%20compelling)%20OR%20(anxiety%20AND%20abuse%20AND%20bullying)%20AND%20-id:4007&q.op=OR&defType=edismax&indent=true&qf=genre%5E10%20buzzwords%20sensitivity&qt=mlt&wt=json' 
+QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=(Young%20Adult%20AND%20Fantasy%20AND%20Romance%20AND%20Fae)%20OR%20(unique%20AND%20incredible%20AND%20twist)%20OR%20(rape%20AND%20murder%20AND%20survival%20AND%20torture)&q.op=OR&defType=edismax&indent=true&qf=genre%20buzzwords%20sensitivity&qt=mlt&wt=json'
 
 # Read qrels to extract relevant documents
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
@@ -22,11 +22,11 @@ boostedResults = requests.get(QUERY_URL_BOOST_NO_SCHEMA).json()['response']['doc
 normalResultsSchema = requests.get(QUERY_URL_SCHEMA).json()['response']['docs']
 boostedResultsSchema = requests.get(QUERY_URL_BOOST_SCHEMA).json()['response']['docs']
 
-results = [normalResults,boostedResults, normalResultsSchema, boostedResultsSchema]
+results = [normalResults,boostedResultsSchema, normalResultsSchema, boostedResults]
 
 _, ax = plt.subplots(figsize=(7, 8))
 
-colors = cycle(["purple", "red", "green",  "blue"])
+colors = cycle(["#8C47D7", "#E70E02", "#11E454",  "#FEEA00"])
 
 i = 0
 for results, color in zip(results, colors):
@@ -92,13 +92,13 @@ for results, color in zip(results, colors):
     )
 
     if i == 0:
-        filename = 'results_normal_no_schema_q7.tex'
+        filename = 'results_normal_no_schema_q6.tex'
     elif i == 1:
-        filename = 'results_boosted_no_schema_q7.tex'
+        filename = 'results_boosted_no_schema_q6.tex'
     elif i==2:
-        filename = 'results_normal_schema_q7.tex'
+        filename = 'results_normal_schema_q6.tex'
     else:
-        filename = 'results_boosted_schema_q7.tex'
+        filename = 'results_boosted_schema_q6.tex'
 
     with open(filename, 'w') as tf:
         tf.write(df.to_latex())
@@ -148,10 +148,10 @@ for results, color in zip(results, colors):
                   color=color, linewidth=1)
     elif(i == 2):
         disp.plot(ax=ax, name=f"Precision-recall with schema",
-                  color=color, linewidth=1.5)
+                  color=color, linewidth=2,dashes=(5,10), linestyle='--')
     else:
         disp.plot(ax=ax, name=f"Precision-recall boosted with schema",
-                  color=color, linewidth=1.5)
+                  color=color, linewidth=1)
     i += 1
 
 # add the legend for the iso-f1 curves
@@ -159,6 +159,6 @@ handles, labels = disp.ax_.get_legend_handles_labels()
 
 # set the legend and the axes
 ax.legend(handles=handles, labels=labels, loc="best")
-ax.set_title("Precision-Recall query 7")
+ax.set_title("Precision-Recall query 6")
 
-plt.savefig('precision_recall_query_7.png')
+plt.savefig('precision_recall_query_6.png')

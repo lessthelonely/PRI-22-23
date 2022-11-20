@@ -15,6 +15,7 @@ def clean_json(jsonFilePath):
 
 
 clean_json('solr/everything_part_1.json')
+'''
 clean_json('solr/everything_part_2.json')
 clean_json('solr/everything_part_3.json')
 clean_json('solr/everything_part_4.json')
@@ -32,7 +33,7 @@ clean_json('solr/everything_part_15.json')
 clean_json('solr/everything_part_16.json')
 clean_json('solr/everything_part_17.json')
 clean_json('solr/everything_part_18.json')
-
+'''
 '''
 clean_json('solr/reviews_part_2.json')
 clean_json('solr/reviews_part_3.json')
