@@ -1,0 +1,1 @@
+curl http://localhost:8983/solr/books_schema/config/requestHandler
