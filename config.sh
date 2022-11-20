@@ -13,3 +13,19 @@ curl -X POST -H 'Content-type:application/json'  -d '{
     }
   }
 }' http://localhost:8983/solr/books_schema/config
+
+curl -X POST -H 'Content-type:application/json'  -d '{
+  "add-requesthandler": {
+    "name": "/suggest",
+        "class": "solr.SearchHandler",
+        "startup": "lazy",
+        "defaults": {
+            "suggest": true,
+            "suggest.count": 20,
+            "suggest.dictionary": "mySuggester"
+        },
+        "components": [
+            "suggest"
+        ]
+  }
+}' http://localhost:8983/solr/goodreads/config
