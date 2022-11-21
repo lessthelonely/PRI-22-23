@@ -1,0 +1,51 @@
+\begin{figure}[hbt!]
+    \makebox[\textwidth][c]{
+    \includegraphics[width=1.15\textwidth]{figures/pipeline_diagram.png}
+    }
+    \begin{varwidth}{\textwidth}
+        \caption{Pipeline diagram.}
+        \label{fig:pipeline}
+    \end{varwidth}
+\end{figure}
+
+\begin{figure}[hbt!]
+\centering
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=7cm]{figures/hist.png}
+  \caption{Page count histogram.}
+  \label{fig:hist}
+\end{minipage}%
+\begin{minipage}{.5\textwidth}
+  \centering
+  \includegraphics[width=7cm]{figures/heatmap.png}
+  \caption{Numerical attributes correlation heat nap.}
+  \label{fig:heatmap}
+\end{minipage}
+\end{figure}
+
+\begin{table}[hbt!]
+    \begin{varwidth}{\textwidth}
+        \caption{Average value for numerical attributes for 10 most common genres.}
+        \label{table:avg_top10}
+    \end{varwidth}
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{ccccc}
+        \textbf{Genre} &
+        \multicolumn{1}{l}{\textbf{Average Rating}} &
+        \multicolumn{1}{l}{\textbf{Average Rating Count}} &
+        \multicolumn{1}{l}{\textbf{Average Review Count}} &
+        \multicolumn{1}{l}{\textbf{Average Page Count}} \\
+            Nonfiction   & 3.95 & 1439 & 100 & 301 \\
+            Fiction      & 3.86 & 8056 & 476 & 276 \\
+            Romance      & 3.85 & 6657 & 441 & 279 \\
+            History      & 3.93 & 1283 & 94  & 333 \\
+            Fantasy      & 3.90 & 9207 & 490 & 275 \\
+            Cultural     & 3.88 & 2651 & 204 & 291 \\
+            Historical   & 3.86 & 5269 & 365 & 325 \\
+            Literature   & 3.87 & 6093 & 317 & 313 \\
+            Childrens    & 3.92 & 4376 & 219 & 122 \\
+            Contemporary & 3.79 & 8648 & 623 & 276
+    \end{tabular}
+    }
+\end{table}
