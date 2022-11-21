@@ -129,6 +129,13 @@
             "docValues": false
         },
         {
+            "name": "title_suggest",
+            "type": "text_general",
+            "indexed": true,
+            "stored": true,
+            "multiValued": false
+        },
+        {
             "name": "rating_count",
             "type": "pints",
             "indexed": true,
