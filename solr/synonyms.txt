@@ -43,12 +43,12 @@ classic, simple, typical, usual
 cliffhanger, close call, shocker
 clunky, bulky,  ponderous, tiresome, unwieldy, unwieldy
 comfort, amenity, contentment, convenience, luxury, pleasure, relaxation, relief, satisfaction, warmth, well-being, compassion, consolation, encouragement, relief, solace, sympathy, assuage, cheer, console, encourage, hearten, reassure, refresh, relieve, soothe
-common, accepted, commonplace, frequent, natural, prevailing, prevalent, routine, simple, trivial, typical, universal, popular, prevailing, prevalent, shared, universal
+common, accepted, commonplace, frequent, prevailing, prevalent, routine, simple, trivial, typical, universal, popular, prevailing, prevalent, shared, universal
 compelling, fascinating
 compensation, allowance, benefit, bonus, coverage, earnings, fee, indemnity, pay, payment, payoff, premium, profit, redress, reimbursement, remittance, remuneration, reparation, restitution, reward, salary, settlement, stipend, wage
 complex, obscure, perplexing,  compound, network, structure, system
 complicated, convoluted, hard, knotty, perplexing, problematic,  troublesome
-contemporary, new, present-day
+contemporary, present-day
 controversial, contentious, disputed, questionable
 cozy, comfortable, comfy, cushy, snug
 cringe, cower, kneel, quiver, tremble, wince
@@ -78,11 +78,11 @@ dream, fantasy, idea, image, imagination, nightmare, thought, hope, notion, wish
 dull, dim, simple, slow, sluggish, stupid, listless, placid, quiet, slow, sluggish, dismal, dreary, dry, ordinary, repetitive, stale, stupid, tame, tedious, tiresome, uninspiring, placid, quiet, slow, sluggish, tight, cloudy, cold, obscure, soft, somber, subdued
 dumb, speechless, foolish
 dying, decaying, doomed, fading, moribund, death, decease, demise, expiration, loss of life, passing
-easy, accessible, clear, effortless, obvious, painless, simple, smooth, straightforward, uncomplicated, peaceful, pleasant, quiet, secure, slow, smooth, soft, successful, flexible, soft, natural, pleasant, secure, smooth
+easy, accessible, clear, effortless, obvious, painless, simple, smooth, straightforward, uncomplicated, peaceful, pleasant, quiet, secure, slow, smooth, soft, successful, flexible, soft, pleasant, secure, smooth
 eccentric, funny, kooky, nutty, odd, offbeat, outlandish, peculiar, quirky, strange, unconventional, weird, whimsical, freak, hippie, loner, maverick, oddball, oddity
 edgy, restless, skittish, tense, uneasy, uptight
 effervescent, airy, bouncy, frothy, brash, ebullient, irrepressible, jolly
-electrifying, engrossing, pleasant, provocative, sweet, powerful, sensational, startling, striking, sudden, tense, theatrical, thrilling, tragic, vivid, electrical, magnetic, provocative, stimulating, thrilling, shocking, suspenseful, terrifying, profound, rich, ringing, sonorous, thrilling, emphatic, ringing, roaring, thrilling, thundering, thunderous, booming, echoing, resounding, roaring, sonorous, strident, throbbing, thundering, thunderous, lurid, outstanding, remarkable, scandalous, shocking, spectacular, thrilling, provocative, thought-provoking, thrilling, heartrending, touching, eye-catching, marked, noteworthy, noticeable, outstanding, powerful, remarkable, salient, singular, startling, stunning, surprising, telling, unusual, wonderful, wondrous, remarkable, shocking, startling, stunning, sudden, unanticipated, unforeseen, unpredictable, wonderful, frantic, riveting, rousing, sensational, stirring, startling, stunning, sudden, swift, unanticipated, unforeseen, unpredictable, wonderful, spirited, vigorous, vital, vivid
+electrifying, engrossing, pleasant, provocative, sweet, powerful, sensational, startling, striking, sudden, tense, theatrical, thrilling, tragic, vivid, electrical, magnetic, provocative, stimulating, thrilling, shocking, suspenseful, terrifying, profound, rich, ringing, sonorous, thrilling, emphatic, ringing, roaring, thrilling, thundering, thunderous, booming, echoing, resounding, roaring, sonorous, strident, throbbing, thundering, thunderous, lurid, outstanding, remarkable, scandalous, shocking, spectacular, thrilling, provocative, thought-provoking, thrilling, heartrending, touching, eye-catching, marked, outstanding, powerful, remarkable, salient, singular, startling, stunning, surprising, telling, unusual, wonderful, wondrous, remarkable, shocking, startling, stunning, sudden, unanticipated, unforeseen, unpredictable, wonderful, frantic, riveting, rousing, sensational, stirring, startling, stunning, sudden, swift, unanticipated, unforeseen, unpredictable, wonderful, spirited, vigorous, vital, vivid
 emotional, affecting, hysterical, nervous, passionate, poignant, sensitive, sentimental, spontaneous, touching
 energetic, active,  enterprising, industrious, powerful, spirited, sprightly, spry, strong, tireless, vigorous
 enigmatic, ambiguous, cryptic, obscure
@@ -93,9 +93,9 @@ entertained, amused, enthralled
 entertaining, engrossing, pleasant, poignant, provocative, stimulating, thrilling
 epic, legend, narrative, tale
 evocative, reminiscent
-exceptional, notable, noteworthy, odd, phenomenal, rare, remarkable, singular, special, strange, uncommon, unheard-of, unique, unprecedented, unusual, outstanding, phenomenal, remarkable, singular, special, superior
+exceptional, notable, odd, phenomenal, rare, remarkable, singular, special, strange, uncommon, unheard-of, unique, unprecedented, unusual, outstanding, phenomenal, remarkable, singular, special, superior
 explosive, frenzied, hazardous, meteoric, stormy, tense, touchy, ugly, uncontrollable, unstable, violent, ammunition, bomb, booby trap, detonator, dynamite, gunpowder, mine, missile, munition, powder
-extra, added, additional, ancillary, auxiliary, extraneous, further, leftover, new, other, special, supplemental, supplementary, unnecessary, unused, bonus
+extra, added, additional, ancillary, auxiliary, extraneous, further, leftover, other, special, supplemental, supplementary, unnecessary, unused, bonus
 fake, bogus, counterfeit, fabricated, fictitious, forged, fraudulent, mock, phony, spurious, fabrication, forgery, phony, scam, sham, trick, fabricate, feign, put on
 familiar, recognizable, simple, usual, acquainted, aware, conversant, intimate
 famous, acclaimed, grand, influential, noted, notorious, outstanding, powerful, pre prominent, recognized, remarkable, renowned, splendid, well-known
@@ -123,7 +123,7 @@ gush, cascade, flush, pour, spew, spout, rave
 hate, animosity, antagonism, dislike, enmity, hatred, horror, hostility, loathing, pain, rancor, resentment, revenge, venom, scorn, shun
 headache, hassle, inconvenience,  worry
 heart, character, feeling, nature, soul, nerve, soul, spirit, center, core, focus, middle, root, soul
-hideous, abominable, disgusting, dreadful, frightful, horrendous, macabre, monstrous, nasty, odious, repulsive, revolting, shocking, terrible, terrifying, ugly, weird
+hideous, abominable, disgusting, dreadful, frightful, horrendous, macabre, monstrous, odious, repulsive, revolting, shocking, terrible, terrifying, ugly, weird
 hilarious, laughable, lively, priceless, uproarious
 hooked, absorbed, enamored, beaked, bent, curved, angled, arched
 hopeful, cheerful, confident, eager, rosy, sanguine, trusting, upbeat, favorable, fortunate, likely, pleasant, probable, reasonable, reassuring, rosy
@@ -131,21 +131,21 @@ horrendous, abhorrent, atrocious, dire, horrible, horrid
 horrific, appalling, heinous, horrid
 hype, advertise, announce, boost, broadcast, pitch, promote, promulgate, tout, trumpet
 immaculate, neat, snowy, spotless, spotless, unblemished
-important, critical, crucial, essential, far-reaching, imperative, large, meaningful, necessary, paramount, relevant, serious, significant, urgent, vital, effective, noteworthy, powerful, prominent, remarkable, solid
+important, critical, crucial, essential, far-reaching, imperative, large, meaningful, necessary, paramount, relevant, serious, significant, urgent, vital, effective, powerful, prominent, remarkable, solid
 incomparable, inimitable, transcendent, unmatched, unparalleled
 incredible, inconceivable, preposterous, ridiculous, unbelievable, unimaginable, astounding, awe-inspiring,  prodigious, superhuman, unreal, wonderful
 indescribable, ineffable, sublime, unspeakable
-indifferent, aloof, apathetic, callous, detached, diffident, haughty, impervious, neutral, nonchalant, uncaring, unconcerned, uninvolved, unresponsive, unsympathetic
+indifferent, aloof, apathetic, callous, detached, diffident, haughty, impervious, nonchalant, uncaring, unconcerned, uninvolved, unresponsive, unsympathetic
 infuriating, aggravating, exasperating, frustrating, troubling
-innovative, inventive, new, original
+innovative, inventive, original
 inspiring, exhilarating, heartening, inspirational, stirring, uplifting
 interesting, pleasing, provocative, readable, refreshing, stimulating, striking, thought-provoking, unusual
 intimate, affectionate, loving, warm, firsthand, in-depth, penetrating, profound, visceral, confidant, confidante, affirm, assert, impart, imply
 invested, attired, cloaked, covered, draped, dressed, veiled, retained
 irritated, disturbed, troubled
 irritating, disturbing
-lack, absence, dearth, inadequacy, loss, paucity, poverty, reduction, scarcity, shortage, shortcoming, shortfall, need, require, want
-lacked, need, require, want
+lack, absence, dearth, inadequacy, loss, paucity, poverty, reduction, scarcity, shortage, shortcoming, shortfall, require, want
+lacked, require, want
 lacking, flawed, inadequate, incomplete
 lackluster, flat, muted, uninspired
 legendary, fabled, fabulous, mythical, storied, famed, renowned, well-known
@@ -174,10 +174,10 @@ new, advanced, brand-new, late, modern, original, recent, state-of-the-art, stra
 niche, alcove, slot
 nit picky, choosy, discriminating, exacting, finicky, fussy, squeamish
 obsessed, haunted, preoccupied, troubled
-ordinary, everyday, natural, normal, traditional, typical, conventional, generic, humble, normal, plain, simple, unremarkable, workaday
+ordinary, everyday, natural, normal, traditional, typical, conventional, generic, humble, plain, simple, unremarkable, workaday
 original, authentic, initial, creative, seminal, unconventional, unusual, model, pattern, character
 outlandish, extravagant, far-out, odd, outrageous, peculiar, preposterous, ridiculous, rude, unconventional, unusual, weird, whimsical
-outstanding, distinguished,  phenomenal, pre special, superior, superlative, well-known, notable, noteworthy, prominent, remarkable, overdue, pending, unresolved
+outstanding, distinguished,  phenomenal, pre special, superior, superlative, well-known, prominent, remarkable, overdue, pending, unresolved
 painful, agonizing, heart-wrenching, hurtful, severe, tedious, terrible, troublesome, uncomfortable, unpleasant
 passionate, ardent, romantic, wistful,  fervent, heartfelt, poignant, spirited, strong, vehement, violent, zealous, vehement, violent
 perfect, foolproof, ideal, pure, splendid, superb, simple, precise, proper, suitable, true, accomplish, carry out, cultivate, develop, hone, improve, realize, refine
@@ -208,13 +208,13 @@ regret, anguish, apology, bitterness, contrition, disappointment, dissatisfactio
 regretting, grumbling, protesting, whining
 relatable, engaging
 relate, describe, detail, disclose, present, reveal, affect, apply, ascribe, assign, associate, compare, connect, link, pertain, refer
-remarkable, miraculous, notable, noteworthy, noticeable, odd, outstanding, phenomenal, rare, significant, singular, solid, strange, striking, surprising, uncommon, unique, wonderful
+remarkable, miraculous, noticeable, odd, outstanding, phenomenal, rare, significant, singular, solid, strange, striking, surprising, uncommon, unique, wonderful
 repetitive, constant, monotonous, repeated
 repulsive, nasty, objectionable, odious, off-putting, revolting, ugly, unpleasant, vile
 rich, affluent, fat, prosperous, wealthy, well-heeled, well-off, well-to-do, expensive, fertile, lush, plentiful, smart, splendid, valuable, creamy, juicy, satisfying, savory, spicy, sweet, tasty, resonant, strong, vibrant, vivid, warm, odd, strange, upper class
 sad, bitter,  heartbroken, melancholy, mournful, pessimistic, somber, sorrowful, sorry, unhappy, wistful, pathetic, pitiful, poignant, regrettable, serious, sorry, tragic
 screamed, blare, holler, roar, screech, shout, shriek, squeal, wail, yell
-screaming, campy, pleasant, pleasing, outright, overt, shameless, unabashed, strident, vulgar, blatant, notable, remarkable, salient, striking, blaring, noisy, ringing, roaring, rowdy, thunderous, vociferous, speedy, playful, ridiculous, silly, whimsical, ornate, ostentatious, showy, vulgar,  jazzy, ostentatious, showy, snazzy, splashy, playful, pleasant, whimsical, boisterous, cacophonous, clamorous, rambunctious, riotous, rowdy, strident, vociferous, accelerated, breakneck, brisk, fast, speedy, swift, classy,   ornate, ostentatious, pretentious, sensational, splashy, abrupt, nimble, quick, rapid, speedy, sudden, unexpected, sleazy, tacky, vulgar
+screaming, campy, pleasant, pleasing, outright, overt, shameless, unabashed, strident, vulgar, blatant, remarkable, salient, striking, blaring, noisy, ringing, roaring, rowdy, thunderous, vociferous, speedy, playful, ridiculous, silly, whimsical, ornate, ostentatious, showy, vulgar,  jazzy, ostentatious, showy, snazzy, splashy, playful, pleasant, whimsical, boisterous, cacophonous, clamorous, rambunctious, riotous, rowdy, strident, vociferous, accelerated, breakneck, brisk, fast, speedy, swift, classy,   ornate, ostentatious, pretentious, sensational, splashy, abrupt, nimble, quick, rapid, speedy, sudden, unexpected, sleazy, tacky, vulgar
 screams, cry, screech, shriek, wail, yelp, hoot, wail, roar, screech, shout, yell, shriek, squeal
 sensual, sensuous, sexual, sexy, tactile, voluptuous
 serve, give, handle, present, provide, accept, attend, complete, follow, pass, perform, work, do, make, work
@@ -259,7 +259,7 @@ traumatizing, disturb, mortify, offend, outrage, shock, upset
 trick, conspiracy, deception, distortion, fraud, gimmick, hoax, illusion, maneuver, plot, ploy, ruse, trap, antic, feat, gag, shenanigan, sleight of hand, stunt, gift, method, secret, skill, technique, quirk, trait, bamboozle, cheat, con, deceive, defraud, delude, dupe, hoodwink, mislead, swindle, victimize
 twist, curve, flourish, quirk, revelation, slant, surprise, variation, coil, screw, spiral, sprain, swivel, twirl, weave, wiggle, wrap, wrench, wriggle, distort
 twisted, contorted, curled, tangled, twisting, perverse, coiled, tortuous, wry
-uncommon, egregious, infrequent, noteworthy, odd, peculiar, rare, remarkable, singular, startling, strange, surprising, unique, unusual, noteworthy, rare, remarkable, singular, unimaginable, unique, unparalleled, unprecedented, unthinkable
+uncommon, egregious, infrequent, odd, peculiar, rare, remarkable, singular, startling, strange, surprising, unique, unusual, rare, remarkable, singular, unimaginable, unique, unparalleled, unprecedented, unthinkable
 uncommonly, exceptionally, extremely, remarkably, strangely, unusually
 underdog, dark horse, longshot
 uneventful, inconclusive, tedious, unexciting, unremarkable
@@ -269,15 +269,15 @@ unforgettable, eventful, remarkable
 unique, exclusive, particular, rare, uncommon, rare, singular, special, strange, uncommon, unparalleled, unprecedented, weird
 universal, global, prevalent, ubiquitous, unlimited
 unparalleled, incomparable, rare, singular, unequaled, unique, unmatched, unprecedented, unrivaled, unsurpassed
-unpleasant, disagreeable, distasteful, nasty, obnoxious, sour, troublesome, undesirable, unpalatable
+unpleasant, disagreeable, distasteful, obnoxious, sour, troublesome, undesirable, unpalatable
 unpredictable, fickle, uncertain, unreliable, unstable
 unrealistic, impossible, impractical, improbable, quixotic, silly, unreal, unworkable
 unreasonable, arbitrary, contradictory, inconsistent, irrational, preposterous, senseless, silly, stupid, wrong, excessive, exorbitant, illegitimate, inordinate, senseless, unconscionable, undue, unfair, unjust, unjustifiable, unlawful, unwarranted, wrongful
 unshakable, adamant, inflexible, unflappable, unwavering
-unusual, extraordinary, noteworthy, odd, phenomenal, rare, remarkable, significant, singular, special, strange, surprising, uncommon, unconventional, unexpected, unique, weird
+unusual, extraordinary, odd, phenomenal, rare, remarkable, significant, singular, special, strange, surprising, uncommon, unconventional, unexpected, unique, weird
 useless, counterproductive, fruitless, hopeless, idle, incompetent, ineffectual, inoperative, no good, pointless, stupid, unproductive, unworkable, worthless
 vapid, innocuous, stale, tedious, uninspiring
-visionary, ambitious, idealistic, introspective, noble, quixotic, radical, starry-eyed, dreamer, idealist, prophet, romantic, seer, theorist, zealot
+visionary, ambitious, idealistic, introspective, quixotic, radical, starry-eyed, dreamer, idealist, prophet, romantic, seer, theorist, zealot
 vivid, animated, colorful,  expressive, glowing, lucid, memorable, realistic, rich, sharp, striking, telling, theatrical
 waste, misuse, rubbish, scrap, trash, consume, deplete, dissipate, divert, drain, exhaust, lose, squander, undermine, reduce, spoil
 wholesome, healthful, hygienic, pure
@@ -287,7 +287,7 @@ worse, poor
 worst, lowest, calamity, catastrophe
 worth, account, aid, cost, credit, price, quality, rate, valuation
 worthless, barren, inconsequential, ineffective, insignificant, meaningless, mediocre, pointless, unimportant, unproductive, unprofitable, unusable, useless
-worthy, admirable, deserving, desirable, laudable, noble, reliable, satisfying, true, trustworthy, valuable, worthwhile
+worthy, admirable, deserving, desirable, laudable, reliable, satisfying, true, trustworthy, valuable, worthwhile
 wow, charm, entertain
 rooting, acclaim, accolade, kudos, ovation, praise, standing ovation
 chaotic, anarchic, disorganized, helter-skelter, lawless, tumultuous, turbulent
