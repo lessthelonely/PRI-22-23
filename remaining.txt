@@ -720,32 +720,9 @@
 "wondrous" is repeated 1 time.
 "wondrous," is repeated 2 times.
 "woozy" is repeated 1 time.
-"work" is repeated 1 time.
-"work," is repeated 2 times.
-"workaday" is repeated 1 time.
-"worn," is repeated 1 time.
-"worrisome," is repeated 1 time.
-"worry" is repeated 2 times.
-"worry," is repeated 2 times.
-"worrying" is repeated 1 time.
-"worse," is repeated 1 time.
-"worship" is repeated 1 time.
-"worship," is repeated 1 time.
-"worst," is repeated 1 time.
-"worth," is repeated 1 time.
-"worthless" is repeated 1 time.
-"worthless," is repeated 1 time.
-"worthwhile" is repeated 1 time.
-"worthy," is repeated 1 time.
-"wound" is repeated 1 time.
-"wound," is repeated 2 times.
-"wow," is repeated 1 time.
-"wrap," is repeated 1 time.
-"wreck" is repeated 1 time.
-"wreck," is repeated 1 time.
-"wreckage," is repeated 1 time.
-"wrench," is repeated 1 time.
-"wretched" is repeated 1 time.
-"wriggle," is repeated 1 time.
-"wrong," is repeated 3 times.
+
+
+
+
+
 
