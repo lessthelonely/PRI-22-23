@@ -1,26 +1,4 @@
 
-"unworkable," is repeated 1 time.
-"up," is repeated 4 times.
-"up-and-coming" is repeated 1 time.
-"upbeat" is repeated 1 time.
-"upbeat," is repeated 2 times.
-"uphold," is repeated 2 times.
-"uplifting" is repeated 1 time.
-"upper" is repeated 1 time.
-"uproarious" is repeated 1 time.
-"upset" is repeated 2 times.
-"upset," is repeated 1 time.
-"upsetting," is repeated 1 time.
-"uptight" is repeated 1 time.
-"urge" is repeated 1 time.
-"urgent," is repeated 1 time.
-"usable" is repeated 1 time.
-"useful," is repeated 1 time.
-"useless" is repeated 1 time.
-"useless," is repeated 1 time.
-"usual" is repeated 1 time.
-"usual," is repeated 1 time.
-"utopian," is repeated 1 time.
 "vague" is repeated 3 times.
 "valid," is repeated 1 time.
 "valuable," is repeated 2 times.
