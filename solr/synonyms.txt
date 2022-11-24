@@ -28,7 +28,7 @@ boring, dull, humdrum, lifeless, monotonous, mundane, stale, stodgy, stuffy, stu
 botched, broken, cracked, damaged, defective, deficient, erroneous, false, flawed, imprecise, inaccurate, inadequate, incomplete, insufficient, invalid, leaky, malfunctioning, unreliable, broken, awkward, careless, clumsy, dirty, mediocre, muddy, poor, wet
 bothered, agitated, distressed, disturbed, troubled
 bothers, aggravation, hinder, dismay, disturb, aggravate, perplex, bore, perturb, alarm, upset, irritate, hurt, torment, irk, plague, exacerbate, disgust, embarrass, trouble, scare, worry, nag, try, worry about
-bothersome, annoying, distressing, disturbing, inconvenient, irritating, troublesome, vexing
+bothersome, distressing, disturbing, inconvenient, irritating, troublesome, vexing
 brilliant, bright, dazzling, flashy, intense, luminous, radiant, scintillating, sparkling, vivid, distinguished, excellent, exceptional, glorious, magnificent, splendid, superb, accomplished, astute, bright, gifted, ingenious, inventive, sharp, smart, talented
 brutal, barbarous, callous, ferocious, harsh, inhuman, merciless, rough, rude, ruthless, savage, severe, vicious, inhuman, inhumane, rude, savage
 captivated, consumed, engaged, engrossed, fascinated, involved, preoccupied, delighted, mesmerized, charmed, ecstatic, elated, enchanted, excited, jubilant, overjoyed, pleased, thrilled, enchanted, fascinated, hooked, consumed, engaged, enthralled, submerged, cheerful, contented, delighted, ecstatic, elated, glad, joyful, joyous, jubilant, lively, merry, overjoyed, peaceful, pleasant, pleased, satisfied, thrilled, upbeat, enamored, delirious, dizzy, drunk, dominated, haunted, preoccupied, troubled, delighted, ecstatic, enthralled, inattentive, rapturous, spellbound, bemused, breathless, enthralled, rapt
@@ -68,7 +68,7 @@ disappointing, depressing, disconcerting, discouraging, disheartening, distastef
 disastrous, adverse, calamitous, cataclysmic, catastrophic, destructive, dire, dreadful, fatal, fateful, harmful, ill-fated, ruinous, terrible, tragic, unfavorable, unfortunate
 discomfort, ache, displeasure, disquiet, embarrassment, hardship, soreness,  uneasiness, unpleasantness
 disturbed, confused, troubled
-disturbing, alarming, annoying, bothersome, creepy, depressing, disconcerting, discouraging, distressing, embarrassing, frightening, irritating, ominous, painful, perplexing, sinister, startling, threatening, troublesome, troubling, unpleasant, unsettling, upsetting, vexing, worrisome, worrying
+disturbing, alarming, bothersome, creepy, depressing, disconcerting, discouraging, distressing, embarrassing, frightening, irritating, ominous, painful, perplexing, sinister, startling, threatening, troublesome, troubling, unpleasant, unsettling, upsetting, vexing, worrisome, worrying
 diverse, differing, disparate, distinct, divergent, diversified, varied 
 diversified, diverse, varied
 drag, annoyance, bore, bother, nuisance, draw, lug, move, pull, tow, transport, yank, crawl, creep, hang, shuffle
@@ -137,14 +137,14 @@ incomparable, exceptional, inimitable, transcendent, unmatched, unparalleled
 incredible, improbable, inconceivable, preposterous, ridiculous, unbelievable, unimaginable, astonishing, astounding, awe-inspiring, awesome, extraordinary,  glorious, great, prodigious, superhuman, unreal, wonderful
 indescribable, ineffable, sublime, unspeakable
 indifferent, aloof, apathetic, callous, detached, diffident, disinterested, distant, haughty, heartless, impartial, impervious, inattentive, neutral, nonchalant, uncaring, unconcerned, uninvolved, unresponsive, unsympathetic
-infuriating, aggravating, annoying, exasperating, frustrating, troubling
+infuriating, aggravating, exasperating, frustrating, troubling
 innovative, contemporary, ingenious, inventive, new, original
 inspiring, encouraging, exciting, exhilarating, heartening, inspirational, moving, stirring, uplifting
 interesting, attractive, beautiful, compelling, curious, delightful, engaging, exotic, fascinating, impressive, intriguing, lovely, pleasing, provocative, readable, refreshing, stimulating, striking, thought-provoking, unusual
 intimate, affectionate, confidential, cozy, loving, warm, confidential, detailed, firsthand, in-depth, penetrating, profound, visceral, confidant, confidante, affirm, assert, impart, imply
 invested, attired, cloaked, covered, draped, dressed, veiled, retained
 irritated, bothered, disturbed, troubled
-irritating, annoying, bothersome, disturbing
+irritating, bothersome, disturbing
 lack, absence, dearth, inadequacy, loss, paucity, poverty, reduction, scarcity, shortage, shortcoming, shortfall, need, require, want
 lacked, need, require, want
 lacking, flawed, inadequate, incomplete
@@ -224,7 +224,7 @@ sexy, hot,  mature, provocative, racy, seductive, sensual, sensuous
 shabby, crummy, decaying, decrepit, desolate, dilapidated, dingy, pitiful, ramshackle, ratty, rickety, run down, scruffy, seedy, shoddy, squalid, tacky, tattered, threadbare, worn, cheap, shoddy
 shameful, dastardly, disgraceful, embarrassing, flagrant, heinous, humiliating, ignominious, immoral, indecent, outrageous, reprehensible, scandalous, shocking, sinful, vile
 shock, awe, bump, collapse, confusion, consternation, disturbance, earthquake, excitement, impact, injury, jolt, scare, trauma, agitate, anger, appall, astound, awe, disgust, dismay, displease, disturb, flabbergast, horrify, insult, jar, jolt, offend, outrage, overwhelm, paralyze, rock, shake, shake up, sicken, startle, stun, traumatize, unsettle
-shocked, aghast, amazed, appalled, astonished, dismayed, offended, stunned, appalled, astonished, dismayed, frightened
+shocked, aghast, amazed, appalled, astonished, dismayed, offended, stunned, astonished, dismayed, frightened
 shocking, appalling, awful, disgraceful, disgusting, disquieting, distressing, dreadful, ghastly, heinous, horrible, horrific, horrifying, shameful, terrible, ugly
 simplicity, candor, clarity, directness, integrity, modesty, purity, restraint, unity
 simplistic, childish
@@ -254,8 +254,8 @@ sweet, delicious, luscious, sweetened, syrupy, appealing, beautiful, charming, d
 swoon, pass out
 terrible, appalling, atrocious, awesome, awful,  dire, disastrous, disturbing, dreadful, frightful, ghastly, gruesome, harrowing, hideous, horrendous, horrid, horrifying, serious, severe, shocking, unfortunate, unpleasant
 timeless, abiding, ageless, endless, enduring, immortal
-tired, annoyed, bored, distressed, drained, exasperated, fatigued, irritated, overworked, sleepy, stale
-tiresome, annoying, boring, dull, exhausting, ho-hum, laborious, monotonous, onerous, tedious, tired, tiring, uninteresting
+tired, bored, distressed, drained, exasperated, fatigued, irritated, overworked, sleepy, stale
+tiresome, boring, dull, exhausting, ho-hum, laborious, monotonous, onerous, tedious, tired, tiring, uninteresting
 top, dominant, elite, excellent, finest, leading, preeminent,  principal, cap, ceiling, cover, face, head, height, lid, peak, point, roof, surface, tip, best, head, cap, climb, cover, face, finish, beat, eclipse, exceed, outstrip, total, trim
 torture, misery, persecution, suffering, torment, abuse, annoy, beat, disturb, injure, maim, mistreat, mutilate, oppress, persecute, torment, wound
 touching, heartbreaking, pathetic, poignant, sad, stirring, stunning, wistful
