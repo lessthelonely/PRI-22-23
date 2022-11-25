@@ -28,7 +28,7 @@ curl -X POST -H 'Content-type:application/json'  -d '{
             "suggest"
         ]
   }
-}' http://localhost:8983/solr/goodreads/config
+}' http://localhost:8983/solr/books_schema/config
 
 curl -X POST -H 'Content-type:application/json'  -d '{
   "update-requesthandler": {
