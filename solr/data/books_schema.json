@@ -15,6 +15,9 @@
                     },
                     {
                         "class": "solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class":"solr.EnglishPossessiveFilterFactory"
                     }
                 ]
             }
@@ -32,7 +35,50 @@
                         "preserveOriginal": true
                     },
                     {
+                        "class": "solr.EnglishMinimalStemFilterFactory"
+                    },
+                    {
+                        "class":"solr.EnglishPossessiveFilterFactory"
+                    },
+                    {
                         "class": "solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.SynonymGraphFilterFactory",
+                        "synonyms": "synonyms.txt",
+                        "expand": true, 
+                        "ignoreCase": true
+                    },
+                    {
+                        "class": "solr.EdgeNGramFilterFactory",
+                        "minGramSize": "2",
+                        "maxGramSize": "10"
+                    }
+                ]
+            },
+            "queryAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.StandardTokenizerFactory"
+                },
+                "filters": [
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.EnglishMinimalStemFilterFactory"
+                    },
+                    {
+                        "class":"solr.EnglishPossessiveFilterFactory"
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.SynonymGraphFilterFactory",
+                        "synonyms": "synonyms.txt",
+                        "expand": true, 
+                        "ignoreCase": true
                     },
                     {
                         "class": "solr.EdgeNGramFilterFactory",
@@ -185,7 +231,21 @@
             "indexed": true,
             "stored": true,
             "multiValued": true
+        },
+        {
+            "name": "spell",
+            "type": "singleText"
         }
-    ]
+    ],
+    "add-copy-field": [
+    {
+        "source": "title",
+        "dest": "title_suggest"
+    },
+    {
+        "source": "title",
+        "dest": "spell"
+    }
+  ]
    
     }
