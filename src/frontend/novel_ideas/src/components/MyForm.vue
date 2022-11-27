@@ -18,9 +18,9 @@ export default{
 
         const submitForm = () => {
             console.log('Form submitted. Name=', name.value);
-            /*axios.get('http://localhost:8983/solr/books_schema/query?q=*:*&q.op=OR&indent=true').then((res) =>{
+            axios.get('http://localhost:3001/book/' + name.value).then((res) =>{
                 console.log(res.data);
-            });*/
+            });
         }
 
         console.log(el.value)
