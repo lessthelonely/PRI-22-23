@@ -10,11 +10,25 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(cors());
+/*
+var xml2js = require('xml2js');
+var parser = new xml2js.Parser();
+
+axios = require('axios');
+
+
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    axios.get('https://lookup.dbpedia.org/api/search?query=Barack%20Obama').then((res) => {
+       var xmlfile = res.data;
+         parser.parseString(xmlfile, function (err, result) {
+            var description = result;
+            console.log(description);  
+            //res.send(description);
+         });
 });
-
+});
+*/
 const book_routes = require('./routes/book');
 app.use('/book', book_routes);
 
