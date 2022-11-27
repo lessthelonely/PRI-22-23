@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
-from models import Book
+from models import Book, Suggestions
 import requests
 
 app = FastAPI()
@@ -43,10 +43,21 @@ async def get_book(book_id: int):
 # Search for filters
 
 # Suggestions
+@app.get("/suggestions/{query}", status_code=status.HTTP_200_OK) #response_model = List[Suggestions], 
+async def get_suggestions(query: str):
+    terms = 'http://localhost:8983/solr/books_schema/suggest?indent=true&q.op=OR&q='+query
+    list_terms = requests.get(terms).json()['suggest']['mySuggester'][query]['suggestions']
+    suggestions = []
+    for term in list_terms:
+        term_model = Suggestions(term=term['term'])
+        suggestions.append(term_model)
+    return suggestions
 
 # Spellcheck
 
 # Search for similar books (maybe send the book characteristics + book list of similar books?)
+
+# Entity oriented search
 
 # Search with a query --> have to search for the query in every term
 @app.get("/search/{query}", response_model = List[Book], status_code=status.HTTP_200_OK)

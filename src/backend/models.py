@@ -23,3 +23,8 @@ class Book(BaseModel):
 
     class Config:
         orm_mode = True
+
+# make another model and use it with book stuff + quote about author
+
+class Suggestions(BaseModel):
+    term: str
