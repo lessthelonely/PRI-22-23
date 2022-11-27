@@ -31,7 +31,7 @@ async def get_books():
         books.append(Book(**book))
     return books
 
-@app.get("/books/{book_id}", response_model = Book, status_code=status.HTTP_200_OK)
+@app.get("/book/{book_id}", response_model = Book, status_code=status.HTTP_200_OK)
 async def get_book(book_id: int):
     query = 'http://localhost:8983/solr/books_schema/query?q=id:' + str(book_id) + '&q.op=OR&indent=true&qt='
     book= requests.get(query).json()['response']['docs'][0]

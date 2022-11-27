@@ -18,7 +18,7 @@ export default{
 
         const submitForm = () => {
             console.log('Form submitted. Name=', name.value);
-            axios.get('http://localhost:3001/book/' + name.value).then((res) =>{
+            axios.get('http://localhost:8080/book/' + name.value).then((res) =>{
                 console.log(res.data);
             });
         }
