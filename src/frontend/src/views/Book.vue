@@ -53,7 +53,7 @@
                                 <h1 class="text-start" style="margin: 0px;margin-bottom: 15px;"><span
                                     style="color: rgb(0, 0, 0);">reviews</span></h1>
                                 <div v-if="review.length != 0">
-                                    <Review v-for="review in review" :key="review.id" :review="review" />
+                                    <Review v-for="review in review" :text="review"/>
                                 </div>
                                 <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else> 
                                     No available reviews.
