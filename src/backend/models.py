@@ -19,6 +19,7 @@ class Book(BaseModel):
     pacing: str
     buzzwords: Optional[List[str]]
     mood: Optional[List[str]]
+    mood_percentage: Optional[List[str]]
     review: Optional[List[str]]
     spellcheck: Optional[str]
 
