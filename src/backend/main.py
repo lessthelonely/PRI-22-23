@@ -128,7 +128,6 @@ async def filter_search(filter: Filter):
  
     return books
 
-
 # Suggestions
 @app.get("/suggestions/{query}", status_code=status.HTTP_200_OK) #response_model = List[Suggestions], 
 async def get_suggestions(query: str):
@@ -190,6 +189,7 @@ async def get_similar(book_id: int):
     return books
 
 # Entity oriented search
+
 
 # Search with a query --> have to search for the query in every term
 # Also does spell checking
