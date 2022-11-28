@@ -124,11 +124,12 @@ button:focus-visible {
 }
 
 #picture-1 {
-  background: url('https://media.discordapp.net/attachments/1042104897866301470/1046865776814071808/background.png?width=1178&height=662');
+  background: url('https://media.discordapp.net/attachments/1042104897866301470/1046865776814071808/background.png?width=1178&height=662') center / cover no-repeat;
+  height: 500px;
 }
 
 #picture-2 {
-  background: url('https://cdn.discordapp.com/attachments/1042104897866301470/1046865776419815554/background_2.png');
+  background: url('https://cdn.discordapp.com/attachments/1042104897866301470/1046865776419815554/background_2.png') center / cover no-repeat;
 }
 
 a {

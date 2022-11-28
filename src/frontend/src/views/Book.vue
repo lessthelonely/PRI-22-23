@@ -5,7 +5,7 @@
         <nav class="navbar navbar-light navbar-expand-md" id="mainNav"
             style="color: rgb(0,0,0);background: rgb(255,255,255);">
             <div class="container"><a class="navbar-brand" href="#" style="width: 100px;">
-                    <img src="../assets/logo_black.png" style="width: 100%;"></a><button data-bs-toggle="collapse"
+                    <img src="../assets/images/logo_black.png" style="width: 100%;"></a><button data-bs-toggle="collapse"
                     class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                     value="Menu"><i class="fa fa-bars"></i></button>
@@ -28,7 +28,7 @@
                         <div class="row" style="margin-bottom: 30px;">
                             <div class="col-md-5" style="width: 30%;">
                                 <div class="row" style="margin-bottom: 15px;">
-                                    <div class="col"><img src="../assets/cover.jpg"
+                                    <div class="col"><img src="../assets/images/cover.jpg"
                                             style="width: 100%;font-size: 16px;">
                                         <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center"
                                             style="height: auto;width: auto;margin: 0px;margin-bottom: 0px;"><span

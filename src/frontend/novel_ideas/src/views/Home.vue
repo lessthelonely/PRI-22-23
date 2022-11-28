@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <h1 class="brand-heading" style="width: 100%;"><img src="assets/img/logo.png" style="width: 100%;"></h1>
-                        <p class="intro-text" style="font-family: Cabin, sans-serif;">We're not like other girls, we <em>like books</em>.</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a>
+                        <p class="intro-text" style="font-family: Cabin;">We're not like other girls, we <em>like books</em>.</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
     <section class="text-center content-section" id="about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 mx-auto" style="font-family: Cabin, sans-serif;">
+                <div class="col-lg-8 mx-auto" style="font-family: Cabin;">
                     <h2>ABOUT</h2>
                     <p style="font-family: Arial;"><em>Reading is hard.</em> No, we mean it literally.<br></p>
                     <p style="font-family: Arial;">This is why a <em>very </em>competent team has created NOVELideas, which exists to make reading as easy as possible: one doesn't even have to know <em>what&nbsp;</em>they're looking for, only that they're looking for <em>something</em>!</p>

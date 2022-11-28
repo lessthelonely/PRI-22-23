@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,700&display=swap');
+
 .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
   color: var(--bs-body-color);
   background-color: var(--bs-white);
@@ -49,6 +51,27 @@ a {
   color: #fff;
 }
 
+.nav-link {
+  color: white;
+}
+
+a.nav-link, a.btn.btn-link.btn-circle {
+  color: white;
+  font-weight: 700;
+  font-family: 'Cabin';
+  text-transform: uppercase;
+}
+
+.heading {
+  font-weight: 700;
+  font-family: 'Cabin';
+  text-transform: uppercase;
+}
+
+a.nav-link:hover, a.btn.btn-link.btn-circle:hover {
+  color:gray;
+}
+
 a {
   color: #fff;
   text-decoration: underline;
@@ -83,4 +106,9 @@ body {
   height: 100%;
   color: #fff;
   background-color: #000;
+}
+
+#about, #contact {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
