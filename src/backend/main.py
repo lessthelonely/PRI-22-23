@@ -42,7 +42,6 @@ async def get_book(book_id: int):
 
 # Search for filters
 
-
 # Suggestions
 @app.get("/suggestions/{query}", status_code=status.HTTP_200_OK) #response_model = List[Suggestions], 
 async def get_suggestions(query: str):
@@ -54,13 +53,59 @@ async def get_suggestions(query: str):
         suggestions.append(term_model)
     return suggestions
 
-# Spellcheck
-
 # Search for similar books (maybe send the book characteristics + book list of similar books?)
+@app.get("/similar/{book_id}", status_code=status.HTTP_200_OK)
+async def get_similar(book_id: int):
+    query = 'http://localhost:8983/solr/books_schema/query?q=id:' + str(book_id) + '&q.op=OR&indent=true&qt='
+    book= requests.get(query).json()['response']['docs'][0] # Get the book
+    
+    # Get book's genre
+    genre = "(" + book['genre'][0]
+    for g in book['genre'][1:]:
+        genre += " OR " + g
+    genre += ")"
+
+    # Get book's sensitivity
+    sensitivity = "(" + book['sensitivity'][0]
+    for s in book['sensitivity'][1:]:
+        sensitivity += " OR " + s
+    sensitivity += ")"
+
+    # Get book's buzzwords
+    buzzwords = "(" + book['buzzwords'][0]
+    for b in book['buzzwords'][1:]:
+        buzzwords += " OR " + b
+    buzzwords += ")"
+
+    if genre == "" and (sensitivity!="" or buzzwords!=""):
+        query = sensitivity + " OR " + buzzwords
+    elif sensitivity == "" and (genre!="" or buzzwords!=""):
+        query = genre + " OR " + buzzwords
+    elif buzzwords == "" and (genre!="" or sensitivity!=""):
+        query = genre + " OR " + sensitivity
+    elif (genre == "" and sensitivity == "") and buzzwords!="":
+        query = buzzwords
+    elif (genre == "" and buzzwords == "") and sensitivity!="":
+        query = sensitivity
+    elif (sensitivity == "" and buzzwords == "") and genre!="":
+        query = genre
+    else:
+        query = genre + " OR " + sensitivity + " OR " + buzzwords
+
+    q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q=' + query + '&qf=genre%20buzzwords%20sensitivity'
+
+    list_books= requests.get(q).json()['response']['docs']
+    books=[]
+    for book in list_books:
+        if book['id'] != str(book_id):
+            books.append(Book(**book))
+ 
+    return books
 
 # Entity oriented search
 
 # Search with a query --> have to search for the query in every term
+# Also does spell checking
 @app.get("/search/{query}", status_code=status.HTTP_200_OK)
 async def search_books(query: str):
     query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
