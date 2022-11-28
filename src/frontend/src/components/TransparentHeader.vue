@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-light navbar-expand-md" id="mainNav">
+    <nav class="navbar navbar-light navbar-expand-md" id="mainNav" style="background-color: black;">
         <div class="container">
             <a class="navbar-brand" href="#" style="width: 100px;">
                 <img src="../assets/images/logo.png" style="width: 100%;">

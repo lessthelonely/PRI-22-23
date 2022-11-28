@@ -43,7 +43,7 @@
                                 <div class="row">
                                     <div class="col" style="height: 311px;">
                                         <h6 class="text-start" style="color: rgb(0,0,0);margin: 0px;margin-bottom: 15px;">SYNOPSIS</h6>
-                                        <p class="text-justify" style="font-family: Arial;color: rgb(0,0,0);font-size: 15px;height: 80%; text-align: justify;"> Description </p>
+                                        <p class="text-justify" style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;height: 80%; text-align: justify;"> Description </p>
                                     </div>
                                 </div>
                             </div>
@@ -52,13 +52,12 @@
                             <div class="col flex-column">
                                 <h1 class="text-start" style="margin: 0px;margin-bottom: 15px;"><span
                                     style="color: rgb(0, 0, 0);">reviews</span></h1>
-                                <div>
-                                    <div class="card" style="margin-bottom: 15px;">
-                                        <div class="card-body">
-                                            <p class="card-text" style="color: rgb(0,0,0);font-family: Arial;font-size: 13px;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. </p>
-                                        </div>
-                                    </div>
+                                <div v-if="reviews.length != 0">
+                                    <Review v-for="review in reviews" :key="review.id" :review="review" />
                                 </div>
+                                <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else> 
+                                    No available reviews.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -71,11 +70,18 @@
 <script lang="js">
 import { defineComponent } from 'vue'
 import WhiteHeader from '../components/WhiteHeader.vue'
+import Review from '../components/Review.vue'
 
 export default defineComponent({
     name: 'Book',
+    data() {
+        return {
+            reviews: []
+        }
+    },
     components: {
-        WhiteHeader
+        WhiteHeader,
+        Review
     },
     setup() {
         return {}

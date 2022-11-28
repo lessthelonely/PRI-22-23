@@ -1,27 +1,6 @@
 <template>
-
-    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"
-        style="background: rgb(255,255,255); display: block; width: 100%;">
-        <nav class="navbar navbar-light navbar-expand-md" id="mainNav"
-            style="color: rgb(0,0,0);background: rgb(255,255,255);">
-            <div class="container"><a class="navbar-brand" href="#" style="width: 100px;">
-                <img
-                        src="../assets/images/logo_black.png" style="width: 100%;"></a><button data-bs-toggle="collapse"
-                    class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
-                    value="Menu"><i class="fa fa-bars"></i></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item nav-link" style="color: #000000;"><a class="nav-link active" href="#about"
-                                style="color: rgb(0,0,0);">About</a></li>
-                        <li class="nav-item nav-link"><a class="nav-link" href="#contact"
-                                style="color: #000000;">contact</a></li>
-                        <li class="nav-item nav-link"><a class="nav-link" href="#contact"
-                                style="color: #000000;">search</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <WhiteHeader />
+    <body id="page-top" data-bs-spy="scroll" style="background: rgb(255,255,255); display: block; width: 100%;">
         <div class="container">
             <div class="col">
                 <div class="row">
@@ -71,3 +50,18 @@
         </div>
     </body>
 </template>
+
+<script lang="js" >
+import { defineComponent } from 'vue';
+import WhiteHeader from '../components/WhiteHeader.vue';
+
+export default defineComponent({
+    name: 'Search',
+    components: {
+        WhiteHeader,
+    },
+    setup() {
+        return {};
+    },
+});
+</script>

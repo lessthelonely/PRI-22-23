@@ -2,7 +2,7 @@
     <TransparentHeader />
 
     <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"
-        style="display: block; width: 100%;">
+        style="display: block; width: 100%; background-color: black;">
         <header
             style="background-image:url('https://media.discordapp.net/attachments/1042104897866301470/1046865776814071808/background.png?width=1178&height=662') center / cover no-repeat; ">
             <div class="intro-body row" id="picture-1">
