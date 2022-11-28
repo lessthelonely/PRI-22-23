@@ -185,3 +185,7 @@ body {
     background-color: #f9f9f9;
   }
 }
+
+.text-start {
+  text-align: start;
+}
