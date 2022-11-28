@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
-from models import Book, Suggestions
+from models import Book, Suggestions, Filter
 import requests
 
 app = FastAPI()
@@ -40,6 +40,94 @@ async def get_book(book_id: int):
     return book
 
 # Search for filters
+@app.post("/filter-search", status_code=status.HTTP_200_OK)
+async def filter_search(filter: Filter):
+    query = ""
+    terms =""
+
+    if filter.author:
+        if '"' in filter.author:
+            query += "author:" + filter.author + ' '
+        else:
+            query += "author:" +'"'+filter.author+'" '
+        terms += "author "
+    
+    if filter.book_format:
+        query += "book_format:"+filter.book_format+' '
+        terms += "book_format "
+    
+    if filter.description:
+        query += "description:" +filter.description+' '
+        terms += "description "
+
+    if filter.genre:
+        if '"' in filter.genre:
+            query += "genre:" + filter.genre + ' '
+        else:
+            query += "genre:" +'"'+filter.genre+'" '
+        terms += "genre "
+
+    if filter.isbn:
+        query += "isbn:" +filter.isbn+' '
+        terms += "isbn "
+
+    if filter.page_count:
+        query += "page_count:" +str(filter.page_count)+' '
+        terms += "page_count "
+
+    if filter.rating:
+        query += "rating:" +str(filter.rating)+' '
+        terms += "rating "
+
+    if filter.review_count:
+        query += "review_count:" +str(filter.review_count)+' '
+        terms += "review_count "
+    
+    if filter.title:
+        query += "title:" +filter.title+' '
+        terms += "title "
+
+    if filter.price:
+        query += "price:" +str(filter.price)+' '
+        terms += "price "
+
+    if filter.sensitivity:
+        if '"' in filter.sensitivity:
+            query += "sensitivity:" + filter.sensitivity + ' '
+        else:
+            query += "sensitivity:" +'"'+filter.sensitivity+'" '
+        terms += "sensitivity "
+
+    if filter.pacing:
+        if '"' in filter.pacing:
+            query += "pacing:" + filter.pacing + ' '
+        else:
+            query += "pacing:" +'"'+filter.pacing+'" '
+        terms += "pacing "
+
+    if filter.buzzwords:
+        if '"' in filter.buzzwords:
+            query += "buzzwords:" + filter.buzzwords + ' '
+        else:
+            query += "buzzwords:" +'"'+filter.buzzwords+'" '
+        terms += "buzzwords "
+    
+    if filter.mood:
+        if '"' in filter.mood:
+            query += "mood:" + filter.mood + ' '
+        else:
+            query += "mood:" +'"'+filter.mood+'" '
+        terms += "mood "
+
+    query_request = "http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q="+query+"&qf="+terms
+
+    list_books= requests.get(query_request).json()['response']['docs']
+    books=[]
+    for book in list_books:
+        books.append(Book(**book))
+ 
+    return books
+
 
 # Suggestions
 @app.get("/suggestions/{query}", status_code=status.HTTP_200_OK) #response_model = List[Suggestions], 

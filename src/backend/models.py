@@ -29,3 +29,22 @@ class Book(BaseModel):
 
 class Suggestions(BaseModel):
     term: str
+
+class Filter(BaseModel):
+    author: Optional[str]
+    book_format: Optional[str]
+    description: Optional[str]
+    genre: Optional[str]
+    isbn: Optional[str]
+    page_count: Optional[int]
+    rating:Optional[float] 
+    review_count: Optional[int]
+    title: Optional[str]
+    price: Optional[float]
+    sensitivity: Optional[str]
+    pacing: Optional[str]
+    buzzwords: Optional[str]
+    mood: Optional[str]
+
+    class Config:
+        orm_mode = True
