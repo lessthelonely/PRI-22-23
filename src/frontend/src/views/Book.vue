@@ -9,10 +9,10 @@
                         <div class="row" style="margin-bottom: 30px;">
                             <div class="col-md-5" style="width: 30%;">
                                 <div class="row" style="margin-bottom: 15px;">
-                                    <div class="col"> <img src="../assets/images/cover.jpg" style="width: 100%;font-size: 16px;">
+                                    <div class="col"> <img v-bind:src="cover_img" style="width: 100%;font-size: 16px;">
                                         <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center" style="height: auto;width: auto;margin: 0px;margin-bottom: 0px;">
                                             <span style="color: rgb(0, 0, 0); margin-top: 15px;">
-                                                [X.X]
+                                                {{rating}}
                                                 <FontAwesomeIcon icon="fa-star" />
                                             </span>
                                         </h1>
@@ -32,18 +32,18 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col">
-                                        <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">title</h1>
-                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">AUTHOR(S)
+                                        <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{title}}</h1>
+                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">{{authors}}
                                         </h3> </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h6 class="text-start" style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">genres</h6> </div>
+                                        <h6 class="text-start" style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">{{genres}}</h6> </div>
                                 </div>
                                 <div class="row">
                                     <div class="col" style="height: 311px;">
                                         <h6 class="text-start" style="color: rgb(0,0,0);margin: 0px;margin-bottom: 15px;">SYNOPSIS</h6>
-                                        <p class="text-justify" style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;height: 80%; text-align: justify;"> Description </p>
+                                        <p class="text-justify" style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;height: 80%; text-align: justify;"> {{description}} </p>
                                     </div>
                                 </div>
                             </div>
@@ -79,9 +79,11 @@ export default defineComponent({
     data() {
         return {
             author: [],
+            authors:"",
             book_format:[],
             description:"",
             genre:[],
+            genres:"",
             cover_img:"",
             title:"",
             isbn:"",
@@ -94,6 +96,7 @@ export default defineComponent({
             buzzwords:[],
             mood:[],
             mood_percentage:[],
+            moods:"",
             review:[]
       }
     },
@@ -124,7 +127,25 @@ export default defineComponent({
             this.mood = res.data.mood
             this.mood_percentage = res.data.mood_percentage
             this.review = res.data.review
+
+            this.authors = this.author.join(", ");
+            this.genres = this.genre.join(", ");
+
+            for (var i = 0; i < this.mood_percentage.length; i++) {
+                var number = this.mood_percentage[i].split(":")[1];
+                number = number.split(",")[0];
+                console.log(number);
+                number = parseInt(number)*100;
+                if(number != 0){
+                    this.moods += this.mood_percentage[i].split(":")[0] + " " + number .toString() + "%\n";
+                }
+                console.log(this.moods);
+            }
+
         });
+
+        
+
     }
 })
 
