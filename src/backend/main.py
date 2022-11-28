@@ -42,6 +42,7 @@ async def get_book(book_id: int):
 
 # Search for filters
 
+
 # Suggestions
 @app.get("/suggestions/{query}", status_code=status.HTTP_200_OK) #response_model = List[Suggestions], 
 async def get_suggestions(query: str):
@@ -63,10 +64,17 @@ async def get_suggestions(query: str):
 @app.get("/search/{query}", response_model = List[Book], status_code=status.HTTP_200_OK)
 async def search_books(query: str):
     query = 'http://localhost:8983/solr/books_schema/query?q=' + query+ '&q.op=OR&defType=edismax&indent=true&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review&qt='
+    print(requests.get(query).json())
     list_books= requests.get(query).json()['response']['docs']
+    spell = requests.get(query).json()['spellcheck']['collations']
+    spell_term=''
+    if len(spell) > 0:
+        spell_term = spell[1]
     books=[]
     for book in list_books:
-        books.append(Book(**book))
+        book_append = Book(**book)
+        book_append.spellcheck = spell_term
+        books.append(book_append)
     return books
 
 # pip install "fastapi[all]"

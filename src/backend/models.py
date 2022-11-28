@@ -20,6 +20,7 @@ class Book(BaseModel):
     buzzwords: Optional[List[str]]
     mood: Optional[List[str]]
     review: Optional[List[str]]
+    spellcheck: Optional[str]
 
     class Config:
         orm_mode = True
