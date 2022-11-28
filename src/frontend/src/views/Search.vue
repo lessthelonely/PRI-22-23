@@ -6,7 +6,7 @@
             style="color: rgb(0,0,0);background: rgb(255,255,255);">
             <div class="container"><a class="navbar-brand" href="#" style="width: 100px;">
                 <img
-                        src="../assets/logo_black.png" style="width: 100%;"></a><button data-bs-toggle="collapse"
+                        src="../assets/images/logo_black.png" style="width: 100%;"></a><button data-bs-toggle="collapse"
                     class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button"
                     aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"
                     value="Menu"><i class="fa fa-bars"></i></button>
@@ -58,7 +58,7 @@
                                         <div class="col-md-4 text-center align-self-center"
                                             style="width: 10%;margin: 0px;margin-right: 10px;margin-left: 10px;">
                                             <img
-                                                src="../assets/cover.jpg"
+                                                src="../assets/images/cover.jpg"
                                                 style="width: auto;height: 300px;box-shadow: 2px 2px 9px 2px rgba(0,0,0,0.26);">
                                         </div>
                                     </div>

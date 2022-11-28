@@ -10,9 +10,15 @@ axios.defaults.baseURL = 'http://localhost:3001/';
 //Bootstrap imports
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
-import './assets/styles.css'
+import './assets/css/styles.css'
 
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faAngleDoubleDown, faStar } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faAngleDoubleDown, faStar)
 
 const app = createApp(App)
 app.use(router)
+app.component('FontAwesomeIcon', FontAwesomeIcon);
 app.mount('#app')
