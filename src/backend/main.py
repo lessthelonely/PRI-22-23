@@ -17,7 +17,6 @@ app.add_middleware(
     expose_headers=["*"],
 )
 
-
 @app.get("/")
 async def root():
     return {"message": "Hello World"}

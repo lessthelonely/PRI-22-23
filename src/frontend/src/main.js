@@ -9,8 +9,6 @@ axios.defaults.baseURL = 'http://localhost:3001/';
 
 //Bootstrap imports
 
-
-
 const app = createApp(App)
 app.use(router)
 app.mount('#app')
