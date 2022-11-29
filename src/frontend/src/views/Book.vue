@@ -7,25 +7,25 @@
                 <div class="row">
                     <div class="col">
                         <div class="row" style="margin-bottom: 30px;">
-                            <div class="col-md-5" style="width: 30%;">
-                                <div class="row" style="margin-bottom: 15px;">
-                                    <div class="col"> <img v-bind:src="cover_img" style="width: 100%;font-size: 16px;">
-                                        <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center" style="height: auto;width: auto;margin: 0px;margin-bottom: 0px;">
-                                            <span style="color: rgb(0, 0, 0); margin-top: 15px;">
-                                                {{rating}}
-                                                <FontAwesomeIcon icon="fa-star" />
-                                            </span>
-                                        </h1>
+                            <div class="col-md-5" style="width: 30%; display: flex; flex-direction: column;">
+                                <div class="row" style="margin-bottom: 30px;">
+                                    <div class="col">
+                                        <img v-bind:src="cover_img" style="width: 100%;font-size: 16px; box-shadow: 2px 2px 9px 2px rgb(0 0 0 / 26%);">
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" style="text-align: center; display: flex; justify-content: center;">
+                                    <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center" style="height: auto; color: rgb(0, 0, 0); width: auto;">
+                                        {{rating}} <FontAwesomeIcon icon="fa-star" />
+                                    </h1>
+                                </div>
+                                <div class="row" style="margin-top: 20px;">
                                     <div class="col text-start">
                                         <h6 class="text-start d-md-flex justify-content-md-center align-items-md-center" style="height: auto;width: auto;margin: 0px;margin-bottom: 0px;">
                                             <span style="color: rgb(0, 0, 0);">MOODS</span>
                                         </h6>
                                     </div>
                                     <p style="font-family: Arial;font-size: 13px;text-align: justify;padding: 5px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 10px;">
-                                        <span style="color: rgb(0, 0, 0);">STATEMENT XX%</span>
+                                        <span style="color: rgb(0, 0, 0);">XX% STATEMENT</span>
                                     </p>
                                 </div>
                             </div>
