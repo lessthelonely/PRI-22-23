@@ -18,6 +18,11 @@ const router = createRouter({
             name: 'Search',
             component: () => import('../views/Search.vue')
         },
+        {
+            path:'/autocomplete',
+            name: 'Autocomplete',
+            component: () => import('../views/Autocomplete.vue')
+        }
     ]
 })
 
