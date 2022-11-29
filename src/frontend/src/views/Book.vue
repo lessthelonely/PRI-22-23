@@ -16,11 +16,12 @@
                                     </div>
                                 </div>
                                 <div class="row" style="text-align: center; display: flex; justify-content: center;">
-                                    <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center"
-                                        style="height: auto; color: rgb(0, 0, 0); width: auto;">
-                                        {{ rating }}
-                                        <FontAwesomeIcon icon="fa-star" />
-                                    </h1>
+                                    <div class="col" style="text-align: center; display: flex; justify-content: center;">
+                                        <h3 class="text-center d-md-flex justify-content-md-center align-items-md-center" style="height: auto; color: rgb(0, 0, 0); width: auto;">
+                                            {{ rating }}
+                                        </h3>
+                                        <FontAwesomeIcon icon="fa-star" style="color: black; font-size: 30px; margin-left: 5px;" />
+                                    </div>
                                 </div>
                                 <div class="row" style="margin-top: 20px;">
                                     <div class="col text-start">
@@ -29,8 +30,7 @@
                                             <span style="color: rgb(0, 0, 0);">MOODS</span>
                                         </h6>
                                     </div>
-                                    <p
-                                        style="font-family: Arial;font-size: 13px;text-align: justify;padding: 5px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 10px;">
+                                    <p v-if="this.moods.length != 0" style="font-family: Arial;font-size: 13px;text-align: justify;padding: 5px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 10px;">
                                         <span class="badge badge-dark" v-for="m in moods" style="background-color: #616161; margin: 2.5px;">
                                             {{ m }}
                                         </span>
@@ -41,11 +41,12 @@
                                 <div class="row">
                                     <div class="col">
                                         <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{ title }}</h1>
-                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">{{ authors }}
-                                            <span class="text-muted" style="font-size: 14px;">
-                                                {{ abstract }}
-                                            </span>
+                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">
+                                            {{ authors }}
                                         </h3>
+                                        <h6 class="text-muted" style="font-size: 14px;">
+                                            {{ abstract }}
+                                        </h6>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -171,10 +172,7 @@ export default defineComponent({
 
             this.authors = this.author.join(", ");
             this.genres = this.genre.join(", ");
-
-            console.log("MOOD PERCENTAGE: " + this.mood_percentage);
             var moods_array = this.mood_percentage[0].split(',');
-            console.log("INSIDE MOOD: " + moods_array[1]);
 
             for (var i = 0; i < moods_array.length; i++) {
                 var number = moods_array[i].split(":")[1];
