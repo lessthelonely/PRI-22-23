@@ -41,21 +41,18 @@ async def get_book(book_id: int):
     abstracts=[]
 
     author = book['author']
-    for i in author:
-        auth = i.split(' ')
-        writer = auth[0]+'_'+auth[1]
-        query= "https://dbpedia.org/page/" + writer
-        abstract = ""
+    author = author[0].split(' ')
+    writer = author[0]+'_'+author[1]
+    query= "https://dbpedia.org/page/" + writer
+    abstract = ""
 
-        response = requests.get(query)
-        soup=BeautifulSoup(response.content, 'html.parser')
-        language= soup.find_all('span', {'property': 'dbo:abstract', 'lang':'en'})
-        for tag in language:
-            abstract += tag.text.strip()
-            if(abstract != ""):
-                abstracts.append(abstract)
-    
-    book['abstract'] = abstracts
+    response = requests.get(query)
+    soup=BeautifulSoup(response.content, 'html.parser')
+    language= soup.find_all('span', {'property': 'dbo:abstract', 'lang':'en'})
+    for tag in language:
+        abstract += tag.text.strip()
+        if(abstract != ""):
+            book['abstract'] = abstract
     
     return book
 

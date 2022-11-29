@@ -22,7 +22,7 @@ class Book(BaseModel):
     mood_percentage: Optional[List[str]]
     review: Optional[List[str]]
     spellcheck: Optional[str]
-    abstract: Optional[List[str]]
+    abstract: Optional[str]
 
     class Config:
         orm_mode = True
