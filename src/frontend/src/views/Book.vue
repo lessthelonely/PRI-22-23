@@ -115,7 +115,8 @@ export default defineComponent({
             mood:[],
             mood_percentage:[],
             moods:[],
-            review:[]
+            review:[],
+            abstract: ""
       }
     },
     components: {
@@ -145,6 +146,7 @@ export default defineComponent({
             this.mood = res.data.mood
             this.mood_percentage = res.data.mood_percentage
             this.review = res.data.review
+            this.abstract = res.data.abstract
 
             this.authors = this.author.join(", ");
             this.genres = this.genre.join(", ");
@@ -154,8 +156,6 @@ export default defineComponent({
             console.log("INSIDE MOOD: " + moods_array[1]);
 
             for (var i = 0; i < moods_array.length; i++) {
-
-                
                 var number = moods_array[i].split(":")[1];
                 number = number.split(",")[0];
                 number = number.split("'")[0];
