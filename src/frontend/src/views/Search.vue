@@ -20,10 +20,10 @@
                     </div>
                 </div>
                 <div class="row" v-if="showAdvanced" style="margin-top: 15px;">
-                    <div class="col" id="search-bar">
-                        <button id="add-button" style="margin-right: 15px;" @click="addFilter">
+                    <button id="add-button" style="margin-right: 15px;" @click="addFilter">
                             <FontAwesomeIcon icon="fa-plus" />
                         </button>
+                    <div class="col" id="search-bar">
                         <select class="filter-select" placeholder="Attribute"
                             style="font-family: Cabin; padding: 10px;">
                             <option value="author">Author</option>
@@ -92,7 +92,19 @@ export default defineComponent({
             var inputs = document.querySelectorAll(".filter-input");
             var values = [];
             for (var i = 0; i < inputs.length; i++) {
-                values.push(inputs[i].value);
+                if((inputs[i].value).includes("<")){
+                    var strInt = (inputs[i].value).split("<");
+                    var range = "[0 TO "+ strInt[1] +"]";
+                    values.push(range);
+                }
+                else if((inputs[i].value).includes("-")){
+                    var strInt = (inputs[i].value).split("-");
+                    var range = "["+ strInt[0] +" TO "+ strInt[1] +"]";
+                    values.push(range);
+                }
+                else{
+                    values.push(inputs[i].value);
+                }            
             }
 
             console.log(filters, values);
@@ -103,6 +115,36 @@ export default defineComponent({
                     this.books = response.data;
                 });
             }
+            else{
+
+                var jsonData = {};
+                for (var i = 0; i < filters.length; i++) {
+                    jsonData[filters[i]] = values[i];
+                }
+
+                console.log(jsonData);
+                
+
+
+
+            }
+            /*
+            {
+  "author": "string",
+  "book_format": "string",
+  "genre": "string",
+  "isbn": "string",
+  "page_count": 0,
+  "rating": 0,
+  "review_count": 0,
+  "title": "string",
+  "price": 0,
+  "sensitivity": "string",
+  "pacing": "string",
+  "buzzwords": "string",
+  "mood": "string"
+}
+ */
         },
 
         showAdvancedInputs() {

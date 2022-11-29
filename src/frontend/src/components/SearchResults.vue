@@ -25,7 +25,7 @@
                         </div>
                     </div>
                     <div style="width: 30%;">
-                        <img v-bind:src="book.cover_img" style="box-shadow: 2px 2px 9px 2px rgb(0 0 0 / 26%); float: right;" />
+                        <img v-bind:src="book.cover_img" style="width:100%; box-shadow: 2px 2px 9px 2px rgb(0 0 0 / 26%); float: right;" />
                     </div>
                 </div>
             </div>
@@ -61,11 +61,16 @@ export default defineComponent({
         } else {
             this.description = this.book.description;
         }
-        var randomBuzzword1 = this.between(0, this.book.buzzwords.length);
-        this.buzzword = this.book.buzzwords[randomBuzzword1];
+
+        if(this.book.buzzwords!=null){
+            var randomBuzzword1 = this.between(0, this.book.buzzwords.length);
+            this.buzzword = this.book.buzzwords[randomBuzzword1];
+        }
+        
 
         var moods_array = this.book.mood_percentage[0].split(',');
-        if(moods_array[0] != "[]"){
+
+    if(moods_array[0] != "[]"){
         for (var i = 0; i < moods_array.length; i++) {
                 var number = moods_array[i].split(":")[1];
                 number = number.split(",")[0];
@@ -85,9 +90,6 @@ export default defineComponent({
         moodText = moodText.split(' ');
         this.mood = " and "+ moodText[0] + " of readers felt " + moodText[1];
     }
-
-       
-
     },
     methods: {
         bookPage() {
