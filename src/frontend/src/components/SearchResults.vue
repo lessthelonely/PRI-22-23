@@ -6,7 +6,8 @@
                                             <h5 class="text-muted mb-2">{{authors}}</h5>
                                             <p
                                                 style="font-size: 14px;height: 200px;margin-bottom: 10px;width: 100%;text-align: justify;">
-                                                <span style="color: rgb(30, 25, 21);">{{book.description}} [MORE]</span><br></p>
+                                                <span style="color: rgb(30, 25, 21);">{{book.description}} 
+                                                    <button id="button-search" @click="bookPage">[MORE]</button></span><br></p>
                                             <p class="flex-column justify-content-md-end"
                                                 style="font-size: 10px;margin-bottom: 0px;width: 100%;color: rgb(71,67,67);">
                                                 <em>This one is [RANDOM BUZZWORDS] and X% of readers have found it
@@ -24,7 +25,6 @@
 
 <script lang="js" >
 import { defineComponent} from 'vue';
-import axios from "axios";
 import router from '../router';
 
 export default defineComponent({
@@ -41,6 +41,13 @@ export default defineComponent({
     },
     mounted(){
         this.authors = this.book.author.join(", ");
+    },
+    methods:{
+        bookPage(){
+            router.push({name: 'Book', params: {id: this.book.id}});
+        }
     }
+   
 });
 </script>
+
