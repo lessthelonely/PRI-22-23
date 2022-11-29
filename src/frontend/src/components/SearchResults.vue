@@ -17,7 +17,7 @@
                             <h5 class="text-muted mb-2"
                                 style="font-family: Cabin; text-transform: uppercase; text-align: justify; font-weight: 600;">
                                 {{ authors }}</h5>
-                            <p style="font-size: 18px;height: 200px;margin-bottom: 10px;width: 100%; text-align: justify;">
+                            <p style="font-size: 18px;height: 200px;margin-bottom: 10px;width: 100%; text-align: justify;margin-top: 20px;">
                                 <span style="color: rgb(30, 25, 21); text-align: justify;">
                                     {{ description }}
                                     <button id="button-search" @click="bookPage">[MORE]</button>
@@ -66,8 +66,6 @@ export default defineComponent({
         this.buzzword = this.book.buzzwords[randomBuzzword1];
 
         var moods_array = this.book.mood_percentage[0].split(',');
-        console.log(moods_array[0]);
-        console.log(moods_array.length);
         if(moods_array[0] != "[]"){
         for (var i = 0; i < moods_array.length; i++) {
                 var number = moods_array[i].split(":")[1];
