@@ -8,7 +8,7 @@
                     <div class="col-lg-xl">
                         <input type="text" id="input-query"
                             style="width: 80%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;"
-                            placeholder="Put your query here." v-on:keyup.enter="search()" />
+                            placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>
                         <button class="btn btn-primary" style="width: 5%; font-size: 20px; margin-left: 15px;"
                             @click="search">
                             <FontAwesomeIcon icon="fa-search" />
@@ -17,6 +17,14 @@
                             @click="showAdvancedInputs">
                             <FontAwesomeIcon icon="angle-double-down" />
                         </button>
+                        <div v-if="terms && modal">
+        <ul >
+            <li style="color:black" v-for="term in terms" @click="setTerm(term)">
+                {{ term }}
+            </li>
+        </ul>
+    
+    </div>
                     </div>
                 </div>
                 <div class="row" v-if="showAdvanced" style="margin-top: 15px;">
@@ -75,10 +83,27 @@ export default defineComponent({
         return {
             books: [],
             showAdvanced: false,
-            spelling: ""
+            spelling: "",
+            term: "",
+            modal: false,
+            terms: []
         }
     },
     methods: {
+        async filterTerms(){
+            console.log(this.term);
+            this.terms=[];
+                await axios.get("/suggestions/"+this.term).then((response) => {
+                    for (var i = 0; i < response.data.length; i++) {
+                        this.terms.push(response.data[i].term);
+                    }
+                });
+        },
+        setTerm(term){
+            this.term=term;
+            this.modal=false;
+            this.search();
+        },
         async search() {
             const query = document.getElementById("input-query").value;
             console.log(query);
