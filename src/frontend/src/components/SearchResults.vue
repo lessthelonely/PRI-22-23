@@ -6,7 +6,7 @@
                                             <h5 class="text-muted mb-2">{{authors}}</h5>
                                             <p
                                                 style="font-size: 14px;height: 200px;margin-bottom: 10px;width: 100%;text-align: justify;">
-                                                <span style="color: rgb(30, 25, 21);">{{book.description}} 
+                                                <span style="color: rgb(30, 25, 21);">{{description}} 
                                                     <button id="button-search" @click="bookPage">[MORE]</button></span><br></p>
                                             <p class="flex-column justify-content-md-end"
                                                 style="font-size: 10px;margin-bottom: 0px;width: 100%;color: rgb(71,67,67);">
@@ -33,7 +33,8 @@ export default defineComponent({
     components: {},
     data(){
         return {
-            authors:""
+            authors:"",
+            description:""
         }
     },
     setup() {
@@ -41,6 +42,13 @@ export default defineComponent({
     },
     mounted(){
         this.authors = this.book.author.join(", ");
+        console.log(this.book.description.split(/[\\?|\\.|!]/g));
+        if(this.book.description.split(/[\\?|\\.|!]/).length > 2){
+            this.description = this.book.description.split(/[\\?|\\.|!]/)[0] + "." + this.book.description.split(/[\\?|\\.|!]/)[1] + ".";
+        }
+        else{
+            this.description = this.book.description;
+        }
     },
     methods:{
         bookPage(){
