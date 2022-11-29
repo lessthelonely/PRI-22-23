@@ -3,7 +3,7 @@
 
     <body id="page-top" data-bs-spy="scroll" style="background: rgb(255,255,255); display: block; width: 100%;">
         <div class="container">
-            <div class="col" id="search-bar">
+            <div class="col">
                 <div class="row">
                     <div class="col-lg-xl">
                         <input type="text"
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="row" v-if="showAdvanced" style="margin-top: 15px;">
-                    <div class="col">
+                    <div class="col" id="search-bar">
                         <button id="add-button" style="margin-right: 15px;" @click="addFilter">
                             <FontAwesomeIcon icon="fa-plus" />
                         </button>
@@ -39,7 +39,7 @@
                             <option value="buzzwords">Buzzwords</option>
                             <option value="mood">Moods</option>
                         </select>
-                        <input class="filter-input" type="text" style="margin-left: 15px; padding: 10px;" />
+                        <input class="filter-input" type="text" style="font-family: Cabin; margin-left: 15px; padding: 10px;" />
                     </div>
                 </div>
             </div>
@@ -89,29 +89,14 @@ export default defineComponent({
         addFilter() {
             var searchBar = document.getElementById("search-bar");
 
-            var filterInput = ```
-                <div class="row" v-if="showAdvanced" style="margin-top: 15px;">
-                    <div class="col">
-                        <select class="filter-select" placeholder="Attribute" style="font-family: Cabin; padding: 10px;">
-                            <option value="author">Author</option>
-                            <option value="book_format">Format</option>
-                            <option value="ISBN">ISBN</option>
-                            <option value="page_count">Page Count</option>
-                            <option value="rating">Rating</option>
-                            <option value="review_count">Review Count</option>
-                            <option value="title">Title</option>
-                            <option value="price">Price</option>
-                            <option value="sensitivity">Sensitivity</option>
-                            <option value="pacing">Pacing</option>
-                            <option value="buzzwords">Buzzwords</option>
-                            <option value="mood">Moods</option>
-                        </select>
-                        <input class="filter-input" type="text" style="margin-left: 15px; padding: 10px;" />
-                    </div>
-                </div>
-            ```;
+            var col = "<div class='col' style='margin-top: 10px;'> <select class='filter-select' placeholder='Attribute' style='font-family: Cabin; padding: 10px;'> <option value='author'>Author</option> <option value='book_format'>Format</option> <option value='ISBN'>ISBN</option> <option value='page_count'>Page Count</option> <option value='rating'>Rating</option> <option value='review_count'>Review Count</option> <option value='title'>Title</option> <option value='price'>Price</option> <option value='sensitivity'>Sensitivity</option> <option value='pacing'>Pacing</option> <option value='buzzwords'>Buzzwords</option> <option value='mood'>Moods</option> </select> <input class='filter-input' type='text' style='margin-left: 15px; font-family: Cabin; padding: 10px;' /></div>";
+            searchBar.innerHTML += col;
 
-            searchBar.innerHTML += filterInput;
+            var selects = document.querySelectorAll(".filter-select");
+            var filters = [];
+            for (var i = 0; i < selects.length; i++) {
+
+            }
         }
     },
     setup() {
