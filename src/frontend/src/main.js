@@ -14,9 +14,9 @@ import './assets/css/styles.css'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faAngleDoubleDown, faStar } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleDown, faStar, faSearch, faPlus } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faAngleDoubleDown, faStar)
+library.add(faAngleDoubleDown, faStar, faSearch, faPlus)
 
 const app = createApp(App)
 app.use(router)

@@ -34,7 +34,6 @@ class Suggestions(BaseModel):
 class Filter(BaseModel):
     author: Optional[str]
     book_format: Optional[str]
-    description: Optional[str]
     genre: Optional[str]
     isbn: Optional[str]
     page_count: Optional[int]
