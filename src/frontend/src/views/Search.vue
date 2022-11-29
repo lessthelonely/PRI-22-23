@@ -123,6 +123,11 @@ export default defineComponent({
                 }
 
                 console.log(jsonData);
+
+                await axios.post("/filter-search", jsonData).then((response) => {
+                    this.books = response.data;
+                    console.log(this.books);
+                });
                 
 
 
