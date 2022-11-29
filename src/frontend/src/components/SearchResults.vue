@@ -7,8 +7,8 @@
                         <div class="row" style="align-content: start;">
                             <p class="flex-column justify-content-md-end" style="font-size: 10px; margin-bottom: 15px; width: 100%; color: rgb(71, 67, 67); text-align: left;">
                                 <em>
-                                    This one is {{buzzword}} and X% of readers have found it
-                                    [RANDOM MOOD].
+                                    This one is {{buzzword}} and {{mood[0]}} of readers felt
+                                    {{mood[1]}}.
                                 </em>
                             </p>
                             <h1 style="margin-bottom: 0px; font-family: Cabin; text-transform: uppercase; text-align: left;">
@@ -48,7 +48,9 @@ export default defineComponent({
         return {
             authors:"",
             description:"",
-            buzzword: ""
+            buzzword: "",
+            moods:[],
+            mood: []
         }
     },
     setup() {
@@ -56,7 +58,6 @@ export default defineComponent({
     },
     created() {
         this.authors = this.book.author.join(", ");
-        //console.log(this.book.description.split(/[\\?|\\.|!]/g));
         if (this.book.description.split(/[\\?|\\.|!]/).length > 2){
             this.description = this.book.description.split(/[\\?|\\.|!]/)[0] + "." + this.book.description.split(/[\\?|\\.|!]/)[1] + ".";
         } else {
@@ -64,7 +65,36 @@ export default defineComponent({
         }
         var randomBuzzword1 = this.between(0, this.book.buzzwords.length);
         this.buzzword = this.book.buzzwords[randomBuzzword1];
-        //console.log(this.buzzword);
+
+        var moods_array = this.book.mood_percentage[0].split(',');
+        console.log(moods_array[0]);
+        console.log(moods_array.length);
+        if(moods_array[0] != "[]"){
+        for (var i = 0; i < moods_array.length; i++) {
+                var number = moods_array[i].split(":")[1];
+                number = number.split(",")[0];
+                number = number.split("'")[0];
+                console.log(number);
+                number = Math.ceil(number*100);
+                console.log(number);
+                if(number != 0){
+                    if(i==0){
+                        this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
+                    }
+                    else{
+                        this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
+                    }
+                }
+        }
+        var randomMood = this.between(0, moods_array.length);
+        var moodText = this.moods[randomMood];
+        moodText = moodText.split(' ');
+        this.mood.push(moodText[0]);
+        this.mood.push(moodText[1]);
+    }
+
+       
+
     },
     methods: {
         bookPage() {
