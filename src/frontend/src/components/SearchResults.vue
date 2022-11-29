@@ -19,7 +19,7 @@
                         </p>
                         <p class="flex-column justify-content-md-end"
                             style="font-size: 10px;margin-bottom: 0px;width: 100%;color: rgb(71,67,67);">
-                            <em>This one is [RANDOM BUZZWORDS] and X% of readers have found it
+                            <em>This one is {{buzzword}} and X% of readers have found it
                                 [RANDOM MOOD].</em>
 
                         </p>
@@ -38,6 +38,7 @@
 import { defineComponent } from 'vue';
 import router from '../router';
 
+
 export default defineComponent({
     name: 'SearchResults',
     props: ['book'],
@@ -45,7 +46,8 @@ export default defineComponent({
     data() {
         return {
             authors:"",
-            description:""
+            description:"",
+            buzzword:""
         }
     },
     setup() {
@@ -60,10 +62,16 @@ export default defineComponent({
         else{
             this.description = this.book.description;
         }
+        var randomBuzzword1=this.between(0, this.book.buzzwords.length);
+        this.buzzword=this.book.buzzwords[randomBuzzword1];
+        console.log(this.buzzword);
     },
     methods: {
         bookPage() {
             router.push({ name: 'Book', params: { id: this.book.id } });
+        },
+        between(min, max) {  
+            return Math.floor( Math.random() * (max - min) + min);
         }
     }
 
