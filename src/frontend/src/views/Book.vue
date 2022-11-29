@@ -45,7 +45,7 @@
 
                                         <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">
                                             {{ authors }}
-                                            <button class="btn btn-primary" @click="changeAbstract">
+                                            <button v-if="abstract!=null" class="btn btn-primary" @click="changeAbstract">
                                                 <FontAwesomeIcon icon="fa-user" />
                                             </button>
                                         </h3>
