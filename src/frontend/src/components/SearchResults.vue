@@ -70,9 +70,7 @@ export default defineComponent({
                 var number = moods_array[i].split(":")[1];
                 number = number.split(",")[0];
                 number = number.split("'")[0];
-                console.log(number);
                 number = Math.ceil(number*100);
-                console.log(number);
                 if(number != 0){
                     if(i==0){
                         this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);

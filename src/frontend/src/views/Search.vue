@@ -6,7 +6,7 @@
             <div class="col">
                 <div class="row">
                     <div class="col-lg-xl">
-                        <input type="text"
+                        <input type="text" id="input-query"
                             style="width: 80%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;"
                             placeholder="Put your query here." v-on:keyup.enter="search()" />
                         <button class="btn btn-primary" style="width: 5%; font-size: 20px; margin-left: 15px;"
@@ -80,6 +80,9 @@ export default defineComponent({
         async search() {
             console.log("hewwo");
 
+            const query = document.getElementById("input-query").value;
+            console.log(query);
+
             var selects = document.querySelectorAll(".filter-select");
             var filters = [];
             for (var i = 0; i < selects.length; i++) {
@@ -93,6 +96,13 @@ export default defineComponent({
             }
 
             console.log(filters, values);
+
+            if(filters.length==0 && values.length==0){
+                console.log("no filters");
+                await axios.get("/search/"+query).then((response) => {
+                    this.books = response.data;
+                });
+            }
         },
 
         showAdvancedInputs() {

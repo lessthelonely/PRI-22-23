@@ -5,7 +5,7 @@ import axios from 'axios';
 import router from './router'
 
 axios.defaults.withCredentials = false;
-axios.defaults.baseURL = 'http://localhost:3001/';
+axios.defaults.baseURL = 'http://localhost:8080/';
 
 //Bootstrap imports
 import 'bootstrap/dist/css/bootstrap.css'
