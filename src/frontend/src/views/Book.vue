@@ -41,8 +41,10 @@
                                 <div class="row">
                                     <div class="col">
                                         <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{ title }}</h1>
-                                        <h3 class="text-start"
-                                            style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">{{ authors }}
+                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">{{ authors }}
+                                            <span class="text-muted" style="font-size: 14px;">
+                                                {{ abstract }}
+                                            </span>
                                         </h3>
                                     </div>
                                 </div>
@@ -165,6 +167,7 @@ export default defineComponent({
             this.mood_percentage = res.data.mood_percentage
             this.review = res.data.review
             this.abstract = res.data.abstract
+            console.log(this.abstract);
 
             this.authors = this.author.join(", ");
             this.genres = this.genre.join(", ");

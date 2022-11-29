@@ -1,5 +1,5 @@
 <template>
-    <div class="card" style="color: rgb(0,0,0); width: 100%">
+    <div class="card" style="color: rgb(0,0,0); width: 100%; margin-bottom: 15px;">
         <div class="card-body" style="">
             <div class="col-12" style="margin-right: 0px;">
                 <div class="row">
@@ -26,8 +26,7 @@
                         </div>
                     </div>
                     <div style="width: 30%;">
-                        <img v-bind:src=book.cover_img
-                            style="box-shadow: 2px 2px 9px 2px rgb(0 0 0 / 26%); float: right;" />
+                        <img v-bind:src="book.cover_img" style="box-shadow: 2px 2px 9px 2px rgb(0 0 0 / 26%); float: right;" />
                     </div>
                 </div>
             </div>
