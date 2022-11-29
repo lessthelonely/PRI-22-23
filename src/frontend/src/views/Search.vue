@@ -79,6 +79,20 @@ export default defineComponent({
     methods: {
         async search() {
             console.log("hewwo");
+
+            var selects = document.querySelectorAll(".filter-select");
+            var filters = [];
+            for (var i = 0; i < selects.length; i++) {
+                filters.push(selects[i].value);
+            }
+
+            var inputs = document.querySelectorAll(".filter-input");
+            var values = [];
+            for (var i = 0; i < inputs.length; i++) {
+                values.push(inputs[i].value);
+            }
+
+            console.log(filters, values);
         },
 
         showAdvancedInputs() {
@@ -91,12 +105,6 @@ export default defineComponent({
 
             var col = "<div class='col' style='margin-top: 10px;'> <select class='filter-select' placeholder='Attribute' style='font-family: Cabin; padding: 10px;'> <option value='author'>Author</option> <option value='book_format'>Format</option> <option value='ISBN'>ISBN</option> <option value='page_count'>Page Count</option> <option value='rating'>Rating</option> <option value='review_count'>Review Count</option> <option value='title'>Title</option> <option value='price'>Price</option> <option value='sensitivity'>Sensitivity</option> <option value='pacing'>Pacing</option> <option value='buzzwords'>Buzzwords</option> <option value='mood'>Moods</option> </select> <input class='filter-input' type='text' style='margin-left: 15px; font-family: Cabin; padding: 10px;' /></div>";
             searchBar.innerHTML += col;
-
-            var selects = document.querySelectorAll(".filter-select");
-            var filters = [];
-            for (var i = 0; i < selects.length; i++) {
-
-            }
         }
     },
     setup() {
