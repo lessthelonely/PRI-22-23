@@ -201,7 +201,7 @@ body {
     /*optional*/
     font-family: arial, sans-serif;
     /*input has OS specific font-family*/
-    color: #069;
+    color: rgb(84, 0, 153);
     text-decoration: underline;
     cursor: pointer;
 }
