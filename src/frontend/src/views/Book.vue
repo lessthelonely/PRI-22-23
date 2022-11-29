@@ -25,7 +25,7 @@
                                 <div class="row" style="margin-top: 20px;">
                                     <div class="col text-start">
                                         <h6 class="text-start d-md-flex justify-content-md-center align-items-md-center"
-                                            style="height: auto;width: auto;margin: 0px;margin-bottom: 0px;">
+                                            style="height: auto;width: auto;margin: 0px;margin-bottom: 5px;">
                                             <span style="color: rgb(0, 0, 0);">MOODS</span>
                                         </h6>
                                     </div>
