@@ -38,21 +38,21 @@ async def get_books():
 async def get_book(book_id: int):
     query = 'http://localhost:8983/solr/books_schema/query?q=id:' + str(book_id) + '&q.op=OR&indent=true&qt='
     book= requests.get(query).json()['response']['docs'][0]
-    abstracts=[]
 
     author = book['author']
-    author = author[0].split(' ')
-    writer = author[0]+'_'+author[1]
-    query= "https://dbpedia.org/page/" + writer
-    abstract = ""
+    if author[0] != "Naomi King":
+        author = author[0].split(' ')
+        writer = author[0]+'_'+author[1]
+        query= "https://dbpedia.org/page/" + writer
+        abstract = ""
 
-    response = requests.get(query)
-    soup=BeautifulSoup(response.content, 'html.parser')
-    language= soup.find_all('span', {'property': 'dbo:abstract', 'lang':'en'})
-    for tag in language:
-        abstract += tag.text.strip()
-        if(abstract != ""):
-            book['abstract'] = abstract
+        response = requests.get(query)
+        soup=BeautifulSoup(response.content, 'html.parser')
+        language= soup.find_all('span', {'property': 'dbo:abstract', 'lang':'en'})
+        for tag in language:
+            abstract += tag.text.strip()
+            if(abstract != ""):
+                book['abstract'] = abstract
     
     return book
 
