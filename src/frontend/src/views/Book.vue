@@ -1,7 +1,8 @@
 <template>
     <WhiteHeader />
 
-    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77" style="background: rgb(255,255,255); display: block; width: 100%;">
+    <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"
+        style="background: rgb(255,255,255); display: block; width: 100%;">
         <div class="container">
             <div class="col">
                 <div class="row">
@@ -10,53 +11,68 @@
                             <div class="col-md-5" style="width: 30%; display: flex; flex-direction: column;">
                                 <div class="row" style="margin-bottom: 30px;">
                                     <div class="col">
-                                        <img v-bind:src="cover_img" style="width: 100%;font-size: 16px; box-shadow: 2px 2px 9px 2px rgb(0 0 0 / 26%);">
+                                        <img v-bind:src="cover_img"
+                                            style="width: 100%;font-size: 16px; box-shadow: 2px 2px 9px 2px rgb(0 0 0 / 26%);">
                                     </div>
                                 </div>
                                 <div class="row" style="text-align: center; display: flex; justify-content: center;">
-                                    <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center" style="height: auto; color: rgb(0, 0, 0); width: auto;">
-                                        {{rating}} <FontAwesomeIcon icon="fa-star" />
+                                    <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center"
+                                        style="height: auto; color: rgb(0, 0, 0); width: auto;">
+                                        {{ rating }}
+                                        <FontAwesomeIcon icon="fa-star" />
                                     </h1>
                                 </div>
                                 <div class="row" style="margin-top: 20px;">
                                     <div class="col text-start">
-                                        <h6 class="text-start d-md-flex justify-content-md-center align-items-md-center" style="height: auto;width: auto;margin: 0px;margin-bottom: 0px;">
+                                        <h6 class="text-start d-md-flex justify-content-md-center align-items-md-center"
+                                            style="height: auto;width: auto;margin: 0px;margin-bottom: 0px;">
                                             <span style="color: rgb(0, 0, 0);">MOODS</span>
                                         </h6>
                                     </div>
-                                    <p style="font-family: Arial;font-size: 13px;text-align: justify;padding: 5px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 10px;">
-                                        <span style="color: rgb(0, 0, 0);">
-                                            <li v-for="mood in moods">
-                                                {{ mood }}
-                                            </li></span>
+                                    <p
+                                        style="font-family: Arial;font-size: 13px;text-align: justify;padding: 5px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 10px;">
+                                        <span class="badge badge-dark" v-for="m in moods" style="background-color: #616161; margin: 2.5px;">
+                                            {{ m }}
+                                        </span>
                                     </p>
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="row">
                                     <div class="col">
-                                        <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{title}}</h1>
-                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">{{authors}}
-                                        </h3> </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <h6 class="text-start" style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">{{genres}}</h6>
+                                        <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{ title }}</h1>
+                                        <h3 class="text-start"
+                                            style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">{{ authors }}
+                                        </h3>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h6 v-if="page_count != 0" class="text-start" style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;">{{page_count}} pages</h6>
-                                        <h6 v-if="price != null" class="text-start" style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;" >{{price}} €</h6>
+                                        <h6 class="text-start"
+                                            style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">{{ genres }}
+                                        </h6>
                                     </div>
-                                    <div  class="col">
-                                        
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 v-if="page_count != 0" class="text-start"
+                                            style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;">{{ page_count }}
+                                            pages</h6>
+                                        <h6 v-if="price != null" class="text-start"
+                                            style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;">{{ price }} €
+                                        </h6>
+                                    </div>
+                                    <div class="col">
+
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col" style="height: 311px;">
-                                        <h6 class="text-start" style="color: rgb(0,0,0);margin: 0px;margin-bottom: 15px;">SYNOPSIS</h6>
-                                        <p class="text-justify" style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;height: 80%; text-align: justify;"> {{description}} </p>
+                                        <h6 class="text-start"
+                                            style="color: rgb(0,0,0);margin: 0px;margin-bottom: 15px;">SYNOPSIS</h6>
+                                        <p class="text-justify"
+                                            style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;height: 80%; text-align: justify;">
+                                            {{ description }} </p>
                                     </div>
                                 </div>
                             </div>
@@ -64,16 +80,18 @@
                         <div class="row">
                             <div class="col flex-column">
                                 <div class="row">
-                                    <h1 class="text-start" style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
-                                        Reviews <h6 class="text-muted">({{review_count}} total)</h6>
+                                    <h1 class="text-start"
+                                        style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
+                                        Reviews <h6 class="text-muted">({{ review_count }} total)</h6>
                                     </h1>
-                                    
+
                                 </div>
-                                
+
                                 <div v-if="review.length != 0">
-                                    <Review v-for="review in review" :text="review"/>
+                                    <Review v-for="review in review" :text="review" />
                                 </div>
-                                <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else> 
+                                <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;"
+                                    v-else>
                                     No available reviews.
                                 </p>
                             </div>
@@ -97,26 +115,26 @@ export default defineComponent({
     data() {
         return {
             author: [],
-            authors:"",
-            book_format:[],
-            description:"",
-            genre:[],
-            genres:"",
-            cover_img:"",
-            title:"",
-            isbn:"",
+            authors: "",
+            book_format: [],
+            description: "",
+            genre: [],
+            genres: "",
+            cover_img: "",
+            title: "",
+            isbn: "",
             page_count: 0,
-            rating:0,
-            review_count:0,
-            price:0,
+            rating: 0,
+            review_count: 0,
+            price: 0,
             sensitivity: [],
-            pacing:"",
-            buzzwords:[],
-            mood:[],
-            mood_percentage:[],
-            moods:[],
-            review:[]
-      }
+            pacing: "",
+            buzzwords: [],
+            mood: [],
+            mood_percentage: [],
+            moods: [],
+            review: []
+        }
     },
     components: {
         WhiteHeader,
@@ -125,8 +143,8 @@ export default defineComponent({
     setup() {
         return {}
     },
-    async created(){
-        await axios.get('http://localhost:8080/book/' + this.$route.params.id).then((res) =>{
+    async created() {
+        await axios.get('http://localhost:8080/book/' + this.$route.params.id).then((res) => {
             console.log(res.data);
             this.author = res.data.author
             this.book_format = res.data.book_format
@@ -155,18 +173,18 @@ export default defineComponent({
 
             for (var i = 0; i < moods_array.length; i++) {
 
-                
+
                 var number = moods_array[i].split(":")[1];
                 number = number.split(",")[0];
                 number = number.split("'")[0];
                 console.log(number);
-                number = Math.ceil(number*100);
+                number = Math.ceil(number * 100);
                 console.log(number);
-                if(number != 0){
-                    if(i==0){
+                if (number != 0) {
+                    if (i == 0) {
                         this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
                     }
-                    else{
+                    else {
                         this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
                     }
                 }
@@ -175,7 +193,7 @@ export default defineComponent({
 
         });
 
-        
+
 
     }
 })
