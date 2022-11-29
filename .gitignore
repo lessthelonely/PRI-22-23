@@ -33,3 +33,4 @@ solr/old/reviews_part_3.csv
 solr/old/reviews_part_4.csv
 solr/data/book_profiles_17_10.json
 solr/data/current_book_data_25_10.json
+*.pyc
