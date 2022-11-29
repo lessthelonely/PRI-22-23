@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from models import Book, Suggestions, Filter
 import requests
+from bs4 import BeautifulSoup
+from urllib.request import urlopen
 
 app = FastAPI()
 
@@ -36,6 +38,24 @@ async def get_books():
 async def get_book(book_id: int):
     query = 'http://localhost:8983/solr/books_schema/query?q=id:' + str(book_id) + '&q.op=OR&indent=true&qt='
     book= requests.get(query).json()['response']['docs'][0]
+    abstracts=[]
+
+    author = book['author']
+    for i in author:
+        auth = i.split(' ')
+        writer = auth[0]+'_'+auth[1]
+        query= "https://dbpedia.org/page/" + writer
+        abstract = ""
+
+        response = requests.get(query)
+        soup=BeautifulSoup(response.content, 'html.parser')
+        language= soup.find_all('span', {'property': 'dbo:abstract', 'lang':'en'})
+        for tag in language:
+            abstract += tag.text.strip()
+            if(abstract != ""):
+                abstracts.append(abstract)
+    
+    book['abstract'] = abstracts
     
     return book
 
