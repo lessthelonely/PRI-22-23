@@ -1,7 +1,7 @@
 <template>
     <div class="card" style="margin-bottom: 15px;">
         <div class="card-body">
-            <p class="card-text" style="color: rgb(0,0,0);font-family: Arial;font-size: 13px;">
+            <p class="card-text" style="color: rgb(0,0,0); font-family: Cabin, sans-serif; font-size: 18px; text-align: justify;">
                 {{ text }}
             </p>
         </div>

@@ -15,10 +15,10 @@
                                 <em>{{ book.title }}</em>
                             </h1>
                             <h5 class="text-muted mb-2"
-                                style="font-family: Cabin; text-transform: uppercase; text-align: left; font-weight: 600;">
+                                style="font-family: Cabin; text-transform: uppercase; text-align: justify; font-weight: 600;">
                                 {{ authors }}</h5>
-                            <p style="font-size: 18px;height: 200px;margin-bottom: 10px;width: 100%; text-align: left;">
-                                <span style="color: rgb(30, 25, 21);">
+                            <p style="font-size: 18px;height: 200px;margin-bottom: 10px;width: 100%; text-align: justify;">
+                                <span style="color: rgb(30, 25, 21); text-align: justify;">
                                     {{ book.description }}
                                     <button id="button-search" @click="bookPage">[MORE]</button>
                                 </span>
