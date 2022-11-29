@@ -56,16 +56,15 @@ export default defineComponent({
     },
     created() {
         this.authors = this.book.author.join(", ");
-        console.log(this.book.description.split(/[\\?|\\.|!]/g));
+        //console.log(this.book.description.split(/[\\?|\\.|!]/g));
         if (this.book.description.split(/[\\?|\\.|!]/).length > 2){
             this.description = this.book.description.split(/[\\?|\\.|!]/)[0] + "." + this.book.description.split(/[\\?|\\.|!]/)[1] + ".";
         } else {
             this.description = this.book.description;
         }
-        console.log(this.book.buzzwords);
         var randomBuzzword1 = this.between(0, this.book.buzzwords.length);
         this.buzzword = this.book.buzzwords[randomBuzzword1];
-        console.log(this.buzzword);
+        //console.log(this.buzzword);
     },
     methods: {
         bookPage() {

@@ -4,9 +4,12 @@
         <div class="container">
             <div class="col">
                 <div class="row">
-                    <div class="col"><input type="text"
-                            style="width: 100%;font-family: Arial;border-radius: 10px;height: 50px;padding: 10px;font-size: 20px;"
-                            placeholder="Put your query here."></div>
+                    <div class="col">
+                        <form @submit="search">
+                            <input type="text" style="width: 100%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;" placeholder="Put your query here.">
+                        </form>
+                        
+                    </div>
                 </div>
                 <div class="row">
                     <div class="col" style="margin-top: 25px;">
@@ -39,15 +42,18 @@ export default defineComponent({
             books: [],
         }
     },
+    methods: {
+        async search() {
+            console.log("hewwo");
+        }
+    },
     setup() {
         return {};
     },
     async mounted(){
         await axios.get('http://localhost:8080/books').then((response)=>{
             this.books = response.data;
-        });
-
-       
+        });       
     }
 });
 </script>

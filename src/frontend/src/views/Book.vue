@@ -38,7 +38,17 @@
                                 </div>
                                 <div class="row">
                                     <div class="col">
-                                        <h6 class="text-start" style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">{{genres}}</h6> </div>
+                                        <h6 class="text-start" style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">{{genres}}</h6>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <h6 v-if="page_count != 0" class="text-start" style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;">{{page_count}} pages</h6>
+                                        <h6 v-if="price != null" class="text-start" style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;" >{{price}} €</h6>
+                                    </div>
+                                    <div  class="col">
+                                        
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col" style="height: 311px;">
@@ -50,8 +60,13 @@
                         </div>
                         <div class="row">
                             <div class="col flex-column">
-                                <h1 class="text-start" style="margin: 0px;margin-bottom: 15px;"><span
-                                    style="color: rgb(0, 0, 0);">reviews</span></h1>
+                                <div class="row">
+                                    <h1 class="text-start" style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
+                                        Reviews <h6 class="text-muted">({{review_count}} total)</h6>
+                                    </h1>
+                                    
+                                </div>
+                                
                                 <div v-if="review.length != 0">
                                     <Review v-for="review in review" :text="review"/>
                                 </div>
