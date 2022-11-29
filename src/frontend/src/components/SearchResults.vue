@@ -7,8 +7,7 @@
                         <div class="row" style="align-content: start;">
                             <p class="flex-column justify-content-md-end" style="font-size: 10px; margin-bottom: 15px; width: 100%; color: rgb(71, 67, 67); text-align: left;">
                                 <em>
-                                    This one is {{buzzword}} and {{mood[0]}} of readers felt
-                                    {{mood[1]}}.
+                                    This one is {{buzzword}} {{mood}}.
                                 </em>
                             </p>
                             <h1 style="margin-bottom: 0px; font-family: Cabin; text-transform: uppercase; text-align: left;">
@@ -49,7 +48,7 @@ export default defineComponent({
             description:"",
             buzzword: "",
             moods:[],
-            mood: []
+            mood: ""
         }
     },
     setup() {
@@ -86,8 +85,7 @@ export default defineComponent({
         var randomMood = this.between(0, moods_array.length);
         var moodText = this.moods[randomMood];
         moodText = moodText.split(' ');
-        this.mood.push(moodText[0]);
-        this.mood.push(moodText[1]);
+        this.mood = " and "+ moodText[0] + " of readers felt " + moodText[1];
     }
 
        
