@@ -7,7 +7,7 @@
                         <div class="row" style="align-content: start;">
                             <p class="flex-column justify-content-md-end" style="font-size: 10px; margin-bottom: 15px; width: 100%; color: rgb(71, 67, 67); text-align: left;">
                                 <em>
-                                    This one is {{this.buzzword}} and X% of readers have found it
+                                    This one is {{buzzword}} and X% of readers have found it
                                     [RANDOM MOOD].
                                 </em>
                             </p>
@@ -54,7 +54,7 @@ export default defineComponent({
     setup() {
         return {};
     },
-    mounted() {
+    created() {
         this.authors = this.book.author.join(", ");
         console.log(this.book.description.split(/[\\?|\\.|!]/g));
         if (this.book.description.split(/[\\?|\\.|!]/).length > 2){

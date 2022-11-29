@@ -107,8 +107,8 @@ export default defineComponent({
     setup() {
         return {}
     },
-    created(){
-        axios.get('http://localhost:8080/book/' + this.$route.params.id).then((res) =>{
+    async created(){
+        await axios.get('http://localhost:8080/book/' + this.$route.params.id).then((res) =>{
             console.log(res.data);
             this.author = res.data.author
             this.book_format = res.data.book_format
