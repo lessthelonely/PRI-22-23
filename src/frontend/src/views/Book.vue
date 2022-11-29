@@ -107,7 +107,27 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <h1 class="text-start"
+                                        style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
+                                        Similar Books
+                                    </h1>
+
+                                </div>
+
+            <div class="row">
+                <div class="col" style="margin-top: 25px;">
+                    <div class="row">
+                        <div class="col" id="similarDiv">
+                            <SearchResults v-for="book in similar_books" :book="book" :key="book.id" />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
+        
+
     </body>
 </template>
 
@@ -116,7 +136,7 @@ import { defineComponent } from 'vue'
 import WhiteHeader from '../components/WhiteHeader.vue'
 import Review from '../components/Review.vue'
 import axios from 'axios'
-import router from '../router'
+import SearchResults from '../components/SearchResults.vue'
 
 export default defineComponent({
     name: 'Book',
@@ -143,12 +163,14 @@ export default defineComponent({
             moods:[],
             review:[],
             abstract: "",
-            showAbstract: false
+            showAbstract: false,
+            similar_books: []
       }
     },
     components: {
         WhiteHeader,
-        Review
+        Review,
+        SearchResults
     },
     setup() {
         return {}
@@ -207,6 +229,11 @@ export default defineComponent({
             }
         }
 
+        });
+
+        await axios.get('http://localhost:8080/similar/' + this.$route.params.id).then((res) => {
+            console.log(res.data);
+            this.similar_books = res.data;
         });
 
 
