@@ -78,8 +78,6 @@ export default defineComponent({
     },
     methods: {
         async search() {
-            console.log("hewwo");
-
             const query = document.getElementById("input-query").value;
             console.log(query);
 
@@ -125,31 +123,12 @@ export default defineComponent({
                 console.log(jsonData);
 
                 await axios.post("/filter-search", jsonData).then((response) => {
+                    this.showAdvanced = false;
                     this.books = response.data;
                     console.log(this.books);
                 });
-                
-
-
-
+        
             }
-            /*
-            {
-  "author": "string",
-  "book_format": "string",
-  "genre": "string",
-  "isbn": "string",
-  "page_count": 0,
-  "rating": 0,
-  "review_count": 0,
-  "title": "string",
-  "price": 0,
-  "sensitivity": "string",
-  "pacing": "string",
-  "buzzwords": "string",
-  "mood": "string"
-}
- */
         },
 
         showAdvancedInputs() {
