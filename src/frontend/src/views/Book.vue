@@ -16,11 +16,12 @@
                                     </div>
                                 </div>
                                 <div class="row" style="text-align: center; display: flex; justify-content: center;">
-                                    <h1 class="text-center d-md-flex justify-content-md-center align-items-md-center"
-                                        style="height: auto; color: rgb(0, 0, 0); width: auto;">
-                                        {{ rating }}
-                                        <FontAwesomeIcon icon="fa-star" />
-                                    </h1>
+                                    <div class="col" style="text-align: center; display: flex; justify-content: center;">
+                                        <h3 class="text-center d-md-flex justify-content-md-center align-items-md-center" style="height: auto; color: rgb(0, 0, 0); width: auto;">
+                                            {{ rating }}
+                                        </h3>
+                                        <FontAwesomeIcon icon="fa-star" style="color: black; font-size: 30px; margin-left: 5px;" />
+                                    </div>
                                 </div>
                                 <div class="row" style="margin-top: 20px;">
                                     <div v-if="moods.length!=0" class="col text-start">
