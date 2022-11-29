@@ -76,10 +76,6 @@ async def filter_search(filter: Filter):
         query += "book_format:"+filter.book_format+' '
         terms += "book_format "
     
-    if filter.description:
-        query += "description:" +filter.description+' '
-        terms += "description "
-
     if filter.genre:
         if '"' in filter.genre:
             query += "genre:" + filter.genre + ' '

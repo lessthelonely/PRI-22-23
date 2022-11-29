@@ -25,7 +25,10 @@
                                         </h6>
                                     </div>
                                     <p style="font-family: Arial;font-size: 13px;text-align: justify;padding: 5px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 10px;">
-                                        <span style="color: rgb(0, 0, 0);">XX% STATEMENT</span>
+                                        <span style="color: rgb(0, 0, 0);">
+                                            <li v-for="mood in moods">
+                                                {{ mood }}
+                                            </li></span>
                                     </p>
                                 </div>
                             </div>
@@ -111,7 +114,7 @@ export default defineComponent({
             buzzwords:[],
             mood:[],
             mood_percentage:[],
-            moods:"",
+            moods:[],
             review:[]
       }
     },
@@ -146,15 +149,28 @@ export default defineComponent({
             this.authors = this.author.join(", ");
             this.genres = this.genre.join(", ");
 
-            for (var i = 0; i < this.mood_percentage.length; i++) {
-                var number = this.mood_percentage[i].split(":")[1];
+            console.log("MOOD PERCENTAGE: " + this.mood_percentage);
+            var moods_array = this.mood_percentage[0].split(',');
+            console.log("INSIDE MOOD: " + moods_array[1]);
+
+            for (var i = 0; i < moods_array.length; i++) {
+
+                
+                var number = moods_array[i].split(":")[1];
                 number = number.split(",")[0];
+                number = number.split("'")[0];
                 console.log(number);
-                number = parseInt(number)*100;
+                number = Math.ceil(number*100);
+                console.log(number);
                 if(number != 0){
-                    this.moods += this.mood_percentage[i].split(":")[0] + " " + number .toString() + "%\n";
+                    if(i==0){
+                        this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
+                    }
+                    else{
+                        this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
+                    }
                 }
-                console.log(this.moods);
+                console.log("MOODS:", this.moods);
             }
 
         });
