@@ -5,10 +5,11 @@
         <div class="container">
             <div class="col">
                 <div class="row">
-                    <div class="col-lg-xl">
+                    <div class="col-lg-xl" >
                         <input type="text" id="input-query"
                             style="width: 80%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;"
                             placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>
+                       
                         <button class="btn btn-primary" style="width: 5%; font-size: 20px; margin-left: 15px;"
                             @click="search">
                             <FontAwesomeIcon icon="fa-search" />
@@ -17,14 +18,19 @@
                             @click="showAdvancedInputs">
                             <FontAwesomeIcon icon="angle-double-down" />
                         </button>
-                        <div v-if="terms && modal">
-        <ul >
-            <li style="color:black" v-for="term in terms" @click="setTerm(term)">
-                {{ term }}
-            </li>
-        </ul>
-    
-    </div>
+
+                        <div class="autocom-box" >
+                            <ul v-if="modal">
+                                <li style="color:black" v-for="term in terms" @click="setTerm(term)">
+                                    {{ term }}
+                                </li>
+                                </ul>
+                        </div>
+
+                     
+
+                        
+                        
                     </div>
                 </div>
                 <div class="row" v-if="showAdvanced" style="margin-top: 15px;">
@@ -89,6 +95,13 @@ export default defineComponent({
             terms: []
         }
     },
+    /*
+    <div v-if="terms && modal" style="width:80%;">
+                            <div v-for="term in terms" :key="term" style="border: 1px solid black; border-radius: 10px; padding: 10px; margin-top: 10px; cursor: pointer; color:black;" @click="setTerm(term)">
+                                {{term}}
+                            </div>
+
+                        </div>*/
     methods: {
         async filterTerms(){
             console.log(this.term);

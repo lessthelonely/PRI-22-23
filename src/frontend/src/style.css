@@ -205,3 +205,16 @@ body {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.autocom-box li{
+  list-style: none;
+  width: 83%;
+  height: 50px; 
+  padding: 10px;
+  background-color: #f0f0f0;
+}
+
+.autocom-box li:hover{
+  background: #ffffff;
+  cursor: pointer;
+}
