@@ -40,6 +40,7 @@ async def get_book(book_id: int):
     book= requests.get(query).json()['response']['docs'][0]
 
     author = book['author']
+    print(author)
     if author[0] != "Naomi King":
         author = author[0].split(' ')
         writer = author[0]+'_'+author[1]

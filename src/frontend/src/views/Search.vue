@@ -105,6 +105,7 @@ export default defineComponent({
             this.search();
         },
         async search() {
+            this.modal=false;
             const query = document.getElementById("input-query").value;
             console.log(query);
 
