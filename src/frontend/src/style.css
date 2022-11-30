@@ -208,13 +208,17 @@ body {
 
 .autocom-box li{
   list-style: none;
-  width: 83%;
-  height: 50px; 
-  padding: 10px;
-  background-color: #f0f0f0;
+	width: 85%;
+	height: auto;
+	padding: 5px;
+	background-color: #f0f0f0;
 }
 
 .autocom-box li:hover{
   background: #ffffff;
   cursor: pointer;
+}
+
+.autocom-box {
+  margin-top: 5px;
 }

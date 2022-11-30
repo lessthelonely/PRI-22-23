@@ -6,6 +6,7 @@
             <div class="col">
                 <div class="row">
                     <div class="col-lg-xl" >
+                        <p v-if="spelling!=''" class="text-muted" style="display: float; color: black; text-align: left; font-size: 12px;"> Did you mean <button id="button-search" @click="correctSearch"> {{spelling}} </button>?</p>
                         <input type="text" id="input-query"
                             style="width: 80%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;"
                             placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>
@@ -19,22 +20,17 @@
                             <FontAwesomeIcon icon="angle-double-down" />
                         </button>
 
-                        <div class="autocom-box" >
-                            <ul v-if="modal">
-                                <li style="color:black" v-for="term in terms" @click="setTerm(term)">
+                        <div class="autocom-box" style="position: absolute; z-index: 1;" >
+                            <ul style="font-size: 12px; margin-left: 50px; background-color: #F3F6F6;" v-if="modal">
+                                <li class="text-black" style="color: black; font-size: 12px; width: fit-content; background: transparent; margin-left: -30px;" v-for="term in terms" @click="setTerm(term)">
                                     {{ term }}
                                 </li>
-                                </ul>
+                            </ul>
                         </div>
-
-                     
-
-                        
-                        
                     </div>
                 </div>
-                <div class="row" v-if="showAdvanced" style="margin-top: 15px;">
-                    <button id="add-button" style="margin-right: 15px;" @click="addFilter">
+                <div class="row" v-if="showAdvanced" style="margin-top: 15px; display: flex; flex-direction: column; align-content: center; align-items: center; justify-content: center; flex-wrap: nowrap;">
+                    <button id="add-button" style="margin-bottom: 20px; width: 50px; height: 40px; align-items: center; display: flex; justify-content: center; align-content: center; flex-direction: column; flex-wrap: nowrap;" @click="addFilter">
                             <FontAwesomeIcon icon="fa-plus" />
                         </button>
                     <div class="col" id="search-bar">
@@ -60,7 +56,6 @@
             <div class="row">
                 <div class="col" style="margin-top: 25px;">
                     <div class="row">
-                        <p v-if="spelling!=''" style="color: black; text-align: left;"> Did you mean <button id="button-search" @click="correctSearch"> {{spelling}} </button>?</p>
                         <div class="col" id="searchResultsDiv">
                             <SearchResults v-for="book in books" :book="book" :key="book.id" />
                         </div>
