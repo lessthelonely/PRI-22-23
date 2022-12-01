@@ -93,7 +93,7 @@ export default defineComponent({
     },
     methods: {
         bookPage() {
-            router.push({ name: 'Book', params: { id: this.book.id } });
+            window.location.href = "/book/" + this.book.id;
         },
 
         between(min, max) {  
