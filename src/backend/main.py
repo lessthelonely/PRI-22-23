@@ -200,6 +200,7 @@ async def get_similar(book_id: int):
         query = genre + " OR " + sensitivity + " OR " + buzzwords
 
     q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q=' + query + '&qf=genre%20buzzwords%20sensitivity'
+    print(q)
 
     list_books= requests.get(q).json()['response']['docs']
     books=[]
