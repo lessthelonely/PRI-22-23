@@ -108,7 +108,7 @@ export default defineComponent({
         },
         async search() {
             this.modal=false;
-            const query = document.getElementById("input-query").value;
+            var query = document.getElementById("input-query").value;
             console.log("SEARCH ",query);
 
             var selects = document.querySelectorAll(".filter-select");
@@ -139,8 +139,13 @@ export default defineComponent({
 
             if(filters.length==0 && values.length==0){
                 console.log("no filters");
+                query = query.toLowerCase();
+                if(query.includes("/")){
+                    query = query.replace("/","&");
+                }
                 console.log("SEARCHING: ", query);
                 console.log(query);
+                console.log("/search/"+query);
                 await axios.get("/search/"+query).then((response) => {
                     this.books = response.data;
                     console.log(this.books);

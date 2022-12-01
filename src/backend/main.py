@@ -209,7 +209,14 @@ async def get_similar(book_id: int):
 # Also does spell checking
 @app.get("/search/{query}", status_code=status.HTTP_200_OK)
 async def search_books(query: str):
+    if query.find("&") != -1:
+        query = query.replace("&", "%2F")
+
+    print(query)
+    
     query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
+
+    
 
    
     list_books= requests.get(query).json()['response']['docs']
