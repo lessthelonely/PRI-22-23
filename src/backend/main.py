@@ -225,14 +225,41 @@ async def get_similar(book_id: int):
 
 # Search with a query --> have to search for the query in every term
 # Also does spell checking
-@app.get("/search/{query}", status_code=status.HTTP_200_OK)
-async def search_books(query: str):
+@app.get("/search/{query}/{weighted}", status_code=status.HTTP_200_OK)
+async def search_books(query: str, weighted: str):
     if query.find("&") != -1:
         query = query.replace("&", "%2F")
 
     print(query)
 
-    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
+    terms= {
+        'author',
+        'title',
+        'book_format',
+        'description',
+        'genre',
+        'isbn',
+        'page_count',
+        'rating',
+        'review_count',
+        'rating_count',
+        'price',
+        'sensitivity',
+        'pacing',
+        'buzzwords',
+        'mood',
+        'review'
+    }
+    list_weighted = weighted.split(",")
+    weight = 20/len(list_weighted)
+
+    qf_terms = ""
+    for term in terms:
+        if term in list_weighted:
+            qf_terms += term + "^" + str(weight) + " "
+        else:
+            qf_terms += term + " "
+    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=' + qf_terms
 
     print(query)
 
