@@ -199,7 +199,7 @@ async def get_similar(book_id: int):
     else:
         query = genre + " OR " + sensitivity + " OR " + buzzwords
 
-    q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q=' + query + '&qf=genre%20buzzwords%20sensitivity'
+    q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=genre%20buzzwords%20sensitivity'
     print(q)
 
     list_books= requests.get(q).json()['response']['docs']
@@ -223,6 +223,8 @@ async def search_books(query: str):
     print(query)
 
     query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
+
+    print(query)
 
     
 
