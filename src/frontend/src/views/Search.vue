@@ -21,7 +21,7 @@
                             <FontAwesomeIcon icon="angle-double-down" />
                         </button>
 
-                        <div class="autocom-box" style="position: absolute; z-index: 1;" >
+                        <div class="autocom-box" style="position: absolute; z-index: 1; width: 66%;" >
                             <ul style="font-size: 12px; margin-left: 50px; background-color: #F3F6F6;" v-if="modal">
                                 <li class="text-black" style="color: black; font-size: 12px; width: fit-content; background: transparent; margin-left: -30px;" v-for="term in terms" @click="setTerm(term)">
                                     {{ term }}
