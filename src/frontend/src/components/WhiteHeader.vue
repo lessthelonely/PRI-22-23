@@ -1,7 +1,7 @@
 <template>
     <nav class="navbar navbar-light navbar-expand-md" id="mainNav"
         style="color: rgb(0,0,0);background: rgb(255,255,255);">
-        <div class="container"><a class="navbar-brand" href="#" style="width: 100px;">
+        <div class="container"><a class="nav-link " href="/" style="width: 100px;">
                 <img src="../assets/images/logo_black.png" style="width: 100%;"></a><button data-bs-toggle="collapse"
                 class="navbar-toggler navbar-toggler-right" data-bs-target="#navbarResponsive" type="button"
                 aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i
