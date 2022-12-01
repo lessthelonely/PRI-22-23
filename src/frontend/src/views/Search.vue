@@ -90,16 +90,9 @@ export default defineComponent({
             terms: []
         }
     },
-    /*
-    <div v-if="terms && modal" style="width:80%;">
-                            <div v-for="term in terms" :key="term" style="border: 1px solid black; border-radius: 10px; padding: 10px; margin-top: 10px; cursor: pointer; color:black;" @click="setTerm(term)">
-                                {{term}}
-                            </div>
-
-                        </div>*/
     methods: {
         async filterTerms(){
-            console.log(this.term);
+            console.log("TERM: ",this.term);
             this.terms=[];
                 await axios.get("/suggestions/"+this.term).then((response) => {
                     for (var i = 0; i < response.data.length; i++) {
@@ -109,13 +102,14 @@ export default defineComponent({
         },
         setTerm(term){
             this.term=term;
+            document.getElementById("input-query").value=term;
             this.modal=false;
             this.search();
         },
         async search() {
             this.modal=false;
             const query = document.getElementById("input-query").value;
-            console.log(query);
+            console.log("SEARCH ",query);
 
             var selects = document.querySelectorAll(".filter-select");
             var filters = [];
@@ -145,12 +139,14 @@ export default defineComponent({
 
             if(filters.length==0 && values.length==0){
                 console.log("no filters");
+                console.log("SEARCHING: ", query);
+                console.log(query);
                 await axios.get("/search/"+query).then((response) => {
                     this.books = response.data;
                     console.log(this.books);
                     if(this.books[0]['spellcheck']!=null){
                         this.spelling = this.books[0]['spellcheck'];
-                        console.log(this.spelling);
+                        console.log("SPELLING: ", this.spelling);
                     }
                 });
             }
