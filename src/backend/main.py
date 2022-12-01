@@ -159,23 +159,30 @@ async def get_similar(book_id: int):
     query = 'http://localhost:8983/solr/books_schema/query?q=id:' + str(book_id) + '&q.op=OR&indent=true&qt='
     book= requests.get(query).json()['response']['docs'][0] # Get the book
     
+    genre=''
+    sensitivity=''
+    buzzwords =''
+
     # Get book's genre
-    genre = "(" + book['genre'][0]
-    for g in book['genre'][1:]:
-        genre += " OR " + g
-    genre += ")"
+    if 'genre' in book:
+        genre = "(" + book['genre'][0]
+        for g in book['genre'][1:]:
+            genre += " OR " + g
+        genre += ")"
 
     # Get book's sensitivity
-    sensitivity = "(" + book['sensitivity'][0]
-    for s in book['sensitivity'][1:]:
-        sensitivity += " OR " + s
-    sensitivity += ")"
+    if 'sensitivity' in book:
+        sensitivity = "(" + book['sensitivity'][0]
+        for s in book['sensitivity'][1:]:
+            sensitivity += " OR " + s
+        sensitivity += ")"
 
     # Get book's buzzwords
-    buzzwords = "(" + book['buzzwords'][0]
-    for b in book['buzzwords'][1:]:
-        buzzwords += " OR " + b
-    buzzwords += ")"
+    if 'buzzwords' in book:
+        buzzwords = "(" + book['buzzwords'][0]
+        for b in book['buzzwords'][1:]:
+            buzzwords += " OR " + b
+        buzzwords += ")"
 
     if genre == "" and (sensitivity!="" or buzzwords!=""):
         query = sensitivity + " OR " + buzzwords
