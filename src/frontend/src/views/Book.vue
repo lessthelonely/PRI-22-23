@@ -90,7 +90,8 @@
                                 <div class="row">
                                     <h1 class="text-start"
                                         style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
-                                        Reviews <h6 class="text-muted">({{ review_count }} total)</h6>
+                                        Reviews 
+                                        <!--<h6 class="text-muted">({{ review_count }} total)</h6>-->
                                     </h1>
 
                                 </div>
