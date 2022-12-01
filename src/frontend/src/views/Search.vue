@@ -122,7 +122,8 @@ export default defineComponent({
             var inputs = document.querySelectorAll(".filter-input");
             var values = [];
             for (var i = 0; i < inputs.length; i++) {
-                if((inputs[i].value)!= ""){
+                if((inputs[i].value)== ""){
+
                     filters.pop();
                 }
                 if((inputs[i].value).includes("<")){
