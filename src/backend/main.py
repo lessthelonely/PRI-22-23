@@ -153,6 +153,16 @@ async def get_suggestions(query: str):
         suggestions.append(term_model)
     return suggestions
 
+#Search by suggestion
+@app.get("/suggestion-search/{query}", status_code=status.HTTP_200_OK)
+async def suggestion_search(query: str):
+    query_request = "http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q="+query+"&qf=title"
+    list_books= requests.get(query_request).json()['response']['docs']
+    books=[]
+    for book in list_books:
+        books.append(Book(**book))
+    return books
+
 # Search for similar books (maybe send the book characteristics + book list of similar books?)
 @app.get("/similar/{book_id}", status_code=status.HTTP_200_OK)
 async def get_similar(book_id: int):

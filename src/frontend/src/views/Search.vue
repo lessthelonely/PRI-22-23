@@ -104,11 +104,16 @@ export default defineComponent({
             }
             
         },
-        setTerm(term){
+        async setTerm(term){
             this.term=term;
             document.getElementById("input-query").value=term;
             this.modal=false;
-            this.search();
+            
+            //this.search();
+
+            await axios.get("/suggestion-search/"+this.term).then((response) => {
+                    this.books = response.data;
+                });
         },
         async search() {
             this.modal=false;
