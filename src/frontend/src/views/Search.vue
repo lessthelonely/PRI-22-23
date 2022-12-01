@@ -95,11 +95,13 @@ export default defineComponent({
             console.log("TERM: ",this.term);
             
             this.terms=[];
+            if(this.term.length!= ""){
                 await axios.get("/suggestions/"+this.term).then((response) => {
                     for (var i = 0; i < response.data.length; i++) {
                         this.terms.push(response.data[i].term);
                     }
                 });
+            }
             
         },
         setTerm(term){
