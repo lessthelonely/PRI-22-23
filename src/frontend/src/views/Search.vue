@@ -6,8 +6,6 @@
             <div class="col">
                 <div class="row">
                     <div class="col-lg-xl" >
-                        <p v-if="spelling!=''" class="text-muted" style="display: float; color: black; text-align: left; font-size: 16px;"> Did you mean <button id="button-search" @click="correctSearch"> {{spelling}} </button>?</p>
-
                         <input type="text" id="input-query"
                             style="width: 80%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;"
                             placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>
@@ -54,6 +52,7 @@
                     </div>
                 </div>
             </div>
+            <p v-if="spelling!=''" class="text-muted" style="margin-left: 50px; margin-top: 10px; display: float; background: white;  z-index: 2; color: black; text-align: left; font-size: 16px;"> Did you mean <button id="button-search" @click="correctSearch"> {{spelling}} </button>?</p>
             <div class="row">
                 <div class="col" style="margin-top: 25px;">
                     <div class="row">
