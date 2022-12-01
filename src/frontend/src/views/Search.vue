@@ -93,12 +93,14 @@ export default defineComponent({
     methods: {
         async filterTerms(){
             console.log("TERM: ",this.term);
+            
             this.terms=[];
                 await axios.get("/suggestions/"+this.term).then((response) => {
                     for (var i = 0; i < response.data.length; i++) {
                         this.terms.push(response.data[i].term);
                     }
                 });
+            
         },
         setTerm(term){
             this.term=term;
@@ -120,6 +122,9 @@ export default defineComponent({
             var inputs = document.querySelectorAll(".filter-input");
             var values = [];
             for (var i = 0; i < inputs.length; i++) {
+                if((inputs[i].value)!= ""){
+                    filters.pop();
+                }
                 if((inputs[i].value).includes("<")){
                     var strInt = (inputs[i].value).split("<");
                     var range = "[0 TO "+ strInt[1] +"]";
@@ -160,6 +165,7 @@ export default defineComponent({
                 var jsonData = {};
                 for (var i = 0; i < filters.length; i++) {
                     jsonData[filters[i]] = values[i];
+                    console.log(jsonData);
                 }
 
                 console.log(jsonData);

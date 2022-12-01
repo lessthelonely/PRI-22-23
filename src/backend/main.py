@@ -213,7 +213,7 @@ async def search_books(query: str):
         query = query.replace("&", "%2F")
 
     print(query)
-    
+
     query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
 
     
