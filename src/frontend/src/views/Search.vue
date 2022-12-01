@@ -8,7 +8,12 @@
                     <div class="col-lg-xl" >
                         <input type="text" id="input-query"
                             style="width: 80%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;"
-                            placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>                       
+                            placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>   
+                        <button style="width: 2%; text-align:center; background-color: transparent; font-size: 10px; margin-left: -40px;"
+                        @click="clearSuggestions">
+                            <FontAwesomeIcon icon="angle-double-up" /> 
+                        </button>
+                                               
                         <button class="btn btn-primary" style="width: 5%; font-size: 20px; margin-left: 15px;"
                             @click="search">
                             <FontAwesomeIcon icon="fa-search" />
@@ -40,6 +45,7 @@
                             <option value="page_count">Page Count</option>
                             <option value="rating">Rating</option>
                             <option value="title">Title</option>
+                            <option value="genre">Genre</option>
                             <option value="price">Price</option>
                             <option value="sensitivity">Sensitivity</option>
                             <option value="pacing">Pacing</option>
@@ -64,6 +70,7 @@
                         <input type="checkbox" @click="addWeights('mood')" id="mood" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="mood" style="color:black;"> Moods</label>
                         <input type="checkbox" @click="addWeights('buzzwords')" id="buzzwords" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="buzzwords" style="color:black;"> Buzzwords</label>
                         <input type="checkbox" @click="addWeights('book_format')" id="book_format" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="book_format" style="color:black;"> Format</label>
+                        <input type="checkbox" @click="addWeights('genre')" id="genre" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="genre" style="color:black;"> Genre</label>
                         <input type="checkbox" @click="addWeights('rating')" id="rating" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="rating" style="color:black;"> Rating</label>
                     </h6>
                 </div>
@@ -117,6 +124,9 @@ export default defineComponent({
                 });
             }
             
+        },
+        clearSuggestions(){
+            this.terms=[];
         },
         addWeights(id){
             var checkbox = document.getElementById(id);
