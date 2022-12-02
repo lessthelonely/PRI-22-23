@@ -115,10 +115,15 @@ export default defineComponent({
     methods: {
         async filterTerms(){
             console.log("TERM: ",this.term);
+
+            var term = this.term.toLowerCase();
+                if(term.includes("/")){
+                    term = term.replace("/","&");
+                }
             
             this.terms=[];
             if(this.term.length!= ""){
-                await axios.get("/suggestions/"+this.term).then((response) => {
+                await axios.get("/suggestions/"+term).then((response) => {
                     for (var i = 0; i < response.data.length; i++) {
                         this.terms.push(response.data[i].term);
                     }
@@ -142,10 +147,15 @@ export default defineComponent({
             this.term=term;
             document.getElementById("input-query").value=term;
             this.modal=false;
+
+            var term = this.term.toLowerCase();
+                if(term.includes("/")){
+                    term = term.replace("/","&");
+                }
             
             //this.search();
 
-            await axios.get("/suggestion-search/"+this.term).then((response) => {
+            await axios.get("/suggestion-search/"+term).then((response) => {
                     this.books = response.data;
                 });
         },
@@ -250,7 +260,6 @@ export default defineComponent({
         },
 
         async correctSearch(){
-            document.getElementById("input-query").value=this.spelling;
             await axios.get("/search/"+this.spelling).then((response) => {
                     this.books = response.data;
                     this.spelling="";
