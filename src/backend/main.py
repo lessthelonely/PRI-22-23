@@ -220,12 +220,35 @@ async def get_similar(book_id: int):
  
     return books
 
-# Entity oriented search
-
-
 # Search with a query --> have to search for the query in every term
 # Also does spell checking
-@app.get("/search/{query}/{weighted}", status_code=status.HTTP_200_OK)
+@app.get("/search/{query}", status_code=status.HTTP_200_OK)
+async def search_books(query: str):
+    if query.find("&") != -1:
+        query = query.replace("&", "%2F")
+
+    print(query)
+
+    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
+
+    print(query)
+
+    list_books= requests.get(query).json()['response']['docs']
+    spell = requests.get(query).json()['spellcheck']['collations']
+    spell_term=''
+    if len(spell) > 0:
+        spell_term = spell[1]
+    print("spell: ", spell_term)
+    books=[]
+    for book in list_books:
+        book_append = Book(**book)
+        book_append.spellcheck = spell_term
+        books.append(book_append)
+    return books
+
+# Search with a query with weights --> have to search for the query in every term
+# Also does spell checking
+@app.get("/search-weighted/{query}/{weighted}", status_code=status.HTTP_200_OK)
 async def search_books(query: str, weighted: str):
     if query.find("&") != -1:
         query = query.replace("&", "%2F")

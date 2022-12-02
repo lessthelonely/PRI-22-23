@@ -36,6 +36,7 @@
                     <button id="add-button" style="margin-bottom: 20px; width: 50px; height: 40px; align-items: center; display: flex; justify-content: center; align-content: center; flex-direction: column; flex-wrap: nowrap;" @click="addFilter">
                             <FontAwesomeIcon icon="fa-plus" />
                         </button>
+
                     <div class="col" id="search-bar">
                         <select class="filter-select" placeholder="Attribute"
                             style="font-family: Cabin; padding: 10px;">
@@ -207,7 +208,7 @@ export default defineComponent({
                     for(var i=0; i<this.weights.length;i++){
                         weighted_term+=this.weights[i]+" ";
                     }
-                    await axios.get("/search/"+query+"/"+weighted_term).then((response) => {
+                    await axios.get("/search-weighted/"+query+"/"+weighted_term).then((response) => {
                         this.books = response.data;
                         if(this.books[0]['spellcheck']!=null){
                         this.spelling = this.books[0]['spellcheck'];
@@ -249,6 +250,7 @@ export default defineComponent({
         },
 
         async correctSearch(){
+            document.getElementById("input-query").value=this.spelling;
             await axios.get("/search/"+this.spelling).then((response) => {
                     this.books = response.data;
                     this.spelling="";
