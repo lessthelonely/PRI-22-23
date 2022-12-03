@@ -112,19 +112,27 @@
                     <div class="col" style="margin-top: 25px;">
                         <div class="row">
                             <div class="col" id="searchResultsDiv">
-                                <SearchResults v-for="book in books" :book="book" :key="book.id" />
+                                <SearchResults v-for="book in pageBooks" :book="book" :key="book.id" />
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+        <div style="text-align:center;">
+    <pagination
+      v-model="currentPage"
+      :records="totalPages"
+      :per-page="perPage"
+      @paginate="pageChanged"
+    />
+  </div>
     </body>
 </template>
 
 <script lang="js" >
 import { defineComponent, createApp } from 'vue';
+import pagination from "v-pagination-3";
 import axios from "axios";
 import WhiteHeader from '../components/WhiteHeader.vue';
 import SearchResults from '../components/SearchResults.vue';
@@ -137,21 +145,30 @@ export default defineComponent({
     components: {
         WhiteHeader,
         SearchResults,
-        AdvancedFilter
+        AdvancedFilter,
+        pagination
     },
     data() {
         return {
             books: [],
+            pageBooks:[],
             showAdvanced: false,
             spelling: "",
             term: "",
             modal: false,
             terms: [],
             weights: [],
-            filterCount: 2
+            filterCount: 2,
+            currentPage: 1,
+            perPage: 10,
+            totalPages: 100
         }
     },
     methods: {
+        pageChanged(page){
+            this.currentPage = page;
+            this.pageBooks = this.books.slice((page-1)*this.perPage, page*this.perPage);
+        },
         async filterTerms() {
             console.log("TERM: ", this.term);
 
@@ -199,6 +216,7 @@ export default defineComponent({
 
             await axios.get("/suggestion-search/" + term).then((response) => {
                 this.books = response.data;
+                this.pageChanged(1);
             });
         },
 
@@ -249,6 +267,7 @@ export default defineComponent({
                 if (this.weights.length == 0) {
                     await axios.get("/search/" + query).then((response) => {
                         this.books = response.data;
+                        this.pageChanged(1);
                         console.log(this.books);
                         if (this.books[0]['spellcheck'] != null) {
                             this.spelling = this.books[0]['spellcheck'];
@@ -263,6 +282,7 @@ export default defineComponent({
                     }
                     await axios.get("/search-weighted/" + query + "/" + weighted_term).then((response) => {
                         this.books = response.data;
+                        this.pageChanged(1);
                         if (this.books[0]['spellcheck'] != null) {
                             this.spelling = this.books[0]['spellcheck'];
                             console.log("SPELLING: ", this.spelling);
@@ -284,6 +304,7 @@ export default defineComponent({
                 await axios.post("/filter-search", jsonData).then((response) => {
                     this.showAdvanced = false;
                     this.books = response.data;
+                    this.pageChanged(1);
                     console.log(this.books);
                 });
 
@@ -309,6 +330,7 @@ export default defineComponent({
             await axios.get("/search/" + this.spelling).then((response) => {
                 this.books = response.data;
                 this.spelling = "";
+                this.pageChanged(1);
             });
         }
     },
@@ -319,6 +341,7 @@ export default defineComponent({
         await axios.get('http://localhost:8080/books').then((response) => {
             this.books = response.data;
         });
+        this.pageBooks = this.books.slice(0, this.perPage);
     }
 });
 </script>

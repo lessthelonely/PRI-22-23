@@ -17,6 +17,7 @@
     "font-awesome": "^4.7.0",
     "font-awesome-icons": "^1.6.0",
     "fortawesome": "^0.0.1-security",
+    "v-pagination-3": "^0.1.7",
     "vue": "^3.2.41",
     "vue-fontawesome": "^0.0.2",
     "vue-router": "^4.1.6",

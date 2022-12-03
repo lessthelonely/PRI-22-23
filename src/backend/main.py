@@ -26,7 +26,7 @@ async def root():
 # Get all the books (maybe do top 10 or something)
 @app.get("/books", response_model = List[Book], status_code=status.HTTP_200_OK)
 async def get_books():
-    query = 'http://localhost:8983/solr/books_schema/query?q=*:*&q.op=OR&indent=true&wt=json'
+    query = 'http://localhost:8983/solr/books_schema/query?q=*:*&q.op=OR&indent=true&rows=100&start=0'
     list_books= requests.get(query).json()['response']['docs']
     books=[]
     for book in list_books:
@@ -133,7 +133,7 @@ async def filter_search(filter: Filter):
             query += "mood:" +'"'+filter.mood+'" '
         terms += "mood "
 
-    query_request = "http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q="+query+"&qf="+terms
+    query_request = "http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q="+query+"&qf="+terms + "&rows=100&start=0"
 
     list_books= requests.get(query_request).json()['response']['docs']
     books=[]
@@ -156,7 +156,7 @@ async def get_suggestions(query: str):
 #Search by suggestion
 @app.get("/suggestion-search/{query}", status_code=status.HTTP_200_OK)
 async def suggestion_search(query: str):
-    query_request = "http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q="+query+"&qf=title"
+    query_request = "http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q="+query+"&qf=title"+ "&rows=100&start=0"
     list_books= requests.get(query_request).json()['response']['docs']
     books=[]
     for book in list_books:
@@ -209,7 +209,7 @@ async def get_similar(book_id: int):
     else:
         query = genre + " OR " + sensitivity + " OR " + buzzwords
 
-    q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=genre%20buzzwords%20sensitivity'
+    q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=genre%20buzzwords%20sensitivity' + '&rows=100&start=0'
     print(q)
 
     list_books= requests.get(q).json()['response']['docs']
@@ -229,7 +229,7 @@ async def search_books(query: str):
 
     print(query)
 
-    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
+    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review&rows=100&start=0'
 
     print(query)
 
@@ -282,7 +282,7 @@ async def search_books(query: str, weighted: str):
             qf_terms += term + "^" + str(weight) + " "
         else:
             qf_terms += term + " "
-    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=' + qf_terms
+    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=' + qf_terms + '&rows=100&start=0'
 
     print(query)
 
