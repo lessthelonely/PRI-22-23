@@ -161,3 +161,8 @@ router-link:hover {
 router-link:focus, router-link:active {
   color: gray;
 }
+
+input[type="checkbox"] {
+  margin-right: 2.5px;
+  align-items: center;
+}

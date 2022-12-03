@@ -36,33 +36,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="row" v-if="showAdvanced"
-                    style="margin-top: 15px; display: flex; flex-direction: column; align-content: center; align-items: center; justify-content: center; flex-wrap: nowrap;">
-                    <button id="add-button"
-                        style="margin-bottom: 20px; width: 50px; height: 40px; align-items: center; display: flex; justify-content: center; align-content: center; flex-direction: column; flex-wrap: nowrap;"
+                <div class="row" id="advanced-filters" v-if="showAdvanced" style="margin-top: 15px; display: flex; flex-direction: column; align-content: center; align-items: center; justify-content: center; flex-wrap: nowrap;">
+                    <button id="add-button" style="margin-bottom: 20px; width: 50px; height: 40px; align-items: center; display: flex; justify-content: center; align-content: center; flex-direction: column; flex-wrap: nowrap;"
                         @click="addFilter">
                         <FontAwesomeIcon icon="fa-plus" />
                     </button>
 
-                    <div class="col" id="search-bar">
-                        <select class="filter-select" placeholder="Attribute"
-                            style="font-family: Cabin; padding: 10px;">
-                            <option value="author">Author</option>
-                            <option value="book_format">Format</option>
-                            <option value="ISBN">ISBN</option>
-                            <option value="page_count">Page Count</option>
-                            <option value="rating">Rating</option>
-                            <option value="title">Title</option>
-                            <option value="genre">Genre</option>
-                            <option value="price">Price</option>
-                            <option value="sensitivity">Sensitivity</option>
-                            <option value="pacing">Pacing</option>
-                            <option value="buzzwords">Buzzwords</option>
-                            <option value="mood">Moods</option>
-                        </select>
-                        <input class="filter-input" type="text"
-                            style="font-family: Cabin; margin-left: 15px; padding: 10px;" />
-                    </div>
+                    <AdvancedFilter name="advanced-filter-1" />
                 </div>
             </div>
 
@@ -83,42 +63,42 @@
                             </p>
                         </div>
                         <div class="col" style="text-align: left;">
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('title')" id="title" 
                                     style="display:float; text-align: left;" />
                                 <label for="title" style="color:black;">Title</label>
                             </div>
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('author')" id="author" 
                                     style="display:float; text-align: left;" />
                                 <label for="author" style="color:black;">Author</label>
                             </div>
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('price')" id="price" 
                                     style="display:float; text-align: left;" />
                                 <label for="price" style="color:black;">Price</label>
                             </div>
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('sensitivity')" id="sensitivity"
                                      style="display:float; text-align: left;" />
                                 <label for="sensitivity" style="color:black;">Sensitivity</label>
                             </div>
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('mood')" id="mood" 
                                     style="display:float; text-align: left;" />
                                 <label for="mood" style="color:black;">Moods</label>
                             </div>
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('buzzwords')" id="buzzwords"
                                      style="display:float; text-align: left;" />
                                 <label for="buzzwords" style="color:black;">Buzzwords</label>
                             </div>
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('book_format')" id="book_format"
                                      style="display:float; text-align: left;" />
                                 <label for="book_format" style="color:black;">Format</label>
                             </div>
-                            <div style="margin-right: 10px; display: inline-block;">
+                            <div style="margin-right: 10px; align-items: center; display: inline-flex; lex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center;">
                                 <input type="checkbox" @click="addWeights('genre')" id="genre" 
                                     style="display:float; text-align: left;" />
                                 <label for="genre" style="color:black;">Genre</label>
@@ -148,13 +128,16 @@ import { defineComponent, createApp } from 'vue';
 import axios from "axios";
 import WhiteHeader from '../components/WhiteHeader.vue';
 import SearchResults from '../components/SearchResults.vue';
+import AdvancedFilter from '../components/AdvancedFilter.vue';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 
 export default defineComponent({
     name: 'Search',
     components: {
         WhiteHeader,
-        SearchResults
+        SearchResults,
+        AdvancedFilter
     },
     data() {
         return {
@@ -164,7 +147,8 @@ export default defineComponent({
             term: "",
             modal: false,
             terms: [],
-            weights: []
+            weights: [],
+            filterCount: 2
         }
     },
     methods: {
@@ -312,10 +296,13 @@ export default defineComponent({
         },
 
         addFilter() {
-            var searchBar = document.getElementById("search-bar");
-
-            var col = "<div class='col' style='margin-top: 10px;'> <select class='filter-select' placeholder='Attribute' style='font-family: Cabin; padding: 10px;'> <option value='author'>Author</option> <option value='book_format'>Format</option> <option value='ISBN'>ISBN</option> <option value='page_count'>Page Count</option> <option value='rating'>Rating</option> <option value='review_count'>Review Count</option> <option value='title'>Title</option> <option value='price'>Price</option> <option value='sensitivity'>Sensitivity</option> <option value='pacing'>Pacing</option> <option value='buzzwords'>Buzzwords</option> <option value='mood'>Moods</option> </select> <input class='filter-input' type='text' style='margin-left: 15px; font-family: Cabin; padding: 10px;' /></div>";
-            searchBar.innerHTML += col;
+            var searchBar = document.getElementById("advanced-filters");
+            var filterApp = createApp(AdvancedFilter, {name: 'advanced-filter-' + this.filterCount});
+            this.filterCount++;
+            filterApp.component('FontAwesomeIcon', FontAwesomeIcon);
+            
+            var filterElem = filterApp.mount(document.createElement('div')).$el;
+            searchBar.appendChild(filterElem);
         },
 
         async correctSearch() {
