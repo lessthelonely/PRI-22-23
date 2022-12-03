@@ -1,5 +1,5 @@
 <template>
-    <div class="card similar-book">
+    <div class="card card-img-top similar-book">
         <div class="card-body">
             <router-link :to="{name: 'Book', params: { id: id } }" class="btn btn-primary">
                 <img v-bind:src="cover_img" class="card-img-top" />
