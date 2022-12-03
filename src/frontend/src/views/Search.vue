@@ -67,9 +67,12 @@
             </div>
 
 
-            <p v-if="spelling != ''" class="text-muted"
-                style="margin-left: 50px; margin-top: 10px; display: float; background: white;  z-index: 2; color: black; text-align: left; font-size: 16px;">
-                Did you mean <button id="button-search" @click="correctSearch"> {{ spelling }} </button>?</p>
+            <p v-if="spelling != ''" class="text-muted" style="margin-left: 50px; margin-top: 10px; display: float; background: white;  z-index: 2; color: black; text-align: left; font-size: 16px;">
+                Did you mean
+                <button id="button-search" @click="correctSearch">
+                    {{ spelling }}
+                </button>?
+            </p>
 
             <div class="row" style="margin-top: 15px;">
                 <div class="col">
@@ -81,46 +84,46 @@
                         </div>
                         <div class="col" style="text-align: left;">
                             <div style="margin-right: 10px; display: inline-block;">
-                                <input type="checkbox" @click="addWeights('title')" id="title" v-model="checkbox"
+                                <input type="checkbox" @click="addWeights('title')" id="title" 
                                     style="display:float; text-align: left;" />
                                 <label for="title" style="color:black;">Title</label>
                             </div>
                             <div style="margin-right: 10px; display: inline-block;">
-                                <input type="checkbox" @click="addWeights('author')" id="author" v-model="checkbox"
+                                <input type="checkbox" @click="addWeights('author')" id="author" 
                                     style="display:float; text-align: left;" />
                                 <label for="author" style="color:black;">Author</label>
                             </div>
                             <div style="margin-right: 10px; display: inline-block;">
-                                <input type="checkbox" @click="addWeights('price')" id="price" v-model="checkbox"
+                                <input type="checkbox" @click="addWeights('price')" id="price" 
                                     style="display:float; text-align: left;" />
                                 <label for="price" style="color:black;">Price</label>
                             </div>
                             <div style="margin-right: 10px; display: inline-block;">
                                 <input type="checkbox" @click="addWeights('sensitivity')" id="sensitivity"
-                                    v-model="checkbox" style="display:float; text-align: left;" />
+                                     style="display:float; text-align: left;" />
                                 <label for="sensitivity" style="color:black;">Sensitivity</label>
                             </div>
                             <div style="margin-right: 10px; display: inline-block;">
-                                <input type="checkbox" @click="addWeights('mood')" id="mood" v-model="checkbox"
+                                <input type="checkbox" @click="addWeights('mood')" id="mood" 
                                     style="display:float; text-align: left;" />
                                 <label for="mood" style="color:black;">Moods</label>
                             </div>
                             <div style="margin-right: 10px; display: inline-block;">
                                 <input type="checkbox" @click="addWeights('buzzwords')" id="buzzwords"
-                                    v-model="checkbox" style="display:float; text-align: left;" />
+                                     style="display:float; text-align: left;" />
                                 <label for="buzzwords" style="color:black;">Buzzwords</label>
                             </div>
                             <div style="margin-right: 10px; display: inline-block;">
                                 <input type="checkbox" @click="addWeights('book_format')" id="book_format"
-                                    v-model="checkbox" style="display:float; text-align: left;" />
+                                     style="display:float; text-align: left;" />
                                 <label for="book_format" style="color:black;">Format</label>
                             </div>
                             <div style="margin-right: 10px; display: inline-block;">
-                                <input type="checkbox" @click="addWeights('genre')" id="genre" v-model="checkbox"
+                                <input type="checkbox" @click="addWeights('genre')" id="genre" 
                                     style="display:float; text-align: left;" />
                                 <label for="genre" style="color:black;">Genre</label>
                             </div>
-                            <input type="checkbox" @click="addWeights('rating')" id="rating" v-model="checkbox"
+                            <input type="checkbox" @click="addWeights('rating')" id="rating" 
                                 style="display:float; text-align: left;" />
                             <label for="rating" style="color:black;">Rating</label>
                         </div>
@@ -214,7 +217,7 @@ export default defineComponent({
                 this.books = response.data;
             });
         },
-        
+
         async search() {
             this.modal = false;
             var query = document.getElementById("input-query").value;
