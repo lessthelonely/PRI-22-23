@@ -84,7 +84,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col" style="height: 311px;">
+                                    <div class="col" style="height: fit-content;">
                                         <h6 class="text-start"
                                             style="color: rgb(0,0,0);margin: 0px;margin-bottom: 15px;">SYNOPSIS</h6>
                                         <p class="text-justify"
@@ -99,7 +99,7 @@
                                 <div class="row">
                                     <h1 class="text-start"
                                         style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
-                                        Reviews 
+                                        Reviews
                                         <!--<h6 class="text-muted">({{ review_count }} total)</h6>-->
                                     </h1>
 
@@ -117,38 +117,51 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col" v-if="(similar_books.length != 0)">
                 <div class="row">
                     <h1 class="text-start" style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
                         Similar Books
                     </h1>
                 </div>
                 <div class="row">
-                    <div class="col" style="margin-top: 25px;" id="similarDiv">
-                        <div class="row">
-                            <div class="carousel carousel-dark slide" data-bs-ride="carousel">
-                                <div class="carousel-inner">
-                                    <div class="carousel-item" v-for="book in similar_books">
-                                        <SimilarResults v-bind:cover_img="book.cover_img"
-                                            v-bind:buzzwords="book.buzzwords.toString()" v-bind:id="book.id"
-                                            v-bind:mood="book.mood.toString()" />
-                                    </div>
-                                </div>
-    
-                                <button class="carousel-control-prev" type="button"
-                                    data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-    
-                                <button class="carousel-control-next" type="button"
-                                    data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="col" id="similar-results-1" v-if="(page == 1)" style="display: flex; width: 100%; overflow: hidden; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;">
+                        <SimilarResults v-bind:cover_img="book.cover_img" v-bind:buzzwords="book.buzzwords.toString()"
+                            v-bind:id="book.id" v-bind:mood="book.mood.toString()"
+                            v-for="book in similar_books.slice(0, 5)"
+                            v-if="(similar_books.slice(0, 5).length != 0)" />
+                            <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else>
+                                No more suggestions available.
+                            </p>
                     </div>
+
+                    <div class="col" id="similar-results-2" v-if="(page == 2)" style="display: flex; width: 100%; overflow: hidden; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;">
+                        <SimilarResults v-bind:cover_img="book.cover_img" v-bind:buzzwords="book.buzzwords.toString()"
+                            v-bind:id="book.id" v-bind:mood="book.mood.toString()"
+                            v-for="book in similar_books.slice(5, 10)" v-if="(similar_books.slice(5, 10).length != 0)" />
+                            <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else>
+                                No more suggestions available.
+                            </p>
+                    </div>
+
+                    <div class="col" id="similar-results-3" v-if="(page == 3)" style="display: flex; width: 100%; overflow: hidden; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;">
+                        <SimilarResults v-bind:cover_img="book.cover_img" v-bind:buzzwords="book.buzzwords.toString()"
+                            v-bind:id="book.id" v-bind:mood="book.mood.toString()"
+                            v-for="book in similar_books.slice(10, 15)" v-if="(similar_books.slice(10, 15).length != 0)"/>
+                            <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else>
+                                No more suggestions available.
+                            </p>
+                    </div>
+                    <ul>
+                        <li>
+                            <button class="btn btn-primary" @click="back()">
+                                <FontAwesomeIcon icon="fa-arrow-left" />
+                            </button>
+                            <button class="btn btn-primary" @click="next()">
+                                <FontAwesomeIcon icon="fa-arrow-right" />
+                            </button>
+                        </li>
+                    </ul>
+                    
                 </div>
             </div>
         </div>
@@ -188,7 +201,8 @@ export default defineComponent({
             review: [],
             abstract: "",
             showAbstract: false,
-            similar_books: []
+            similar_books: [],
+            page: 1,
         }
     },
     components: {
@@ -203,6 +217,18 @@ export default defineComponent({
     methods: {
         changeAbstract() {
             this.showAbstract = !this.showAbstract
+        },
+
+        next() {
+            if (this.page < 3) {
+                this.page += 1
+            }
+        },
+
+        back() {
+            if (this.page > 1) {
+                this.page -= 1
+            }
         }
     },
     async created() {
@@ -229,25 +255,26 @@ export default defineComponent({
             this.authors = this.author.join(", ");
             this.genres = this.genre.join(", ");
 
-            var moods_array = this.mood_percentage[0].split(',');
+            if (this.mood_percentage.length != 0) {
+                var moods_array = this.mood_percentage[0].split(',');
 
-            if (moods_array[0] != "[]") {
-                for (var i = 0; i < moods_array.length; i++) {
-                    var number = moods_array[i].split(":")[1];
-                    number = number.split(",")[0];
-                    number = number.split("'")[0];
-                    number = Math.ceil(number * 100);
-                    if (number != 0) {
-                        if (i == 0) {
-                            this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
-                        }
-                        else {
-                            this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
+                if (moods_array[0] != "[]") {
+                    for (var i = 0; i < moods_array.length; i++) {
+                        var number = moods_array[i].split(":")[1];
+                        number = number.split(",")[0];
+                        number = number.split("'")[0];
+                        number = Math.ceil(number * 100);
+                        if (number != 0) {
+                            if (i == 0) {
+                                this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
+                            }
+                            else {
+                                this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
+                            }
                         }
                     }
                 }
             }
-
         });
 
         await axios.get('http://localhost:8080/similar/' + this.$route.params.id).then((res) => {

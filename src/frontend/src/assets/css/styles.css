@@ -133,10 +133,31 @@ img {
 }
 
 .card-img-top.similar-book {
-  width: calc(100% / 3);
+  width: calc(100% / 5);
   margin: 0 10px;
 }
 
 .carousel-inner {
   display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.carousel-item {
+	position: relative;
+	display: block;
+	margin: 0 10px;
+	transition: transform 0.6s ease-in-out;
+}
+
+router-link {
+  color: black;
+}
+
+router-link:hover {
+  color: white;
+}
+
+router-link:focus, router-link:active {
+  color: gray;
 }
