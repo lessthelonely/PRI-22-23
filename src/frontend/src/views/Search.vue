@@ -8,8 +8,12 @@
                     <div class="col-lg-xl" >
                         <input type="text" id="input-query"
                             style="width: 80%; font-family: Cabin; border-radius: 10px; height: 50px; padding: 10px; font-size: 20px;"
-                            placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>
-                       
+                            placeholder="Put your query here." v-on:keyup.enter="search()" autocomplete="off" v-model="term" @input="filterTerms" @focus="modal=true"/>   
+                        <button style="width: 2%; text-align:center; background-color: transparent; font-size: 10px; margin-left: -40px;"
+                        @click="clearSuggestions">
+                            <FontAwesomeIcon icon="angle-double-up" /> 
+                        </button>
+                                               
                         <button class="btn btn-primary" style="width: 5%; font-size: 20px; margin-left: 15px;"
                             @click="search">
                             <FontAwesomeIcon icon="fa-search" />
@@ -19,7 +23,7 @@
                             <FontAwesomeIcon icon="angle-double-down" />
                         </button>
 
-                        <div class="autocom-box" style="position: absolute; z-index: 1; width: 66%;" >
+                        <div class="autocom-box" style="position: absolute; z-index: 1; width: 73%;" >
                             <ul style="font-size: 12px; margin-left: 50px; background-color: #F3F6F6;" v-if="modal">
                                 <li class="text-black" style="color: black; font-size: 12px; width: fit-content; background: transparent; margin-left: -30px;" v-for="term in terms" @click="setTerm(term)">
                                     {{ term }}
@@ -32,6 +36,7 @@
                     <button id="add-button" style="margin-bottom: 20px; width: 50px; height: 40px; align-items: center; display: flex; justify-content: center; align-content: center; flex-direction: column; flex-wrap: nowrap;" @click="addFilter">
                             <FontAwesomeIcon icon="fa-plus" />
                         </button>
+
                     <div class="col" id="search-bar">
                         <select class="filter-select" placeholder="Attribute"
                             style="font-family: Cabin; padding: 10px;">
@@ -40,8 +45,8 @@
                             <option value="ISBN">ISBN</option>
                             <option value="page_count">Page Count</option>
                             <option value="rating">Rating</option>
-                            <option value="review_count">Review Count</option>
                             <option value="title">Title</option>
+                            <option value="genre">Genre</option>
                             <option value="price">Price</option>
                             <option value="sensitivity">Sensitivity</option>
                             <option value="pacing">Pacing</option>
@@ -52,8 +57,24 @@
                     </div>
                 </div>
             </div>
+            
+
             <p v-if="spelling!=''" class="text-muted" style="margin-left: 50px; margin-top: 10px; display: float; background: white;  z-index: 2; color: black; text-align: left; font-size: 16px;"> Did you mean <button id="button-search" @click="correctSearch"> {{spelling}} </button>?</p>
+            
             <div class="row">
+                <div>
+                    <h6 style="display:float; color:black; text-align: left;">More Important: 
+                        <input type="checkbox" @click="addWeights('title')" id="title" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="title" style="color:black;"> Title</label>
+                        <input type="checkbox" @click="addWeights('author')" id="author" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="author" style="color:black;"> Author</label>
+                        <input type="checkbox" @click="addWeights('price')" id="price" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="price" style="color:black;"> Price</label>
+                        <input type="checkbox" @click="addWeights('sensitivity')" id="sensitivity" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="sensitivity" style="color:black;"> Sensitivity</label>
+                        <input type="checkbox" @click="addWeights('mood')" id="mood" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="mood" style="color:black;"> Moods</label>
+                        <input type="checkbox" @click="addWeights('buzzwords')" id="buzzwords" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="buzzwords" style="color:black;"> Buzzwords</label>
+                        <input type="checkbox" @click="addWeights('book_format')" id="book_format" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="book_format" style="color:black;"> Format</label>
+                        <input type="checkbox" @click="addWeights('genre')" id="genre" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="genre" style="color:black;"> Genre</label>
+                        <input type="checkbox" @click="addWeights('rating')" id="rating" v-model="checkbox"  style="display:float; text-align: left; margin-left: 10px; margin-top: 10px;" />  <label for="rating" style="color:black;"> Rating</label>
+                    </h6>
+                </div>
                 <div class="col" style="margin-top: 25px;">
                     <div class="row">
                         <div class="col" id="searchResultsDiv">
@@ -87,26 +108,56 @@ export default defineComponent({
             spelling: "",
             term: "",
             modal: false,
-            terms: []
+            terms: [],
+            weights: []
         }
     },
     methods: {
         async filterTerms(){
             console.log("TERM: ",this.term);
+
+            var term = this.term.toLowerCase();
+                if(term.includes("/")){
+                    term = term.replace("/","&");
+                }
             
             this.terms=[];
-                await axios.get("/suggestions/"+this.term).then((response) => {
+            if(this.term.length!= ""){
+                await axios.get("/suggestions/"+term).then((response) => {
                     for (var i = 0; i < response.data.length; i++) {
                         this.terms.push(response.data[i].term);
                     }
                 });
+            }
             
         },
-        setTerm(term){
+        clearSuggestions(){
+            this.terms=[];
+        },
+        addWeights(id){
+            var checkbox = document.getElementById(id);
+            if(checkbox.checked){
+                this.weights.push(checkbox.id);
+            }
+            else{
+                this.weights.splice(this.weights.indexOf(checkbox.id),1);
+            }           
+        },
+        async setTerm(term){
             this.term=term;
             document.getElementById("input-query").value=term;
             this.modal=false;
-            this.search();
+
+            var term = this.term.toLowerCase();
+                if(term.includes("/")){
+                    term = term.replace("/","&");
+                }
+            
+            //this.search();
+
+            await axios.get("/suggestion-search/"+term).then((response) => {
+                    this.books = response.data;
+                });
         },
         async search() {
             this.modal=false;
@@ -152,7 +203,8 @@ export default defineComponent({
                 console.log("SEARCHING: ", query);
                 console.log(query);
                 console.log("/search/"+query);
-                await axios.get("/search/"+query).then((response) => {
+                if(this.weights.length==0){
+                    await axios.get("/search/"+query).then((response) => {
                     this.books = response.data;
                     console.log(this.books);
                     if(this.books[0]['spellcheck']!=null){
@@ -160,6 +212,21 @@ export default defineComponent({
                         console.log("SPELLING: ", this.spelling);
                     }
                 });
+                }
+                else{
+                    var weighted_term='';
+                    for(var i=0; i<this.weights.length;i++){
+                        weighted_term+=this.weights[i]+" ";
+                    }
+                    await axios.get("/search-weighted/"+query+"/"+weighted_term).then((response) => {
+                        this.books = response.data;
+                        if(this.books[0]['spellcheck']!=null){
+                        this.spelling = this.books[0]['spellcheck'];
+                        console.log("SPELLING: ", this.spelling);
+                    }
+                    });
+                }
+                
             }
             else{
 

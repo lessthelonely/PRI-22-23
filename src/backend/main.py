@@ -153,6 +153,16 @@ async def get_suggestions(query: str):
         suggestions.append(term_model)
     return suggestions
 
+#Search by suggestion
+@app.get("/suggestion-search/{query}", status_code=status.HTTP_200_OK)
+async def suggestion_search(query: str):
+    query_request = "http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q="+query+"&qf=title"
+    list_books= requests.get(query_request).json()['response']['docs']
+    books=[]
+    for book in list_books:
+        books.append(Book(**book))
+    return books
+
 # Search for similar books (maybe send the book characteristics + book list of similar books?)
 @app.get("/similar/{book_id}", status_code=status.HTTP_200_OK)
 async def get_similar(book_id: int):
@@ -199,7 +209,7 @@ async def get_similar(book_id: int):
     else:
         query = genre + " OR " + sensitivity + " OR " + buzzwords
 
-    q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=AND&q=' + query + '&qf=genre%20buzzwords%20sensitivity'
+    q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=genre%20buzzwords%20sensitivity'
     print(q)
 
     list_books= requests.get(q).json()['response']['docs']
@@ -209,9 +219,6 @@ async def get_similar(book_id: int):
             books.append(Book(**book))
  
     return books
-
-# Entity oriented search
-
 
 # Search with a query --> have to search for the query in every term
 # Also does spell checking
@@ -223,6 +230,61 @@ async def search_books(query: str):
     print(query)
 
     query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=author%20title%20book_format%20description%20genre%20isbn%20page_count%20rating%20review_count%20rating_count%20price%20sensitivity%20pacing%20buzzwords%20mood%20review'
+
+    print(query)
+
+    list_books= requests.get(query).json()['response']['docs']
+    spell = requests.get(query).json()['spellcheck']['collations']
+    spell_term=''
+    if len(spell) > 0:
+        spell_term = spell[1]
+    print("spell: ", spell_term)
+    books=[]
+    for book in list_books:
+        book_append = Book(**book)
+        book_append.spellcheck = spell_term
+        books.append(book_append)
+    return books
+
+# Search with a query with weights --> have to search for the query in every term
+# Also does spell checking
+@app.get("/search-weighted/{query}/{weighted}", status_code=status.HTTP_200_OK)
+async def search_books(query: str, weighted: str):
+    if query.find("&") != -1:
+        query = query.replace("&", "%2F")
+
+    print(query)
+
+    terms= {
+        'author',
+        'title',
+        'book_format',
+        'description',
+        'genre',
+        'isbn',
+        'page_count',
+        'rating',
+        'review_count',
+        'rating_count',
+        'price',
+        'sensitivity',
+        'pacing',
+        'buzzwords',
+        'mood',
+        'review'
+    }
+    list_weighted = weighted.split(",")
+    weight = 20/len(list_weighted)
+
+    qf_terms = ""
+    for term in terms:
+        if term in list_weighted:
+            qf_terms += term + "^" + str(weight) + " "
+        else:
+            qf_terms += term + " "
+    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=' + qf_terms
+
+    print(query)
 
     
 
