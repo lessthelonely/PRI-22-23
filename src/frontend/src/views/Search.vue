@@ -119,12 +119,13 @@
                 </div>
             </div>
         </div>
-        <div style="text-align:center;">
+        <div class="mb-4 d-flex justify-content-center">
     <pagination
       v-model="currentPage"
       :records="totalPages"
       :per-page="perPage"
-      @paginate="pageChanged"
+      @paginate="pageChanged" 
+      :hideCount="true"
     />
   </div>
     </body>
