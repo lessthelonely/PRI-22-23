@@ -2,7 +2,7 @@
     <WhiteHeader />
 
     <body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="77"
-        style="background: rgb(255,255,255); display: block; width: 100%;">
+        style="background: rgb(255,255,255); display: block; width: 100%; height: auto;">
         <div class="container">
             <div class="col">
                 <div class="row">
@@ -16,23 +16,27 @@
                                     </div>
                                 </div>
                                 <div class="row" style="text-align: center; display: flex; justify-content: center;">
-                                    <div class="col" style="text-align: center; display: flex; justify-content: center;">
-                                        <h3 class="text-center d-md-flex justify-content-md-center align-items-md-center" style="height: auto; color: rgb(0, 0, 0); width: auto;">
+                                    <div class="col"
+                                        style="text-align: center; display: flex; justify-content: center;">
+                                        <h3 class="text-center d-md-flex justify-content-md-center align-items-md-center"
+                                            style="height: auto; color: rgb(0, 0, 0); width: auto;">
                                             {{ rating }}
                                         </h3>
-                                        <FontAwesomeIcon icon="fa-star" style="color: black; font-size: 30px; margin-left: 5px;" />
+                                        <FontAwesomeIcon icon="fa-star"
+                                            style="color: black; font-size: 30px; margin-left: 5px;" />
                                     </div>
                                 </div>
                                 <div class="row" style="margin-top: 20px;">
-                                    <div v-if="moods.length!=0" class="col text-start">
+                                    <div v-if="moods.length != 0" class="col text-start">
                                         <h6 class="text-start d-md-flex justify-content-md-center align-items-md-center"
                                             style="height: auto;width: auto;margin: 0px;margin-bottom: 5px;">
                                             <span style="color: rgb(0, 0, 0);">MOODS</span>
                                         </h6>
                                     </div>
-                                    <p v-if="moods.length!=0"
+                                    <p v-if="moods.length != 0"
                                         style="font-family: Arial;font-size: 13px;text-align: justify;padding: 5px;padding-top: 0px;padding-bottom: 0px;margin-bottom: 10px;">
-                                        <span class="badge badge-dark" v-for="m in moods" style="background-color: #616161; margin: 2.5px;">
+                                        <span class="badge badge-dark" v-for="m in moods"
+                                            style="background-color: #616161; margin: 2.5px;">
                                             {{ m }}
                                         </span>
                                     </p>
@@ -43,13 +47,16 @@
                                     <div class="col">
                                         <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{ title }}</h1>
 
-                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">
+                                        <h3 class="text-start"
+                                            style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">
                                             {{ authors }}
-                                            <button v-if="abstract!=null" class="btn btn-primary" @click="changeAbstract">
+                                            <button v-if="abstract != null" class="btn btn-primary"
+                                                @click="changeAbstract">
                                                 <FontAwesomeIcon icon="fa-user" />
                                             </button>
                                         </h3>
-                                        <p v-if="showAbstract" class="text-muted" style="font-size: 10px; text-align: justify;">
+                                        <p v-if="showAbstract" class="text-muted"
+                                            style="font-size: 10px; text-align: justify;">
                                             {{ abstract }}
                                         </p>
                                     </div>
@@ -57,14 +64,16 @@
                                 <div class="row">
                                     <div class="col">
                                         <h6 class="text-start"
-                                            style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">{{ genres }}
+                                            style="color: rgb(194,194,194);margin: 0px;margin-bottom: 15px;">{{ genres
+                                            }}
                                         </h6>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <h6 v-if="page_count != 0" class="text-start"
-                                            style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;">{{ page_count }}
+                                            style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;">{{ page_count
+                                            }}
                                             pages</h6>
                                         <h6 v-if="price != null" class="text-start"
                                             style="color: rgb(50,50,50);margin: 0px;margin-bottom: 15px;">{{ price }} €
@@ -108,26 +117,39 @@
                 </div>
             </div>
             <div class="row">
-                <h1 class="text-start"
-                                        style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
-                                        Similar Books
-                                    </h1>
-
-                                </div>
+                <h1 class="text-start" style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
+                    Similar Books
+                </h1>
+            </div>
 
             <div class="row">
-                <div class="col" style="margin-top: 25px;">
+                <div class="col" style="margin-top: 25px;" id="similarDiv">
                     <div class="row">
-                        <div class="col" id="similarDiv">
-                            <SearchResults v-for="book in similar_books" :book="book" :key="book.id" />
+                        <div class="carousel carousel-dark slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item" v-for="book in similar_books">
+                                    <SimilarResults v-bind:cover_img="book.cover_img"
+                                        v-bind:buzzwords="book.buzzwords.toString()" v-bind:id="book.id"
+                                        v-bind:mood="book.mood.toString()" />
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        
-
     </body>
 </template>
 
@@ -136,7 +158,7 @@ import { defineComponent } from 'vue'
 import WhiteHeader from '../components/WhiteHeader.vue'
 import Review from '../components/Review.vue'
 import axios from 'axios'
-import SearchResults from '../components/SearchResults.vue'
+import SimilarResults from '../components/SimilarResults.vue'
 
 export default defineComponent({
     name: 'Book',
@@ -156,21 +178,21 @@ export default defineComponent({
             review_count: 0,
             price: 0,
             sensitivity: [],
-            pacing:"",
-            buzzwords:[],
-            mood:[],
-            mood_percentage:[],
-            moods:[],
-            review:[],
+            pacing: "",
+            buzzwords: [],
+            mood: [],
+            mood_percentage: [],
+            moods: [],
+            review: [],
             abstract: "",
             showAbstract: false,
             similar_books: []
-      }
+        }
     },
     components: {
         WhiteHeader,
         Review,
-        SearchResults
+        SimilarResults
     },
     setup() {
         return {}
@@ -183,7 +205,6 @@ export default defineComponent({
     },
     async created() {
         await axios.get('http://localhost:8080/book/' + this.$route.params.id).then((res) => {
-            console.log(res.data);
             this.author = res.data.author
             this.book_format = res.data.book_format
             this.description = res.data.description
@@ -202,37 +223,32 @@ export default defineComponent({
             this.mood_percentage = res.data.mood_percentage
             this.review = res.data.review
             this.abstract = res.data.abstract
-            console.log(this.abstract);
 
             this.authors = this.author.join(", ");
             this.genres = this.genre.join(", ");
 
             var moods_array = this.mood_percentage[0].split(',');
-            
-            if(moods_array[0] != "[]"){
-            for (var i = 0; i < moods_array.length; i++) {
-                var number = moods_array[i].split(":")[1];
-                number = number.split(",")[0];
-                number = number.split("'")[0];
-                console.log(number);
-                number = Math.ceil(number * 100);
-                console.log(number);
-                if (number != 0) {
-                    if (i == 0) {
-                        this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
-                    }
-                    else {
-                        this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
+
+            if (moods_array[0] != "[]") {
+                for (var i = 0; i < moods_array.length; i++) {
+                    var number = moods_array[i].split(":")[1];
+                    number = number.split(",")[0];
+                    number = number.split("'")[0];
+                    number = Math.ceil(number * 100);
+                    if (number != 0) {
+                        if (i == 0) {
+                            this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
+                        }
+                        else {
+                            this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
+                        }
                     }
                 }
-                console.log("MOODS:", this.moods);
             }
-        }
 
         });
 
         await axios.get('http://localhost:8080/similar/' + this.$route.params.id).then((res) => {
-            console.log(res.data);
             this.similar_books = res.data;
         });
 
