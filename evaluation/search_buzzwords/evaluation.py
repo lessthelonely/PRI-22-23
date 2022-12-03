@@ -7,11 +7,18 @@ import pandas as pd
 import requests
 from sklearn.metrics import PrecisionRecallDisplay
 
-QRELS_FILE = 'q3_rels.txt' # 3 - 2 in file
-QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords&wt=json' 
-QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/book_no_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords%5E5&wt=json'
-QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords&wt=json' 
-QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords%5E5&wt=json'
+#QRELS_FILE = 'q3_rels.txt' # 3 - 2 in file
+#QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/books_no_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords&wt=json' 
+#QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/books_no_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords%5E5&wt=json'
+#QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords&wt=json' 
+#QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=fast%20OR%20(capti*%20AND%20obs*)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords%5E5&wt=json'
+
+QRELS_FILE = 'q2_rels.txt' # 3 - 2 in file
+QUERY_URL_NO_SCHEMA = 'http://localhost:8983/solr/books_no_schema/query?q=fast%20OR%20(surpris*%20AND%20twist)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords&wt=json' 
+QUERY_URL_BOOST_NO_SCHEMA = 'http://localhost:8983/solr/books_no_schema/query?q=fast%20OR%20(surpris*%20AND%20twist)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords%5E5&wt=json'
+QUERY_URL_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=fast%20OR%20(surpris*%20AND%20twist)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords&wt=json' 
+QUERY_URL_BOOST_SCHEMA = 'http://localhost:8983/solr/books_schema/query?q=fast%20OR%20(surpris*%20AND%20twist)&q.op=OR&defType=edismax&indent=true&qf=pacing%20buzzwords%5E5&wt=json'
+
 # Read qrels to extract relevant documents
 relevant = list(map(lambda el: el.strip(), open(QRELS_FILE).readlines()))
 
@@ -158,6 +165,8 @@ handles, labels = disp.ax_.get_legend_handles_labels()
 
 # set the legend and the axes
 ax.legend(handles=handles, labels=labels, loc='center')
-ax.set_title("Precision-Recall query 3")
+#ax.set_title("Precision-Recall query 3")
+ax.set_title("Precision-Recall query 2")
 
-plt.savefig('precision_recall_query_3.png')
+plt.savefig('precision_recall_query_2_new.png')
+#plt.savefig('precision_recall_query_3_new.png')
