@@ -4,7 +4,7 @@
             <router-link :to="{name: 'Book', params: { id: id } }" class="btn btn-primary">
                 <img v-bind:src="cover_img" class="card-img-top" />
                 <p class="card-text" style="margin-top: 15px;">
-                    This book has also been called {{ selected_buzzword }} and found {{ selected_mood }}.
+                    This book is {{ selected_buzzword }} {{ selected_mood }}.
                 </p>
             </router-link>
         </div>
@@ -46,9 +46,25 @@ export default defineComponent({
         }
     },
 
+    methods: {
+        between(min, max) {  
+            return Math.floor( Math.random() * (max - min) + min);
+        }
+    },
+
     created() {
-        this.selected_buzzword = this.buzzwords[Math.random(0, this.buzzwords.length)];
-        this.selected_mood = this.mood.split(',')[Math.random(0, this.mood.length)];
+        if(this.buzzwords!=null){
+            var buzzwords = this.buzzwords.split(',');
+            var randomBuzzword1 = this.between(0, buzzwords.length);
+            this.selected_buzzword = buzzwords[randomBuzzword1];
+        }
+
+        if(this.mood!=null){
+            var moods = this.mood.split(',');
+            var randomMood1 = this.between(0, moods.length);
+            this.selected_mood = " and readers felt " + moods[randomMood1];
+        }
+
     }
 });
 </script>
