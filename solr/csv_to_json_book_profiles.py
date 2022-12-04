@@ -41,6 +41,6 @@ def csv_to_json(csvFilePath, jsonFilePath):
         jsonString = json.dumps(jsonArray, indent=4)
         jsonf.write(jsonString)
           
-csvFilePath = r'./solr/book_profiles_17_10.csv'
-jsonFilePath = r'./solr/book_profiles_17_10.json'
+csvFilePath = r'moods_remastered.csv'
+jsonFilePath = r'moods_remastered.json'
 csv_to_json(csvFilePath, jsonFilePath)

@@ -17,7 +17,7 @@
                         "class": "solr.LowerCaseFilterFactory"
                     },
                     {
-                        "class":"solr.EnglishPossessiveFilterFactory"
+                        "class":"solr.EnglishPossessiveFilterFactory" 
                     }
                 ]
             }
