@@ -255,26 +255,25 @@ export default defineComponent({
             this.authors = this.author.join(", ");
             this.genres = this.genre.join(", ");
 
-            if (this.mood_percentage.length != 0) {
-                var moods_array = this.mood_percentage[0].split(',');
-
-                if (moods_array[0] != "[]") {
-                    for (var i = 0; i < moods_array.length; i++) {
-                        var number = moods_array[i].split(":")[1];
-                        number = number.split(",")[0];
-                        number = number.split("'")[0];
-                        number = Math.ceil(number * 100);
-                        if (number != 0) {
-                            if (i == 0) {
-                                this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("['")[1]);
-                            }
-                            else {
-                                this.moods.push(number + "% " + (moods_array[i].split(":")[0]).split("'")[1]);
-                            }
-                        }
-                    }
+            for(var i=0; i<this.mood_percentage.length; i++){
+                var temp_array = this.mood_percentage[i].split(":");
+                var temp_number=0;
+                if(i==this.mood_percentage.length-1){
+                    temp_number = temp_array[1].split("]")[0];
+                    temp_number=Math.ceil(temp_number*100);
                 }
-            }
+                else{
+                    temp_number=Math.ceil(temp_array[1]*100);
+                }
+                if(temp_number != 0){
+                    if(i==0){
+                        this.moods.push(temp_number + "% " + (this.mood_percentage[i].split(":")[0]).split("['")[1].split("'")[0]);
+                    }
+                    else{
+                        this.moods.push(temp_number + "% " + (this.mood_percentage[i].split(":")[0]).split("'")[1]);
+                    }
+           }
+        }
         });
 
         await axios.get('http://localhost:8080/similar/' + this.$route.params.id).then((res) => {
