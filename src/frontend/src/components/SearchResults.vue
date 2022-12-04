@@ -67,30 +67,33 @@ export default defineComponent({
             this.buzzword = this.book.buzzwords[randomBuzzword1];
         }
 
-        for(var i=0; i<this.book.mood_percentage.length; i++){
-           var temp_array = this.book.mood_percentage[i].split(":");
-           var temp_number=0;
-           if(i==this.book.mood_percentage.length-1){
-                temp_number = temp_array[1].split("]")[0];
-                temp_number=Math.ceil(temp_number*100);
-           }
-           else{
-            temp_number=Math.ceil(temp_array[1]*100);
-           }
-           if(temp_number != 0){
-                if(i==0){
-                    this.moods.push(temp_number + "% " + (this.book.mood_percentage[i].split(":")[0]).split("['")[1].split("'")[0]);
-                }
-                else{
-                    this.moods.push(temp_number + "% " + (this.book.mood_percentage[i].split(":")[0]).split("'")[1]);
-                }
-           }
-        }
-
+        if(this.book.mood_percentage != "[]"){
+            for(var i=0; i<this.book.mood_percentage.length; i++){
+            var temp_array = this.book.mood_percentage[i].split(":");
+            var temp_number=0;
+            if(i==this.book.mood_percentage.length-1){
+                    temp_number = temp_array[1].split("]")[0];
+                    temp_number=Math.ceil(temp_number*100);
+            }
+            else{
+                temp_number=Math.ceil(temp_array[1]*100);
+            }
+            if(temp_number != 0){
+                    if(i==0){
+                        this.moods.push(temp_number + "% " + (this.book.mood_percentage[i].split(":")[0]).split("['")[1].split("'")[0]);
+                    }
+                    else{
+                        this.moods.push(temp_number + "% " + (this.book.mood_percentage[i].split(":")[0]).split("'")[1]);
+                    }
+            }
+            }
         var randomMood = this.between(0, this.book.mood_percentage.length);
         var moodText = this.moods[randomMood];
         moodText = moodText.split(' ');
         this.mood = " and "+ moodText[0] + " of readers felt " + moodText[1];
+    }
+
+        
     
     },
     methods: {
