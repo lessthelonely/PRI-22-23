@@ -46,13 +46,15 @@
                                     <div class="col">
                                         <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{ title }}</h1>
 
-                                        <h3 class="text-start"
-                                            style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">
-                                            {{ authors }}
-                                            <button v-if="abstract != null" class="btn btn-primary"
-                                                @click="goToAuthorPage(author[0])">
-                                                <FontAwesomeIcon icon="fa-user" />
-                                            </button>
+                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px; display: flex; flex-wrap: nowrap; flex-direction: row;">
+                                            <div v-for="a in author">
+                                                <router-link class="text-start author-link" :to="{ name: 'Author', params: { name: a }}" @click="goToAuthorPage(a)" v-if="(author.indexOf(a) != (author.length - 1))">
+                                                    {{ a + ","}}
+                                                </router-link>
+                                                <router-link class="text-start author-link" :to="{ name: 'Author', params: { name: a }}" @click="goToAuthorPage(a)" v-else >
+                                                    {{ a }}
+                                                </router-link>
+                                            </div>
                                         </h3>
                                         <p v-if="showAbstract" class="text-muted"
                                             style="font-size: 10px; text-align: justify;">
@@ -227,11 +229,8 @@ export default defineComponent({
             }
         },
 
-        goToAuthorPage() {
-            console.log(this.author[0]);
-            if (this.author[0] != undefined) {
-                window.location.href = "/author/" + this.author[0];
-            }
+        goToAuthorPage(name) {
+            window.location.href = "/author/" + name;
         }
     },
     async created() {

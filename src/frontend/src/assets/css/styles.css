@@ -201,3 +201,13 @@ p.text-center.d-md-flex.justify-content-md-center.align-items-md-center.similar-
   margin-left: 5px;
   font-size: 25px;
 }
+
+.author-link {
+  color: rgb(109, 109, 109);;
+  text-decoration: none;
+  margin-right: 5px;
+}
+
+.author-link:hover {
+  color: rgb(84, 0, 153);
+}
