@@ -77,20 +77,23 @@ async def get_author(author_name: str):
         response = requests.get(query)
         soup=BeautifulSoup(response.content, 'html.parser')
         image = soup.find('a', {'rel': 'dbo:thumbnail'})
-        image= image['resource']
+        if image is not None:
+            image= image['resource']
+        else:
+            image = "" 
         language= soup.find_all('span', {'property': 'dbo:abstract', 'lang':'en'})
-        for tag in language:
-            abstract += tag.text.strip()
+        if language is not None:
+            for tag in language:
+                abstract += tag.text.strip()
         birthPlace = soup.find_all('span', {'property': 'dbp:birthPlace', 'lang':'en'})
-        for tag in birthPlace:
-            birth += tag.text.strip()
+        if birthPlace is not None:
+            for tag in birthPlace:
+                birth += tag.text.strip()
         genres = soup.find_all('span', {'property': 'dbp:genre', 'lang':'en'})
-        for tag in genres:
-            genre += tag.text.strip()
+        if genres is not None:
+            for tag in genres:
+                genre += tag.text.strip()
 
-
-    
-    
     author = Author(name=author_name, birth=birth, genres=genre, books=books, image=image, abstract=abstract)
     return author
 
