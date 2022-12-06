@@ -16,8 +16,7 @@
                                     </div>
                                 </div>
                                 <div class="row" style="text-align: center; display: flex; justify-content: center;">
-                                    <div class="col"
-                                        style="text-align: center; display: flex; justify-content: center;">
+                                    <div class="col" style="text-align: center; display: flex; justify-content: center;">
                                         <h3 class="text-center d-md-flex justify-content-md-center align-items-md-center"
                                             style="height: auto; color: rgb(0, 0, 0); width: auto;">
                                             {{ rating }}
@@ -97,12 +96,9 @@
                         <div class="row">
                             <div class="col flex-column">
                                 <div class="row">
-                                    <h1 class="text-start"
-                                        style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
+                                    <h1 class="text-start" style="margin: 0px;margin-bottom: 15px; color: rgb(0, 0, 0);">
                                         Reviews
-                                        <!--<h6 class="text-muted">({{ review_count }} total)</h6>-->
                                     </h1>
-
                                 </div>
 
                                 <div v-if="review.length != 0">
@@ -126,7 +122,7 @@
                 <div class="row">
                     <div class="col" id="similar-results-1" v-if="(page == 1)" style="display: flex; width: 100%; overflow: hidden; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;">
                         <SimilarResults v-bind:cover_img="book.cover_img" v-bind:buzzwords="book.buzzwords.toString()"
-                            v-bind:id="book.id" v-bind:mood="book.mood.toString()"
+                            v-bind:id="book.id" v-bind:mood="book.mood.toString()" v-bind:rating="book.rating"
                             v-for="book in similar_books.slice(0, 5)"
                             v-if="(similar_books.slice(0, 5).length != 0)" />
                             <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else>
@@ -136,7 +132,7 @@
 
                     <div class="col" id="similar-results-2" v-if="(page == 2)" style="display: flex; width: 100%; overflow: hidden; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;">
                         <SimilarResults v-bind:cover_img="book.cover_img" v-bind:buzzwords="book.buzzwords.toString()"
-                            v-bind:id="book.id" v-bind:mood="book.mood.toString()"
+                            v-bind:id="book.id" v-bind:mood="book.mood.toString()" v-bind:rating="book.rating"
                             v-for="book in similar_books.slice(5, 10)" v-if="(similar_books.slice(5, 10).length != 0)" />
                             <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else>
                                 No more suggestions available.
@@ -145,7 +141,7 @@
 
                     <div class="col" id="similar-results-3" v-if="(page == 3)" style="display: flex; width: 100%; overflow: hidden; flex-direction: row; flex-wrap: nowrap; align-content: center; justify-content: center; align-items: center;">
                         <SimilarResults v-bind:cover_img="book.cover_img" v-bind:buzzwords="book.buzzwords.toString()"
-                            v-bind:id="book.id" v-bind:mood="book.mood.toString()"
+                            v-bind:id="book.id" v-bind:mood="book.mood.toString()" v-bind:rating="book.rating"
                             v-for="book in similar_books.slice(10, 15)" v-if="(similar_books.slice(10, 15).length != 0)"/>
                             <p style="font-family: Arial;color: rgb(0,0,0);font-size: 18px;text-align: justify;" v-else>
                                 No more suggestions available.
