@@ -16,7 +16,7 @@
                             <FontAwesomeIcon icon="angle-double-up" />
                         </button>
 
-                        <button class="btn btn-primary" style="width: 5%; font-size: 20px; margin-left: 15px;"
+                        <button class="btn btn-primary" style="width: 5%; font-size: 20px; margin-left: 30px;"
                             @click="search">
                             <FontAwesomeIcon icon="fa-search" />
                         </button>
