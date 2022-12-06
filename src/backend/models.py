@@ -49,3 +49,14 @@ class Filter(BaseModel):
 
     class Config:
         orm_mode = True
+
+class Author(BaseModel):
+    name: Optional[str]
+    abstract:  Optional[str]
+    birth:  Optional[str]
+    genres:  Optional[str]
+    image:  Optional[str]
+    books: Optional[List[Book]]
+
+    class Config:
+        orm_mode = True

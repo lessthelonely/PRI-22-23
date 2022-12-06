@@ -98,13 +98,13 @@ for results, color in zip(results, colors):
     )
 
     if i == 0:
-        filename = 'results_normal_no_schema_q3.tex'
+        filename = 'results_normal_no_schema_q2.tex'
     elif i == 1:
-        filename = 'results_boosted_no_schema_q3.tex'
+        filename = 'results_boosted_no_schema_q2.tex'
     elif i==2:
-        filename = 'results_normal_schema_q3.tex'
+        filename = 'results_normal_schema_q2.tex'
     else:
-        filename = 'results_boosted_schema_q3.tex'
+        filename = 'results_boosted_schema_q2.tex'
 
     with open(filename, 'w') as tf:
         tf.write(df.to_latex())

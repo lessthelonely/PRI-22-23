@@ -1,7 +1,7 @@
 from fastapi import FastAPI, status
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
-from models import Book, Suggestions, Filter
+from models import Book, Suggestions, Filter, Author
 import requests
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
@@ -56,6 +56,43 @@ async def get_book(book_id: int):
                 book['abstract'] = abstract
     
     return book
+
+@app.get("/author/{author_name}", response_model = Author, status_code=status.HTTP_200_OK)
+async def get_author(author_name: str):
+    query = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + author_name + '&qf=author'
+    list_books= requests.get(query).json()['response']['docs']
+    books=[]
+    for book in list_books:
+        books.append(Book(**book))
+
+    if author_name != "Naomi King":
+        print(author_name)
+        author = author_name.split(' ')
+        writer = author[0]+'_'+author[1]
+        query= "https://dbpedia.org/page/" + writer
+        abstract = ""
+        image = ""
+        birth= ""
+        genre=""
+        response = requests.get(query)
+        soup=BeautifulSoup(response.content, 'html.parser')
+        image = soup.find('a', {'rel': 'dbo:thumbnail'})
+        image= image['resource']
+        language= soup.find_all('span', {'property': 'dbo:abstract', 'lang':'en'})
+        for tag in language:
+            abstract += tag.text.strip()
+        birthPlace = soup.find_all('span', {'property': 'dbp:birthPlace', 'lang':'en'})
+        for tag in birthPlace:
+            birth += tag.text.strip()
+        genres = soup.find_all('span', {'property': 'dbp:genre', 'lang':'en'})
+        for tag in genres:
+            genre += tag.text.strip()
+
+
+    
+    
+    author = Author(name=author_name, birth=birth, genres=genre, books=books, image=image, abstract=abstract)
+    return author
 
 # Search for filters
 @app.post("/filter-search", status_code=status.HTTP_200_OK)
