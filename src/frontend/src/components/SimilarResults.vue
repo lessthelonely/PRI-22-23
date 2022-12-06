@@ -1,25 +1,23 @@
 <template>
     <div class="card-img-top similar-book">
         <div class="card-body">
-            <router-link :to="{ name: 'Book', params: { id: id } }" class="btn btn-primary">
+            <button @click="goToPage(id)" class="btn btn-primary similar-book">
                 <img v-bind:src="cover_img" class="card-img-top" />
-                <div class="row" style="text-align: center; display: flex; justify-content: center; margin-top: 10px;">
-                    <h3 class="text-center d-md-flex justify-content-md-center align-items-md-center"
-                        style="height: auto; color: rgb(0, 0, 0); width: auto;">
-                        {{ rating }}
-                    </h3>
-                    <FontAwesomeIcon icon="fa-star" style="color: black; font-size: 30px; margin-left: 5px;" />
-                </div>
+                <p class="text-center d-md-flex justify-content-md-center align-items-md-center similar-book-rating">
+                    {{rating}}
+                    <FontAwesomeIcon class="similar-star" icon="fa-star"/>
+                </p>
                 <p class="card-text" style="margin-top: 15px;">
                     This book is {{ selected_buzzword }} {{ selected_mood }}.
                 </p>
-            </router-link>
+            </button>
         </div>
     </div>
 </template>
 
 <script lang="js" >
 import { defineComponent } from 'vue';
+import router from '../router';
 
 export default defineComponent({
     name: 'SimilarResults',
@@ -61,6 +59,11 @@ export default defineComponent({
     methods: {
         between(min, max) {
             return Math.floor(Math.random() * (max - min) + min);
+        },
+
+        goToPage(id) {
+            router.push({ name: 'Book', params: { id: id } });
+            window.location.href = "/book/" + id;
         }
     },
 
