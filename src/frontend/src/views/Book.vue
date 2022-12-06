@@ -50,7 +50,7 @@
                                             style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px;">
                                             {{ authors }}
                                             <button v-if="abstract != null" class="btn btn-primary"
-                                                @click="changeAbstract">
+                                                @click="goToAuthorPage(author[0])">
                                                 <FontAwesomeIcon icon="fa-user" />
                                             </button>
                                         </h3>
@@ -224,6 +224,13 @@ export default defineComponent({
         back() {
             if (this.page > 1) {
                 this.page -= 1
+            }
+        },
+
+        goToAuthorPage() {
+            console.log(this.author[0]);
+            if (this.author[0] != undefined) {
+                window.location.href = "/author/" + this.author[0];
             }
         }
     },
