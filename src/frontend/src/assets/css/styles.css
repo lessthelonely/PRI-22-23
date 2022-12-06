@@ -166,3 +166,28 @@ input[type="checkbox"] {
   margin-right: 2.5px;
   align-items: center;
 }
+
+button.page-link {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+button.page-link:hover, button.page-link:focus, button.page-link:active, button.page-link.active{
+  background: darkgray;
+  color: white;
+  border-color: darkgray;
+}
+
+.VuePagination__pagination-item.VuePagination__pagination-item.page-item.VuePagination__pagination-item.VuePagination__pagination-item-prev-page.page-item.VuePagination__pagination-item-prev-chunk,
+.VuePagination__pagination-item.VuePagination__pagination-item.page-item.VuePagination__pagination-item.VuePagination__pagination-item-next-page.page-item.VuePagination__pagination-item-next-chunk {
+  display: none;
+}
+
+.VuePagination__pagination-item.VuePagination__pagination-item.page-item.VuePagination__pagination-item.VuePagination__pagination-item-prev-page {
+  margin-right: 10px;
+}
+
+.VuePagination__pagination-item.VuePagination__pagination-item.page-item.VuePagination__pagination-item.VuePagination__pagination-item-next-page {
+  margin-left: 10px;
+}
