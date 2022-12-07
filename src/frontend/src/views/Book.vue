@@ -46,15 +46,15 @@
                                     <div class="col">
                                         <h1 class="text-start" style="color: rgb(0,0,0);margin: 0px; ">{{ title }}</h1>
 
-                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px; display: flex; flex-wrap: nowrap; flex-direction: row;">
-                                            <div v-for="a in author">
-                                                <router-link class="text-start author-link" :to="{ name: 'Author', params: { name: a }}" @click="goToAuthorPage(a)" v-if="(author.indexOf(a) != (author.length - 1))">
-                                                    {{ a + ","}}
+                                        <h3 class="text-start" style="color: rgb(109,109,109);margin: 0px;margin-bottom: 15px; flex-wrap: nowrap; flex-direction: row;">
+                                                <router-link v-for="a in author" class="text-start author-link" :to="{ name: 'Author', params: { name: a }}" @click="goToAuthorPage(a)">
+                                                    <span v-if="(author.indexOf(a) != (author.length - 1))">
+                                                        {{ a + ","}}
+                                                    </span>
+                                                    <span v-else>
+                                                        {{ a }}
+                                                    </span>
                                                 </router-link>
-                                                <router-link class="text-start author-link" :to="{ name: 'Author', params: { name: a }}" @click="goToAuthorPage(a)" v-else >
-                                                    {{ a }}
-                                                </router-link>
-                                            </div>
                                         </h3>
                                         <p v-if="showAbstract" class="text-muted"
                                             style="font-size: 10px; text-align: justify;">
