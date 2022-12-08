@@ -4,24 +4,24 @@ FROM solr:8.10
 COPY synonyms.txt /data/synonyms.txt
 
 # Copy files
-COPY everything_part_1_mood.json /data/everything_part_1_mood.json
-COPY everything_part_2_mood.json /data/everything_part_2_mood.json
-COPY everything_part_3_mood.json /data/everything_part_3_mood.json
-COPY everything_part_4_mood.json /data/everything_part_4_mood.json
-COPY everything_part_5_mood.json /data/everything_part_5_mood.json
-COPY everything_part_6_mood.json /data/everything_part_6_mood.json
-COPY everything_part_7_mood.json /data/everything_part_7_mood.json
-COPY everything_part_8_mood.json /data/everything_part_8_mood.json
-COPY everything_part_9_mood.json /data/everything_part_9_mood.json
-COPY everything_part_10_mood.json /data/everything_part_10_mood.json
-COPY everything_part_11_mood.json /data/everything_part_11_mood.json
-COPY everything_part_12_mood.json /data/everything_part_12_mood.json
-COPY everything_part_13_mood.json /data/everything_part_13_mood.json
-COPY everything_part_14_mood.json /data/everything_part_14_mood.json
-COPY everything_part_15_mood.json /data/everything_part_15_mood.json
-COPY everything_part_16_mood.json /data/everything_part_16_mood.json
-COPY everything_part_17_mood.json /data/everything_part_17_mood.json
-COPY everything_part_18_mood.json /data/everything_part_18_mood.json
+COPY everything_part_1_mood_remastered.json /data/everything_part_1_mood_remastered.json
+COPY everything_part_2_mood_remastered.json /data/everything_part_2_mood_remastered.json
+COPY everything_part_3_mood_remastered.json /data/everything_part_3_mood_remastered.json
+COPY everything_part_4_mood_remastered.json /data/everything_part_4_mood_remastered.json
+COPY everything_part_5_mood_remastered.json /data/everything_part_5_mood_remastered.json
+COPY everything_part_6_mood_remastered.json /data/everything_part_6_mood_remastered.json
+COPY everything_part_7_mood_remastered.json /data/everything_part_7_mood_remastered.json
+COPY everything_part_8_mood_remastered.json /data/everything_part_8_mood_remastered.json
+COPY everything_part_9_mood_remastered.json /data/everything_part_9_mood_remastered.json
+COPY everything_part_10_mood_remastered.json /data/everything_part_10_mood_remastered.json
+COPY everything_part_11_mood_remastered.json /data/everything_part_11_mood_remastered.json
+COPY everything_part_12_mood_remastered.json /data/everything_part_12_mood_remastered.json
+COPY everything_part_13_mood_remastered.json /data/everything_part_13_mood_remastered.json
+COPY everything_part_14_mood_remastered.json /data/everything_part_14_mood_remastered.json
+COPY everything_part_15_mood_remastered.json /data/everything_part_15_mood_remastered.json
+COPY everything_part_16_mood_remastered.json /data/everything_part_16_mood_remastered.json
+COPY everything_part_17_mood_remastered.json /data/everything_part_17_mood_remastered.json
+COPY everything_part_18_mood_remastered.json /data/everything_part_18_mood_remastered.json
 
 
 # Copy schema file

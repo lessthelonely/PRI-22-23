@@ -328,6 +328,8 @@ export default defineComponent({
         },
 
         async correctSearch() {
+            this.term = this.spelling;
+            document.getElementById("input-query").value = this.spelling;
             await axios.get("/search/" + this.spelling).then((response) => {
                 this.books = response.data;
                 this.spelling = "";
