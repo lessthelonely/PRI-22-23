@@ -91,6 +91,9 @@ export default defineComponent({
     name: 'Home',
     components: {
         TransparentHeader
+    },
+    created(){
+        document.title = "NOVELideas";
     }
 });
 </script>

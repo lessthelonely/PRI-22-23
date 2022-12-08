@@ -277,6 +277,7 @@ export default defineComponent({
                         }
             }
             }
+            document.title = this.title;
     }
         });
 

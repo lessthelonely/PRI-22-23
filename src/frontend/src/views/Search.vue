@@ -337,8 +337,8 @@ export default defineComponent({
             });
         }
     },
-    setup() {
-        return {};
+    created() {
+        document.title = "Search";
     },
     async mounted() {
         await axios.get('http://localhost:8080/books').then((response) => {

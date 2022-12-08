@@ -92,6 +92,7 @@ export default defineComponent({
 
     created() {
         this.name = this.$route.params.name;
+        document.title = this.name;
 
         axios.get("/author/" + this.$route.params.name)
         .then(response => {
