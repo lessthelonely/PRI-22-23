@@ -18,6 +18,26 @@
                     },
                     {
                         "class":"solr.EnglishPossessiveFilterFactory" 
+                    },
+                    {
+                        "class": "solr.SynonymGraphFilterFactory",
+                        "synonyms": "synonyms.txt",
+                        "expand": true, 
+                        "ignoreCase": true
+                    }
+                ]
+            },
+            "queryAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.PatternTokenizerFactory",
+                    "pattern": ","
+                },
+                "filters": [
+                    {
+                        "class": "solr.SynonymGraphFilterFactory",
+                        "synonyms": "synonyms.txt",
+                        "expand": true, 
+                        "ignoreCase": true
                     }
                 ]
             }
