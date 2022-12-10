@@ -277,6 +277,11 @@ export default defineComponent({
                         }
             }
             }
+            this.moods.sort(function(a, b) {
+                    let percentA = parseInt(a.split("%")[0]);
+                    let percentB = parseInt(b.split("%")[0]);
+                    return percentB - percentA
+                });
             document.title = this.title;
     }
         });
