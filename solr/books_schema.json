@@ -87,6 +87,52 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "synText",
+            "class": "solr.TextField",
+            "indexAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.PatternTokenizerFactory",
+                    "pattern": ","
+                },
+                "filters": [
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.SynonymGraphFilterFactory",
+                        "synonyms": "synonyms.txt",
+                        "expand": true, 
+                        "ignoreCase": true
+                    }
+                ]
+            },
+            "queryAnalyzer": {
+                "tokenizer": {
+                    "class": "solr.PatternTokenizerFactory",
+                    "pattern": ","
+                },
+                "filters": [
+                    {
+                        "class": "solr.ASCIIFoldingFilterFactory",
+                        "preserveOriginal": true
+                    },
+                    {
+                        "class": "solr.LowerCaseFilterFactory"
+                    },
+                    {
+                        "class": "solr.SynonymGraphFilterFactory",
+                        "synonyms": "synonyms.txt",
+                        "expand": true, 
+                        "ignoreCase": true
+                    }
+                ]
+            }
         }
     ],
     "add-field": [
@@ -212,7 +258,7 @@
         },
         {
             "name": "buzzwords",
-            "type": "multipleText",
+            "type": "synText",
             "indexed": true,
             "stored": true,
             "multiValued": true

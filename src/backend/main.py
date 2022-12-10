@@ -195,7 +195,6 @@ async def get_similar(book_id: int):
     
     genre=''
     sensitivity=''
-    buzzwords =''
 
     # Get book's genre
     if 'genre' in book:
@@ -211,27 +210,13 @@ async def get_similar(book_id: int):
             sensitivity += " OR " + s
         sensitivity += ")"
 
-    # Get book's buzzwords
-    if 'buzzwords' in book:
-        buzzwords = "(" + book['buzzwords'][0]
-        for b in book['buzzwords'][1:]:
-            buzzwords += " OR " + b
-        buzzwords += ")"
 
-    if genre == "" and (sensitivity!="" or buzzwords!=""):
-        query = sensitivity + " OR " + buzzwords
-    elif sensitivity == "" and (genre!="" or buzzwords!=""):
-        query = genre + " OR " + buzzwords
-    elif buzzwords == "" and (genre!="" or sensitivity!=""):
-        query = genre + " OR " + sensitivity
-    elif (genre == "" and sensitivity == "") and buzzwords!="":
-        query = buzzwords
-    elif (genre == "" and buzzwords == "") and sensitivity!="":
-        query = sensitivity
-    elif (sensitivity == "" and buzzwords == "") and genre!="":
+    if genre == "" and sensitivity!="" :
+        query = sensitivity 
+    elif sensitivity == "" and genre!="" :
         query = genre
     else:
-        query = genre + " OR " + sensitivity + " OR " + buzzwords
+        query = genre + " OR " + sensitivity 
 
     q = 'http://localhost:8983/solr/books_schema/select?defType=edismax&indent=true&q.op=OR&q=' + query + '&qf=genre%20buzzwords%20sensitivity' + '&rows=100&start=0'
     print(q)
