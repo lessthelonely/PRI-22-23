@@ -101,7 +101,24 @@ export default defineComponent({
             this.abstract = response.data.abstract;
             this.picture = response.data.image;
             this.books = response.data.books;
+
+            console.log(this.abstract);
+
+            if(this.abstract.length > 1049) {
+                var description = this.abstract.split(/[\\?|\\.|!]/);
+                console.log(description);
+                this.abstract = "";
+                for (var i = 0; i< description.length-2; i++){
+                    if(this.abstract.length + description[i].length < 1049){
+                        this.abstract+=description[i]+".";
+                    }
+                    
+                }
+
+        }
         })
+
+        
     }
 });
 </script>
